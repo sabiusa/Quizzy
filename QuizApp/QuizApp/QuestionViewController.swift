@@ -39,7 +39,9 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        cell.textLabel?.text = options[indexPath.row]
+        return cell
     }
     
 }
