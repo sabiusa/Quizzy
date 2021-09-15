@@ -55,8 +55,21 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        let selected = tableView.indexPathsForSelectedRows!.map { options[$0.row] }
-        selection?(selected)
+        selection?(selectedOptions(in: tableView))
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didDeselectRowAt indexPath: IndexPath
+    ) {
+        selection?(selectedOptions(in: tableView))
+    }
+    
+    private func selectedOptions(in tableView: UITableView) -> [String] {
+        guard let selectedIndexPaths = tableView.indexPathsForSelectedRows
+        else { return [] }
+        
+        return selectedIndexPaths.map { options[$0.row] }
     }
     
     private func dequeueCell(in tableView: UITableView) -> UITableViewCell {

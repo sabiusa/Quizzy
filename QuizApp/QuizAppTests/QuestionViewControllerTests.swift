@@ -69,6 +69,21 @@ class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(receivedAnswer, ["A1", "A2"])
     }
     
+    func test_optionDeselected_withMultipleSelectionEnabled_notifiesDelegate() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) {
+            receivedAnswer = $0
+        }
+        sut.loadViewIfNeeded()
+        sut.tableView.allowsMultipleSelection = true
+        
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        
+        sut.tableView.deselect(row: 0)
+        XCTAssertEqual(receivedAnswer, [])
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
@@ -101,6 +116,12 @@ private extension UITableView {
         let indexPath = IndexPath(row: row, section: 0)
         selectRow(at: indexPath, animated: false, scrollPosition: .none)
         delegate?.tableView?(self, didSelectRowAt: indexPath)
+    }
+    
+    func deselect(row: Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        deselectRow(at: indexPath, animated: false)
+        delegate?.tableView?(self, didDeselectRowAt: indexPath)
     }
     
 }
