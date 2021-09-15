@@ -39,13 +39,32 @@ class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.tableView.title(at: 1), "A2")
     }
     
+    func test_optionSelected_notifiesDelegate() {
+        var receivedAnswer = ""
+        let sut = makeSUT(options: ["A1"]) {
+            receivedAnswer = $0
+        }
+        
+        sut.loadViewIfNeeded()
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        sut.tableView.delegate?.tableView?(sut.tableView, didSelectRowAt: indexPath)
+        
+        XCTAssertEqual(receivedAnswer, "A1")
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
         question: String = "",
-        options: [String] = []
+        options: [String] = [],
+        selection: @escaping ((String) -> Void) = { _ in }
     ) -> QuestionViewController {
-        let sut = QuestionViewController(question: question, options: options)
+        let sut = QuestionViewController(
+            question: question,
+            options: options,
+            selection: selection
+        )
         return sut
     }
     
