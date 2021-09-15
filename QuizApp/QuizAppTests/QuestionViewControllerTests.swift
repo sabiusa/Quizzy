@@ -40,7 +40,7 @@ class QuestionViewControllerTests: XCTestCase {
     }
     
     func test_optionSelected_notifiesDelegateWithLastSelection() {
-        var receivedAnswer = ""
+        var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1", "A2"]) {
             receivedAnswer = $0
         }
@@ -48,10 +48,25 @@ class QuestionViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         
         sut.tableView.select(row: 0)
-        XCTAssertEqual(receivedAnswer, "A1")
+        XCTAssertEqual(receivedAnswer, ["A1"])
         
         sut.tableView.select(row: 1)
-        XCTAssertEqual(receivedAnswer, "A2")
+        XCTAssertEqual(receivedAnswer, ["A2"])
+    }
+    
+    func test_optionSelected_withMultipleSelectionEnabled_notifiesDelegateWithSelections() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) {
+            receivedAnswer = $0
+        }
+        sut.loadViewIfNeeded()
+        sut.tableView.allowsMultipleSelection = true
+        
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        
+        sut.tableView.select(row: 1)
+        XCTAssertEqual(receivedAnswer, ["A1", "A2"])
     }
     
     // MARK:- Helpers
@@ -59,7 +74,7 @@ class QuestionViewControllerTests: XCTestCase {
     func makeSUT(
         question: String = "",
         options: [String] = [],
-        selection: @escaping ((String) -> Void) = { _ in }
+        selection: @escaping (([String]) -> Void) = { _ in }
     ) -> QuestionViewController {
         let sut = QuestionViewController(
             question: question,
@@ -84,6 +99,7 @@ private extension UITableView {
     
     func select(row: Int) {
         let indexPath = IndexPath(row: row, section: 0)
+        selectRow(at: indexPath, animated: false, scrollPosition: .none)
         delegate?.tableView?(self, didSelectRowAt: indexPath)
     }
     
