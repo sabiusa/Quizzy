@@ -44,7 +44,6 @@ class QuestionViewControllerTests: XCTestCase {
         let sut = makeSUT(options: ["A1", "A2"]) {
             receivedAnswer = $0
         }
-        
         sut.loadViewIfNeeded()
         
         sut.tableView.select(row: 0)
@@ -52,6 +51,20 @@ class QuestionViewControllerTests: XCTestCase {
         
         sut.tableView.select(row: 1)
         XCTAssertEqual(receivedAnswer, ["A2"])
+    }
+    
+    func test_optionDeselected_notifiesDelegate() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) {
+            receivedAnswer = $0
+        }
+        sut.loadViewIfNeeded()
+        
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        
+        sut.tableView.deselect(row: 0)
+        XCTAssertEqual(receivedAnswer, [])
     }
     
     func test_optionSelected_withMultipleSelectionEnabled_notifiesDelegateWithSelections() {
