@@ -66,6 +66,14 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
+    func test_start_withNoQuestions_routesToResult() {
+        let sut = makeSUT(questions: [])
+        
+        sut.start()
+        
+        XCTAssertEqual(router.routedResult!, [:])
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(questions: [String]) -> Flow {
@@ -74,7 +82,10 @@ class FlowTests: XCTestCase {
     }
     
     class RouterSpy: Router {
+        
         var routedQuestions = [String]()
+        var routedResult: [String: String]? = nil
+        
         var answerCallback: (AnswerCallback) = { _ in }
         
         var routedQuestionCount: Int {
@@ -88,6 +99,11 @@ class FlowTests: XCTestCase {
             self.routedQuestions.append(question)
             self.answerCallback = answerCallback
         }
+        
+        func route(to result: [String: String]) {
+            routedResult = result
+        }
+        
     }
     
 }

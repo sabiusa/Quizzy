@@ -14,6 +14,8 @@ protocol Router {
         to question: String,
         answerCallback: @escaping AnswerCallback
     )
+    
+    func route(to result: [String: String])
 }
 
 class Flow {
@@ -32,6 +34,8 @@ class Flow {
                 to: firstQuestion,
                 answerCallback: routeNext(from: firstQuestion)
             )
+        } else {
+            router.route(to: [:])
         }
     }
     
