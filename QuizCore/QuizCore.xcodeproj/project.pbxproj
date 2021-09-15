@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3EA2DA8926F1DFF9008EB32F /* QuizCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2DA7F26F1DFF8008EB32F /* QuizCore.framework */; };
 		3EA2DA9A26F1E087008EB32F /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DA9926F1E087008EB32F /* FlowTests.swift */; };
+		3EA2DA9C26F1E27E008EB32F /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DA9B26F1E27E008EB32F /* Flow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		3EA2DA8826F1DFF9008EB32F /* QuizCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA2DA8F26F1DFF9008EB32F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EA2DA9926F1E087008EB32F /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
+		3EA2DA9B26F1E27E008EB32F /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA2DA8326F1DFF8008EB32F /* Info.plist */,
+				3EA2DA9B26F1E27E008EB32F /* Flow.swift */,
 			);
 			path = QuizCore;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				TargetAttributes = {
 					3EA2DA7E26F1DFF8008EB32F = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					3EA2DA8726F1DFF9008EB32F = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -191,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA2DA9C26F1E27E008EB32F /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +342,7 @@
 		3EA2DA9426F1DFF9008EB32F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -354,6 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ge.sabius.QuizCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -361,6 +368,7 @@
 		3EA2DA9526F1DFF9008EB32F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -385,6 +393,7 @@
 		3EA2DA9726F1DFF9008EB32F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -405,6 +414,7 @@
 		3EA2DA9826F1DFF9008EB32F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
