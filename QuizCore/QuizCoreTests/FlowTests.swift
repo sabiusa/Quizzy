@@ -12,9 +12,10 @@ import XCTest
 
 class FlowTests: XCTestCase {
     
+    let router = RouterSpy()
+    
     func test_start_withNoQuestions_doesNoRouteToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: [], router: router)
+        let sut = makeSUT(questions: [])
         
         sut.start()
         
@@ -22,8 +23,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_start_withOneQuestions_routesToCorrectQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1"], router: router)
+        let sut = makeSUT(questions: ["Q1"])
         
         sut.start()
         
@@ -31,8 +31,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_start_withTwoQuestions_routesToFirstQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
         
@@ -40,8 +39,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_startTwice_withTwoQuestions_routesToFirstQuestionTwice() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
         sut.start()
@@ -50,8 +48,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_startAndAnswerFirstQuestion_withTwoQuestions_routesToSecondQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
         router.answerCallback("A1")
@@ -59,7 +56,14 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q2"])
     }
     
-    private class RouterSpy: Router {
+    // MARK:- Helpers
+    
+    func makeSUT(questions: [String]) -> Flow {
+        let sut = Flow(questions: questions, router: router)
+        return sut;
+    }
+    
+    class RouterSpy: Router {
         var routedQuestions = [String]()
         var answerCallback: ((String) -> Void) = { _ in }
         
