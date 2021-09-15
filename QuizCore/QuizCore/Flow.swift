@@ -18,8 +18,8 @@ protocol Router {
 
 class Flow {
     
-    let router: Router
-    let questions: [String]
+    private let router: Router
+    private let questions: [String]
     
     init(questions: [String], router: Router) {
         self.questions = questions
@@ -30,12 +30,12 @@ class Flow {
         if let firstQuestion = questions.first {
             router.route(
                 to: firstQuestion,
-                answerCallback: route(toNext: firstQuestion)
+                answerCallback: routeNext(from: firstQuestion)
             )
         }
     }
     
-    func route(toNext question: String) -> Router.AnswerCallback {
+    private func routeNext(from question: String) -> Router.AnswerCallback {
         return { [weak self] _ in
             guard let self = self else { return }
             if let currentQuestionIndex = self.questions.firstIndex(of: question) {
@@ -43,7 +43,7 @@ class Flow {
                     let nextQuestion = self.questions[currentQuestionIndex + 1]
                     self.router.route(
                         to: nextQuestion,
-                        answerCallback: self.route(toNext: nextQuestion)
+                        answerCallback: self.routeNext(from: nextQuestion)
                     )
                 }
             }
