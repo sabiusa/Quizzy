@@ -49,6 +49,8 @@ class Flow {
                         to: nextQuestion,
                         answerCallback: self.routeNext(from: nextQuestion)
                     )
+                } else {
+                    self.router.route(to: ["Q1": "A1"])
                 }
             }
         }
