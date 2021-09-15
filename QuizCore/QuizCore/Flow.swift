@@ -8,9 +8,11 @@
 import Foundation
 
 protocol Router {
+    typealias AnswerCallback = (String) -> Void
+    
     func route(
         to question: String,
-        answerCallback: @escaping (String) -> Void
+        answerCallback: @escaping AnswerCallback
     )
 }
 
@@ -33,7 +35,7 @@ class Flow {
         }
     }
     
-    func route(toNext question: String) -> ((String) -> Void) {
+    func route(toNext question: String) -> Router.AnswerCallback {
         return { [weak self] _ in
             guard let self = self else { return }
             let currentQuestionIndex = self.questions.firstIndex(of: question)!

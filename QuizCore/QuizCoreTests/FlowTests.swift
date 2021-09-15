@@ -75,7 +75,7 @@ class FlowTests: XCTestCase {
     
     class RouterSpy: Router {
         var routedQuestions = [String]()
-        var answerCallback: ((String) -> Void) = { _ in }
+        var answerCallback: (AnswerCallback) = { _ in }
         
         var routedQuestionCount: Int {
             return routedQuestions.count
@@ -83,7 +83,7 @@ class FlowTests: XCTestCase {
         
         func route(
             to question: String,
-            answerCallback: @escaping (String) -> Void
+            answerCallback: @escaping AnswerCallback
         ) {
             self.routedQuestions.append(question)
             self.answerCallback = answerCallback
