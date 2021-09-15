@@ -13,8 +13,9 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
-    private var question: String = ""
-    private var options: [String] = []
+    private var question = ""
+    private var options = [String]()
+    private let cellIdentifier = "Cell"
     
     convenience init(question: String, options: [String]) {
         self.init()
@@ -39,9 +40,16 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = dequeueCell(in: tableView)
         cell.textLabel?.text = options[indexPath.row]
         return cell
+    }
+    
+    private func dequeueCell(in tableView: UITableView) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+            return cell
+        }
+        return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
     }
     
 }
