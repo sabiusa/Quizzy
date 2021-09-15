@@ -31,14 +31,12 @@ class QuestionViewControllerTests: XCTestCase {
     }
     
     func test_viewDidLoad_withOneOption_rendersOneOptionText() {
-        let sut = makeSUT(question: "Q1", options: ["A1"])
+        let sut = makeSUT(question: "Q1", options: ["A1", "A2"])
         
         sut.loadViewIfNeeded()
         
-        let indexPath = IndexPath(row: 0, section: 0)
-        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath)
-        
-        XCTAssertEqual(cell?.textLabel?.text, "A1")
+        XCTAssertEqual(sut.tableView.title(at: 0), "A1")
+        XCTAssertEqual(sut.tableView.title(at: 1), "A2")
     }
     
     // MARK:- Helpers
@@ -49,6 +47,19 @@ class QuestionViewControllerTests: XCTestCase {
     ) -> QuestionViewController {
         let sut = QuestionViewController(question: question, options: options)
         return sut
+    }
+    
+}
+
+private extension UITableView {
+    
+    func cell(at row: Int) -> UITableViewCell? {
+        let indexPath = IndexPath(row: row, section: 0)
+        return dataSource?.tableView(self, cellForRowAt: indexPath)
+    }
+    
+    func title(at row: Int) -> String? {
+        return cell(at: row)?.textLabel?.text
     }
     
 }
