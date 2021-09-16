@@ -78,7 +78,7 @@ where R.Question == Question,
     }
     
     private func result() -> QuizResult<Question, Answer> {
-        return QuizResult(answers: answers, score: scoring([:]))
+        return QuizResult(answers: answers, score: scoring(answers))
     }
     
 }
