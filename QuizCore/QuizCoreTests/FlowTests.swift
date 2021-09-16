@@ -128,7 +128,7 @@ class FlowTests: XCTestCase {
         router.answerCallback("A1")
         router.answerCallback("A2")
         
-        XCTAssertEqual(receivedAnswers, ["Q1": "A1", "Q2": "A2"] )
+        XCTAssertEqual(receivedAnswers, ["Q1": "A1", "Q2": "A2"])
     }
     
     // MARK:- Helpers
