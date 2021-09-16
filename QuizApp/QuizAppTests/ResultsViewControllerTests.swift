@@ -25,13 +25,13 @@ class ResultsViewControllerTests: XCTestCase {
         sut1.loadViewIfNeeded()
         XCTAssertEqual(sut1.tableView.numberOfRows(inSection: 0), 0)
         
-        let sut2 = makeSUT(answers: [makeAnswer(isCorrect: false)])
+        let sut2 = makeSUT(answers: [makeAnswer()])
         sut2.loadViewIfNeeded()
         XCTAssertEqual(sut2.tableView.numberOfRows(inSection: 0), 1)
     }
     
     func test_viewDidLoad_withCorrectAnswer_configuresCell() {
-        let answer = makeAnswer(question: "Q1", correctAnswer: "A1", isCorrect: true)
+        let answer = makeAnswer(question: "Q1", correctAnswer: "A1")
         let sut = makeSUT(answers: [answer])
         sut.loadViewIfNeeded()
 
@@ -46,8 +46,7 @@ class ResultsViewControllerTests: XCTestCase {
         let answer = makeAnswer(
             question: "Q1",
             correctAnswer: "A1",
-            wrongAnswer: "A2",
-            isCorrect: false
+            wrongAnswer: "A2"
         )
         let sut = makeSUT(answers: [answer])
         sut.loadViewIfNeeded()
@@ -76,14 +75,12 @@ class ResultsViewControllerTests: XCTestCase {
     func makeAnswer(
         question: String = "",
         correctAnswer: String = "",
-        wrongAnswer: String? = nil,
-        isCorrect: Bool
+        wrongAnswer: String? = nil
     ) -> PresentableAnswer {
         return PresentableAnswer(
             question: question,
             correctAnswer: correctAnswer,
-            wrongAnswer: wrongAnswer,
-            isCorrect: isCorrect
+            wrongAnswer: wrongAnswer
         )
     }
     

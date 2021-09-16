@@ -11,7 +11,6 @@ struct PresentableAnswer {
     let question: String
     let correctAnswer: String
     let wrongAnswer: String?
-    let isCorrect: Bool
 }
 
 class CorrectAnswerCell: UITableViewCell {
@@ -70,7 +69,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let answer = answers[indexPath.row]
-        if answer.isCorrect {
+        if answer.wrongAnswer == nil {
             return correctAnswerCell(for: answer, at: indexPath)
         } else {
             return wrongAnswerCell(for: answer, at: indexPath)
