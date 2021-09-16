@@ -26,6 +26,8 @@
 		779D29F426F2FF150077EF53 /* TableViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29F326F2FF150077EF53 /* TableViewHelpers.swift */; };
 		779D29F726F3AB580077EF53 /* QuizCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779D29F626F3AB580077EF53 /* QuizCore.framework */; };
 		779D29F826F3AB580077EF53 /* QuizCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 779D29F626F3AB580077EF53 /* QuizCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */; };
+		779D29FD26F3ADB20077EF53 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		779D29F326F2FF150077EF53 /* TableViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelpers.swift; sourceTree = "<group>"; };
 		779D29F626F3AB580077EF53 /* QuizCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTests.swift; sourceTree = "<group>"; };
+		779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				3E8445AA26F367F0008EE770 /* WrongAnswerCell.swift */,
 				3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */,
 				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
+				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
@@ -143,6 +148,7 @@
 				779D29F326F2FF150077EF53 /* TableViewHelpers.swift */,
 				3EA2DAD926F21587008EB32F /* QuestionViewControllerTests.swift */,
 				779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */,
+				779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */,
 				3EA2DAC226F2116C008EB32F /* Info.plist */,
 			);
 			path = QuizAppTests;
@@ -267,6 +273,7 @@
 				779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */,
 				3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */,
 				3E8445AB26F367F0008EE770 /* WrongAnswerCell.swift in Sources */,
+				779D29FD26F3ADB20077EF53 /* NavigationControllerRouter.swift in Sources */,
 				3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */,
 				3EA2DADC26F2162B008EB32F /* QuestionViewController.swift in Sources */,
 			);
@@ -276,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
 				779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */,
 				779D29F426F2FF150077EF53 /* TableViewHelpers.swift in Sources */,
 				3EA2DADA26F21587008EB32F /* QuestionViewControllerTests.swift in Sources */,
