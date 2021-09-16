@@ -30,11 +30,21 @@ class ResultsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut2.tableView.numberOfRows(inSection: 0), 1)
     }
     
+    func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
+        let sut = makeSUT(answers: [PresentableAnswer(isCorrect: true)])
+        sut.loadViewIfNeeded()
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath) as? CorrectAnswerCell
+        
+        XCTAssertNotNil(cell)
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
         summary: String = "",
-        answers: [String] = []
+        answers: [PresentableAnswer] = []
     ) -> ResultsViewController {
         let sut = ResultsViewController(
             summary: summary,
@@ -43,8 +53,8 @@ class ResultsViewControllerTests: XCTestCase {
         return sut
     }
     
-    func makeAnswer() -> String {
-        return "an answer"
+    func makeAnswer() -> PresentableAnswer {
+        return PresentableAnswer(isCorrect: false)
     }
     
 }

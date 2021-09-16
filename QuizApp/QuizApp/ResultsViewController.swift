@@ -7,15 +7,23 @@
 
 import UIKit
 
+struct PresentableAnswer {
+    let isCorrect: Bool
+}
+
+class CorrectAnswerCell: UITableViewCell {
+    
+}
+
 class ResultsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
     private var summary = ""
-    private var answers = [String]()
+    private var answers = [PresentableAnswer]()
     
-    convenience init(summary: String, answers: [String]) {
+    convenience init(summary: String, answers: [PresentableAnswer]) {
         self.init()
         self.summary = summary
         self.answers = answers
@@ -38,7 +46,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return UITableViewCell()
+        return CorrectAnswerCell()
     }
     
 }
