@@ -25,7 +25,7 @@ class ResultsViewControllerTests: XCTestCase {
         sut1.loadViewIfNeeded()
         XCTAssertEqual(sut1.tableView.numberOfRows(inSection: 0), 0)
         
-        let sut2 = makeSUT(answers: ["A1"])
+        let sut2 = makeSUT(answers: [makeAnswer()])
         sut2.loadViewIfNeeded()
         XCTAssertEqual(sut2.tableView.numberOfRows(inSection: 0), 1)
     }
@@ -41,6 +41,10 @@ class ResultsViewControllerTests: XCTestCase {
             answers: answers
         )
         return sut
+    }
+    
+    func makeAnswer() -> String {
+        return "an answer"
     }
     
 }
