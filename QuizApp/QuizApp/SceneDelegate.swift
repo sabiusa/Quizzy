@@ -18,15 +18,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         if let windowScene = scene as? UIWindowScene {
             let newWindow = UIWindow(windowScene: windowScene)
-            newWindow.rootViewController = QuestionViewController(
-                question: "A question?",
-                options: ["Option 1", "Option 2", "Option 3"],
-                selection: { print($0) }
-            )
+            newWindow.rootViewController = createResultsViewController()
             
             window = newWindow
             window?.makeKeyAndVisible()
         }
+    }
+    
+    private func createQuestionViewController() -> QuestionViewController {
+        return QuestionViewController(
+            question: "A question?",
+            options: ["Option 1", "Option 2", "Option 3"],
+            selection: { print($0) }
+        )
+    }
+    
+    private func createResultsViewController() -> ResultsViewController {
+        return ResultsViewController(
+            summary: "You got 1/2 correct",
+            answers: [
+                PresentableAnswer(
+                    question: "Question 1",
+                    correctAnswer: "Yes",
+                    wrongAnswer: nil
+                ),
+                PresentableAnswer(
+                    question: "Another Question",
+                    correctAnswer: "No",
+                    wrongAnswer: "Sad"
+                )
+            ]
+        )
     }
 
 }
