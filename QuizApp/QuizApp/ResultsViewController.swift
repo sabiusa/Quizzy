@@ -15,6 +15,10 @@ class CorrectAnswerCell: UITableViewCell {
     
 }
 
+class WrongAnswerCell: UITableViewCell {
+    
+}
+
 class ResultsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var headerLabel: UILabel!
@@ -46,7 +50,12 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return CorrectAnswerCell()
+        let answer = answers[indexPath.row]
+        if answer.isCorrect {
+            return CorrectAnswerCell()
+        } else {
+            return WrongAnswerCell()
+        }
     }
     
 }
