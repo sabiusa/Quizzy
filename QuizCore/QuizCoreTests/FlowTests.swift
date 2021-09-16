@@ -71,7 +71,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(router.routedResult!, [:])
+        XCTAssertEqual(router.routedResult!.answers, [:])
     }
     
     func test_start_withOneQuestions_doesNotRouteToResult() {
@@ -98,7 +98,7 @@ class FlowTests: XCTestCase {
         router.answerCallback("A1")
         router.answerCallback("A2")
         
-        XCTAssertEqual(router.routedResult!, ["Q1": "A1", "Q2": "A2"])
+        XCTAssertEqual(router.routedResult!.answers, ["Q1": "A1", "Q2": "A2"])
     }
     
     // MARK:- Helpers
@@ -111,7 +111,7 @@ class FlowTests: XCTestCase {
     class RouterSpy: Router {
         
         var routedQuestions = [String]()
-        var routedResult: [String: String]? = nil
+        var routedResult: QuizResult<String, String>? = nil
         
         var answerCallback: ((String) -> Void) = { _ in }
         
@@ -127,7 +127,7 @@ class FlowTests: XCTestCase {
             self.answerCallback = answerCallback
         }
         
-        func route(to result: [String: String]) {
+        func route(to result: QuizResult<String, String>) {
             routedResult = result
         }
         

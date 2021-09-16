@@ -17,15 +17,20 @@ protocol Router {
         answerCallback: @escaping (Answer) -> Void
     )
     
-    func route(to result: [Question: Answer])
+    func route(to result: QuizResult<Question, Answer>)
+}
+
+struct QuizResult<Question: Hashable, Answer> {
+    let answers: [Question: Answer]
 }
 
 class Flow<Question, Answer, R: Router>
-where R.Question == Question, R.Answer == Answer {
+where R.Question == Question,
+      R.Answer == Answer {
     
     private let router: R
     private let questions: [Question]
-    private var result = [Question: Answer]()
+    private var answers = [Question: Answer]()
     
     init(questions: [Question], router: R) {
         self.questions = questions
@@ -39,7 +44,7 @@ where R.Question == Question, R.Answer == Answer {
                 answerCallback: nextCallback(from: firstQuestion)
             )
         } else {
-            router.route(to: result)
+            router.route(to: result())
         }
     }
     
@@ -51,7 +56,7 @@ where R.Question == Question, R.Answer == Answer {
     
     private func routeNext(_ question: Question, _ answer: Answer) {
         if let currentQuestionIndex = questions.firstIndex(of: question) {
-            result[question] = answer
+            answers[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
                 let nextQuestion = questions[nextQuestionIndex]
@@ -60,9 +65,13 @@ where R.Question == Question, R.Answer == Answer {
                     answerCallback: nextCallback(from: nextQuestion)
                 )
             } else {
-                router.route(to: result)
+                router.route(to: result())
             }
         }
+    }
+    
+    private func result() -> QuizResult<Question, Answer> {
+        return QuizResult(answers: answers)
     }
     
 }
