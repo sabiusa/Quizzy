@@ -7,27 +7,6 @@
 
 import UIKit
 
-struct PresentableAnswer {
-    let question: String
-    let correctAnswer: String
-    let wrongAnswer: String?
-}
-
-class CorrectAnswerCell: UITableViewCell {
-    
-    @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var answerLabel: UILabel!
-    
-}
-
-class WrongAnswerCell: UITableViewCell {
-    
-    @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var correctAnswerLabel: UILabel!
-    @IBOutlet var wrongAnswerLabel: UILabel!
-    
-}
-
 class ResultsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var headerLabel: UILabel!
