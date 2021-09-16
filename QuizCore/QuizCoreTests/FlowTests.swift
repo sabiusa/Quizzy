@@ -101,10 +101,30 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedResult!.answers, ["Q1": "A1", "Q2": "A2"])
     }
     
+    func test_startAndAnswerFirstTwoQuestions_withTwoQuestions_scores() {
+        let sut = makeSUT(
+            questions: ["Q1", "Q2"],
+            scoring: { _ in 10 }
+        )
+        
+        sut.start()
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        
+        XCTAssertEqual(router.routedResult!.score, 10)
+    }
+    
     // MARK:- Helpers
     
-    func makeSUT(questions: [String]) -> Flow<String, String, RouterSpy> {
-        let sut = Flow(questions: questions, router: router)
+    func makeSUT(
+        questions: [String],
+        scoring: @escaping ([String: String]) -> Int = { _ in 0 }
+    ) -> Flow<String, String, RouterSpy> {
+        let sut = Flow(
+            questions: questions,
+            router: router,
+            scoring: scoring
+        )
         return sut;
     }
     
