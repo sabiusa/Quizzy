@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3EA2DAAA26F21169008EB32F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DAA926F21169008EB32F /* AppDelegate.swift */; };
 		3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */; };
 		3EA2DAB326F2116C008EB32F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DAB226F2116C008EB32F /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3EA2DAA626F21169008EB32F /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA2DAA926F21169008EB32F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				779D29EF26F2F8070077EF53 /* ResultsViewController.xib */,
 				3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */,
 				3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */,
+				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */,
 				3EA2DAAA26F21169008EB32F /* AppDelegate.swift in Sources */,
 				779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */,
 				3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */,
