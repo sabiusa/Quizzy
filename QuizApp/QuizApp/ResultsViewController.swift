@@ -8,10 +8,13 @@
 import UIKit
 
 struct PresentableAnswer {
+    let question: String
     let isCorrect: Bool
 }
 
 class CorrectAnswerCell: UITableViewCell {
+    
+    @IBOutlet var questionLabel: UILabel!
     
 }
 
@@ -37,6 +40,11 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         headerLabel.text = summary
+        
+        tableView.register(
+            UINib(nibName: "CorrectAnswerCell", bundle: nil),
+            forCellReuseIdentifier: "CorrectAnswerCell"
+        )
     }
     
     func tableView(
@@ -52,7 +60,12 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
     ) -> UITableViewCell {
         let answer = answers[indexPath.row]
         if answer.isCorrect {
-            return CorrectAnswerCell()
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "CorrectAnswerCell",
+                for: indexPath
+            ) as! CorrectAnswerCell
+            cell.questionLabel.text = answer.question
+            return cell
         } else {
             return WrongAnswerCell()
         }

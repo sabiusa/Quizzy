@@ -25,13 +25,13 @@ class ResultsViewControllerTests: XCTestCase {
         sut1.loadViewIfNeeded()
         XCTAssertEqual(sut1.tableView.numberOfRows(inSection: 0), 0)
         
-        let sut2 = makeSUT(answers: [makeAnswer()])
+        let sut2 = makeSUT(answers: [makeAnswer(isCorrect: false)])
         sut2.loadViewIfNeeded()
         XCTAssertEqual(sut2.tableView.numberOfRows(inSection: 0), 1)
     }
     
     func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
-        let sut = makeSUT(answers: [PresentableAnswer(isCorrect: true)])
+        let sut = makeSUT(answers: [makeAnswer(isCorrect: true)])
         sut.loadViewIfNeeded()
         
         let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
@@ -39,8 +39,18 @@ class ResultsViewControllerTests: XCTestCase {
         XCTAssertNotNil(cell)
     }
     
+    func test_viewDidLoad_withCorrectAnswer_rendersQuestionText() {
+        let answer = makeAnswer(question: "Q1", isCorrect: true)
+        let sut = makeSUT(answers: [answer])
+        sut.loadViewIfNeeded()
+
+        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
+
+        XCTAssertEqual(cell.questionLabel.text, "Q1")
+    }
+    
     func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
-        let sut = makeSUT(answers: [PresentableAnswer(isCorrect: false)])
+        let sut = makeSUT(answers: [makeAnswer(isCorrect: false)])
         sut.loadViewIfNeeded()
         
         let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
@@ -61,8 +71,14 @@ class ResultsViewControllerTests: XCTestCase {
         return sut
     }
     
-    func makeAnswer() -> PresentableAnswer {
-        return PresentableAnswer(isCorrect: false)
+    func makeAnswer(
+        question: String = "",
+        isCorrect: Bool
+    ) -> PresentableAnswer {
+        return PresentableAnswer(
+            question: question,
+            isCorrect: isCorrect
+        )
     }
     
 }
