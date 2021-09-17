@@ -23,7 +23,7 @@ class NavigationControllerRouter: Router {
     
     func route(
         to question: Question<String>,
-        answerCallback: @escaping (String) -> Void
+        answerCallback: @escaping ([String]) -> Void
     ) {
         show(
             factory.questionViewController(
@@ -33,7 +33,7 @@ class NavigationControllerRouter: Router {
         )
     }
     
-    func route(to result: QuizResult<Question<String>, String>) {
+    func route(to result: QuizResult<Question<String>, [String]>) {
         show(factory.resultViewController(for: result))
     }
     

@@ -18,14 +18,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
     
     func questionViewController(
         for question: Question<String>,
-        answerCallback: @escaping (String) -> Void
+        answerCallback: @escaping ([String]) -> Void
     ) -> UIViewController {
         switch question {
         case .singleAnswer(let text):
             return QuestionViewController(
                 question: text,
                 options: options[question]!,
-                selection: { _ in }
+                selection: answerCallback
             )
         default:
             return UIViewController()
@@ -33,7 +33,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
     }
     
     func resultViewController(
-        for result: QuizResult<Question<String>, String>
+        for result: QuizResult<Question<String>, [String]>
     ) -> UIViewController {
         return UIViewController()
     }
