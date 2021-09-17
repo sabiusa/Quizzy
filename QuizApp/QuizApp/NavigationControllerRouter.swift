@@ -11,7 +11,7 @@ import QuizCore
 protocol ViewControllerFactory {
     
     func questionViewController(
-        for question: String,
+        for question: Question<String>,
         answerCallback: @escaping (String) -> Void
     ) -> UIViewController
     
@@ -31,7 +31,7 @@ class NavigationControllerRouter: Router {
     }
     
     func route(
-        to question: String,
+        to question: Question<String>,
         answerCallback: @escaping (String) -> Void
     ) {
         let viewController = factory.questionViewController(
@@ -44,7 +44,7 @@ class NavigationControllerRouter: Router {
         )
     }
     
-    func route(to result: QuizResult<String, String>) {
+    func route(to result: QuizResult<Question<String>, String>) {
         
     }
     
