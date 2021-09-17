@@ -10,11 +10,26 @@ import QuizCore
 
 class iOSViewControllerFactory: ViewControllerFactory {
     
+    private let options: [Question<String>: [String]]
+    
+    init(options: [Question<String>: [String]]) {
+        self.options = options
+    }
+    
     func questionViewController(
         for question: Question<String>,
         answerCallback: @escaping (String) -> Void
     ) -> UIViewController {
-        return QuestionViewController()
+        switch question {
+        case .singleAnswer(let text):
+            return QuestionViewController(
+                question: text,
+                options: options[question]!,
+                selection: { _ in }
+            )
+        default:
+            return UIViewController()
+        }
     }
     
     func resultViewController(

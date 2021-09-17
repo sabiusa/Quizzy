@@ -13,8 +13,8 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
-    private var question = ""
-    private var options = [String]()
+    private(set) var question = ""
+    private(set) var options = [String]()
     private var selection: (([String]) -> Void)? = nil
     private let cellIdentifier = "Cell"
     
