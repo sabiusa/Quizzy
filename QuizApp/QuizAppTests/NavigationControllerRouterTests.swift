@@ -49,11 +49,13 @@ class NavigationControllerRouterTests: XCTestCase {
     
     func test_routeToResult_showsResultController() {
         let viewController = UIViewController()
-        let result = QuizResult(
-            answers: [Question.singleAnswer("Q1"): "A1"],
-            score: 10
-        )
+        let result = QuizResult(answers: [Question.singleAnswer("Q1"): "A1"], score: 10)
+        
+        let secondViewController = UIViewController()
+        let secondResult = QuizResult(answers: [Question.singleAnswer("Q2"): "A2"], score: 20)
+        
         factory.stub(result: result, with: viewController)
+        factory.stub(result: secondResult, with: secondViewController)
         
         let sut = NavigationControllerRouter(
             navigationController,
@@ -61,9 +63,11 @@ class NavigationControllerRouterTests: XCTestCase {
         )
         
         sut.route(to: result)
+        sut.route(to: secondResult)
         
-        XCTAssertEqual(navigationController.viewControllers.count, 1)
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
         XCTAssertEqual(navigationController.viewControllers.first, viewController)
+        XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
     }
     
     // MARK:- Helpers
