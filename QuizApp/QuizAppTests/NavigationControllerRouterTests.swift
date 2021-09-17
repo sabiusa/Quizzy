@@ -12,7 +12,7 @@ import QuizCore
 
 class NavigationControllerRouterTests: XCTestCase {
     
-    let navigationController = UINavigationController()
+    let navigationController = NonAnimatedNavigationController()
     let factory = ViewControllerFactoryStub()
     
     func test_routeToQuestion_showsQuestionController() {
@@ -48,6 +48,17 @@ class NavigationControllerRouterTests: XCTestCase {
     }
     
     // MARK:- Helpers
+    
+    class NonAnimatedNavigationController: UINavigationController {
+        
+        override func pushViewController(
+            _ viewController: UIViewController,
+            animated: Bool
+        ) {
+            super.pushViewController(viewController, animated: false)
+        }
+        
+    }
     
     class ViewControllerFactoryStub: ViewControllerFactory {
         

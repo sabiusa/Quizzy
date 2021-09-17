@@ -40,7 +40,7 @@ class NavigationControllerRouter: Router {
         )
         navigationController.pushViewController(
             viewController,
-            animated: false
+            animated: true
         )
     }
     
