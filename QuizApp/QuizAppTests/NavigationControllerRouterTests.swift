@@ -6,8 +6,8 @@
 //
 
 import XCTest
-import QuizCore
 
+@testable import QuizCore
 @testable import QuizApp
 
 class NavigationControllerRouterTests: XCTestCase {
@@ -47,6 +47,25 @@ class NavigationControllerRouterTests: XCTestCase {
         XCTAssertTrue(callbackWasFired)
     }
     
+    func test_routeToResult_showsResultController() {
+        let viewController = UIViewController()
+        let result = QuizResult(
+            answers: [Question.singleAnswer("Q1"): "A1"],
+            score: 10
+        )
+        factory.stub(result: result, with: viewController)
+        
+        let sut = NavigationControllerRouter(
+            navigationController,
+            factory: factory
+        )
+        
+        sut.route(to: result)
+        
+        XCTAssertEqual(navigationController.viewControllers.count, 1)
+        XCTAssertEqual(navigationController.viewControllers.first, viewController)
+    }
+    
     // MARK:- Helpers
     
     class NonAnimatedNavigationController: UINavigationController {
@@ -63,6 +82,7 @@ class NavigationControllerRouterTests: XCTestCase {
     class ViewControllerFactoryStub: ViewControllerFactory {
         
         private var stubbedQuestions = [Question<String>: UIViewController]()
+        private var stubbedResults = [QuizResult<Question<String>, String>: UIViewController]()
         private var answerCallbacks = [Question<String>: (String) -> Void]()
         
         func questionViewController(
@@ -74,11 +94,24 @@ class NavigationControllerRouterTests: XCTestCase {
             return viewController
         }
         
+        func resultViewController(
+            for result: QuizResult<Question<String>, String>
+        ) -> UIViewController {
+            return stubbedResults[result] ?? UIViewController()
+        }
+        
         func stub(
             question: Question<String>,
             with viewController: UIViewController
         ) {
             stubbedQuestions[question] = viewController
+        }
+        
+        func stub(
+            result: QuizResult<Question<String>, String>,
+            with viewController: UIViewController
+        ) {
+            stubbedResults[result] = viewController
         }
         
         func fireCallback(
@@ -88,6 +121,38 @@ class NavigationControllerRouterTests: XCTestCase {
             answerCallbacks[question]?(answer)
         }
         
+    }
+    
+}
+
+extension QuizResult {
+    
+    static func make(
+        answers: [Question: Answer],
+        score: Int
+    ) -> QuizResult {
+        return QuizResult(answers: answers, score: score)
+    }
+    
+}
+ 
+extension QuizResult: Equatable where Answer: Equatable {
+    
+    public static func ==(
+        lhs: QuizResult<Question, Answer>,
+        rhs: QuizResult<Question, Answer>
+    ) -> Bool {
+        return
+            lhs.score == rhs.score &&
+            lhs.answers == rhs.answers
+    }
+    
+}
+
+extension QuizResult: Hashable where Answer: Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(answers.map(\.key))
     }
     
 }

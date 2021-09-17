@@ -15,6 +15,10 @@ protocol ViewControllerFactory {
         answerCallback: @escaping (String) -> Void
     ) -> UIViewController
     
+    func resultViewController(
+        for result: QuizResult<Question<String>, String>
+    ) -> UIViewController
+    
 }
 
 class NavigationControllerRouter: Router {
@@ -45,7 +49,11 @@ class NavigationControllerRouter: Router {
     }
     
     func route(to result: QuizResult<Question<String>, String>) {
-        
+        let viewController = factory.resultViewController(for: result)
+        navigationController.pushViewController(
+            viewController,
+            animated: true
+        )
     }
     
 }
