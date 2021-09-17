@@ -14,21 +14,40 @@ class NavigationControllerRouterTests: XCTestCase {
     
     func test_routeToQuestion_presentsQuestionController() {
         let navigationController = UINavigationController()
-        let sut = NavigationControllerRouter(navigationController)
+        let factory = ViewControllerFactoryStub()
+        let viewController = UIViewController()
+        factory.stub(question: "Q1", with: viewController)
+        
+        let sut = NavigationControllerRouter(
+            navigationController,
+            factory: factory
+        )
         
         sut.route(to: "Q1", answerCallback: { _ in })
         
-        XCTAssertEqual(navigationController.viewControllers.count, 1)
+        XCTAssertEqual(navigationController.viewControllers.first, viewController)
     }
     
-    func test_routeToQuestionTwice_presentsQuestionController() {
-        let navigationController = UINavigationController()
-        let sut = NavigationControllerRouter(navigationController)
+    // MARK:- Helpers
+    
+    class ViewControllerFactoryStub: ViewControllerFactory {
         
-        sut.route(to: "Q1", answerCallback: { _ in })
-        sut.route(to: "Q2", answerCallback: { _ in })
+        private var stubbedQuestions = [String: UIViewController]()
         
-        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        func stub(
+            question: String,
+            with viewController: UIViewController
+        ) {
+            stubbedQuestions[question] = viewController
+        }
+        
+        func questionViewController(
+            for question: String,
+            answerCallback: (String) -> Void
+        ) -> UIViewController {
+            return stubbedQuestions[question]!
+        }
+        
     }
     
 }
