@@ -29,6 +29,7 @@
 		779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */; };
 		779D29FD26F3ADB20077EF53 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */; };
 		779D2A0126F46AE10077EF53 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D2A0026F46AE10077EF53 /* Question.swift */; };
+		779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTests.swift; sourceTree = "<group>"; };
 		779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		779D2A0026F46AE10077EF53 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
 				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
 				779D2A0026F46AE10077EF53 /* Question.swift */,
+				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
@@ -280,6 +283,7 @@
 				779D29FD26F3ADB20077EF53 /* NavigationControllerRouter.swift in Sources */,
 				3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */,
 				3EA2DADC26F2162B008EB32F /* QuestionViewController.swift in Sources */,
+				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
