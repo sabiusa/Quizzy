@@ -12,7 +12,7 @@ protocol ViewControllerFactory {
     
     func questionViewController(
         for question: String,
-        answerCallback: (String) -> Void
+        answerCallback: @escaping (String) -> Void
     ) -> UIViewController
     
 }
