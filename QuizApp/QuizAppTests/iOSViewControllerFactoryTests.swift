@@ -33,9 +33,9 @@ class iOSViewControllerFactoryTests: XCTestCase {
         let controller = sut.questionViewController(
             for: Question.singleAnswer("Q1"),
             answerCallback: { _ in }
-        ) as? QuestionViewController
+        ) as! QuestionViewController
         
-        XCTAssertEqual(controller?.question, "Q1")
+        XCTAssertEqual(controller.question, "Q1")
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
@@ -46,9 +46,9 @@ class iOSViewControllerFactoryTests: XCTestCase {
         let controller = sut.questionViewController(
             for: question,
             answerCallback: { _ in }
-        ) as? QuestionViewController
+        ) as! QuestionViewController
         
-        XCTAssertEqual(controller?.options, options)
+        XCTAssertEqual(controller.options, options)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
@@ -59,10 +59,10 @@ class iOSViewControllerFactoryTests: XCTestCase {
         let controller = sut.questionViewController(
             for: question,
             answerCallback: { _ in }
-        ) as? QuestionViewController
-        controller?.loadViewIfNeeded()
+        ) as! QuestionViewController
+        controller.loadViewIfNeeded()
         
-        XCTAssertEqual(controller?.tableView.allowsMultipleSelection, false)
+        XCTAssertFalse(controller.tableView.allowsMultipleSelection)
     }
     
 }
