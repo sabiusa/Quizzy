@@ -11,38 +11,30 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
     
-    let question = Question.singleAnswer("Q1")
     let options = ["A1", "A2"]
     
     func test_questionViewController_isCreatedForSingleOption() {
-        let sut = makeSUT()
-        
-        let controller = makeRawQuestionController(from: sut)
+        let controller = makeRawQuestionController()
         let questionViewController = controller as? QuestionViewController
         
         XCTAssertNotNil(questionViewController)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
-        let sut = makeSUT()
+        let question = "Q1"
+        let controller = makeQuestionController(question: question)
         
-        let controller = makeQuestionController(from: sut)
-        
-        XCTAssertEqual(controller.question, "Q1")
+        XCTAssertEqual(controller.question, question)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
-        let sut = makeSUT()
-        
-        let controller = makeQuestionController(from: sut)
+        let controller = makeQuestionController()
         
         XCTAssertEqual(controller.options, options)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
-        let sut = makeSUT()
-        
-        let controller = makeQuestionController(from: sut)
+        let controller = makeQuestionController()
         controller.loadViewIfNeeded()
         
         XCTAssertFalse(controller.tableView.allowsMultipleSelection)
@@ -50,24 +42,24 @@ class iOSViewControllerFactoryTests: XCTestCase {
     
     // MARK:- Helpers
     
-    func makeSUT() -> iOSViewControllerFactory {
-        let sut = iOSViewControllerFactory(options: [question: options])
+    func makeSUT(
+        options: [Question<String>: [String]] = [:]
+    ) -> iOSViewControllerFactory {
+        let sut = iOSViewControllerFactory(options: options)
         return sut
     }
     
-    func makeRawQuestionController(
-        from sut: iOSViewControllerFactory
-    ) -> UIViewController {
+    func makeRawQuestionController(question: String = "") -> UIViewController {
+        let question = Question.singleAnswer(question)
+        let sut = makeSUT(options: [question: options])
         return sut.questionViewController(
             for: question,
             answerCallback: { _ in }
         )
     }
     
-    func makeQuestionController(
-        from sut: iOSViewControllerFactory
-    ) -> QuestionViewController {
-        let controller = makeRawQuestionController(from: sut)
+    func makeQuestionController(question: String = "") -> QuestionViewController {
+        let controller = makeRawQuestionController(question: question)
         return controller as! QuestionViewController
     }
     
