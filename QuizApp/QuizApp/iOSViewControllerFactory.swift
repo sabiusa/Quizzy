@@ -32,11 +32,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
                 selection: answerCallback
             )
         case .multipleAnswer(let text):
-            return QuestionViewController(
+            let controller = QuestionViewController(
                 question: text,
                 options: options,
                 selection: answerCallback
             )
+            controller.loadViewIfNeeded()
+            controller.tableView.allowsMultipleSelection = true
+            return controller
         }
     }
     

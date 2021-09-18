@@ -53,6 +53,13 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertEqual(controller.options, options)
     }
     
+    func test_questionViewController_multipleAnswer_createsControllerWithSingleSelection() {
+        let controller = makeQuestionController(question: .multipleAnswer("Q1"))
+        controller.loadViewIfNeeded()
+        
+        XCTAssertTrue(controller.tableView.allowsMultipleSelection)
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
