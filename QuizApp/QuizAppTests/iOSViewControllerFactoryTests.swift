@@ -11,10 +11,11 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
     
+    let question = Question.singleAnswer("Q1")
+    let options = ["A1", "A2"]
+    
     func test_questionViewController_isCreatedForSingleOption() {
-        let question = Question.singleAnswer("Q1")
-        let options = ["A1", "A2"]
-        let sut = iOSViewControllerFactory(options: [question: options])
+        let sut = makeSUT()
         
         let controller = sut.questionViewController(
             for: Question.singleAnswer("Q1"),
@@ -26,9 +27,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
-        let question = Question.singleAnswer("Q1")
-        let options = ["A1", "A2"]
-        let sut = iOSViewControllerFactory(options: [question: options])
+        let sut = makeSUT()
         
         let controller = sut.questionViewController(
             for: Question.singleAnswer("Q1"),
@@ -39,9 +38,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
-        let question = Question.singleAnswer("Q1")
-        let options = ["A1", "A2"]
-        let sut = iOSViewControllerFactory(options: [question: options])
+        let sut = makeSUT()
         
         let controller = sut.questionViewController(
             for: question,
@@ -52,9 +49,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
-        let question = Question.singleAnswer("Q1")
-        let options = ["A1", "A2"]
-        let sut = iOSViewControllerFactory(options: [question: options])
+        let sut = makeSUT()
         
         let controller = sut.questionViewController(
             for: question,
@@ -63,6 +58,13 @@ class iOSViewControllerFactoryTests: XCTestCase {
         controller.loadViewIfNeeded()
         
         XCTAssertFalse(controller.tableView.allowsMultipleSelection)
+    }
+    
+    // MARK:- Helpers
+    
+    func makeSUT() -> iOSViewControllerFactory {
+        let sut = iOSViewControllerFactory(options: [question: options])
+        return sut
     }
     
 }
