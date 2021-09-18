@@ -11,6 +11,20 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
     
+    func test_questionViewController_isCreatedForSingleOption() {
+        let question = Question.singleAnswer("Q1")
+        let options = ["A1", "A2"]
+        let sut = iOSViewControllerFactory(options: [question: options])
+        
+        let controller = sut.questionViewController(
+            for: Question.singleAnswer("Q1"),
+            answerCallback: { _ in }
+        )
+        let questionViewController = controller as? QuestionViewController
+        
+        XCTAssertNotNil(questionViewController)
+    }
+    
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let question = Question.singleAnswer("Q1")
         let options = ["A1", "A2"]
