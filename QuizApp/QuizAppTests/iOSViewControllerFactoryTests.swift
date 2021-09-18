@@ -17,10 +17,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     func test_questionViewController_isCreatedForSingleOption() {
         let sut = makeSUT()
         
-        let controller = sut.questionViewController(
-            for: Question.singleAnswer("Q1"),
-            answerCallback: { _ in }
-        )
+        let controller = makeRawQuestionController(from: sut)
         let questionViewController = controller as? QuestionViewController
         
         XCTAssertNotNil(questionViewController)
@@ -29,10 +26,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let sut = makeSUT()
         
-        let controller = sut.questionViewController(
-            for: Question.singleAnswer("Q1"),
-            answerCallback: { _ in }
-        ) as! QuestionViewController
+        let controller = makeQuestionController(from: sut)
         
         XCTAssertEqual(controller.question, "Q1")
     }
@@ -40,10 +34,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
         let sut = makeSUT()
         
-        let controller = sut.questionViewController(
-            for: question,
-            answerCallback: { _ in }
-        ) as! QuestionViewController
+        let controller = makeQuestionController(from: sut)
         
         XCTAssertEqual(controller.options, options)
     }
@@ -51,10 +42,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
         let sut = makeSUT()
         
-        let controller = sut.questionViewController(
-            for: question,
-            answerCallback: { _ in }
-        ) as! QuestionViewController
+        let controller = makeQuestionController(from: sut)
         controller.loadViewIfNeeded()
         
         XCTAssertFalse(controller.tableView.allowsMultipleSelection)
@@ -65,6 +53,22 @@ class iOSViewControllerFactoryTests: XCTestCase {
     func makeSUT() -> iOSViewControllerFactory {
         let sut = iOSViewControllerFactory(options: [question: options])
         return sut
+    }
+    
+    func makeRawQuestionController(
+        from sut: iOSViewControllerFactory
+    ) -> UIViewController {
+        return sut.questionViewController(
+            for: question,
+            answerCallback: { _ in }
+        )
+    }
+    
+    func makeQuestionController(
+        from sut: iOSViewControllerFactory
+    ) -> QuestionViewController {
+        let controller = makeRawQuestionController(from: sut)
+        return controller as! QuestionViewController
     }
     
 }
