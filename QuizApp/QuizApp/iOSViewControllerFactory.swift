@@ -31,8 +31,12 @@ class iOSViewControllerFactory: ViewControllerFactory {
                 options: options,
                 selection: answerCallback
             )
-        default:
-            return UIViewController()
+        case .multipleAnswer(let text):
+            return QuestionViewController(
+                question: text,
+                options: options,
+                selection: answerCallback
+            )
         }
     }
     

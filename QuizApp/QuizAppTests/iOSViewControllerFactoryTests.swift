@@ -14,7 +14,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
     let options = ["A1", "A2"]
     
     func test_questionViewController_isCreatedForSingleOption() {
-        let controller = makeRawQuestionController()
+        let controller = makeRawQuestionController(question: .singleAnswer("Q1"))
         let questionViewController = controller as? QuestionViewController
         
         XCTAssertNotNil(questionViewController)
@@ -22,22 +22,35 @@ class iOSViewControllerFactoryTests: XCTestCase {
     
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let question = "Q1"
-        let controller = makeQuestionController(question: question)
+        let controller = makeQuestionController(question: .singleAnswer(question))
         
         XCTAssertEqual(controller.question, question)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
-        let controller = makeQuestionController()
+        let controller = makeQuestionController(question: .singleAnswer("Q1"))
         
         XCTAssertEqual(controller.options, options)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
-        let controller = makeQuestionController()
+        let controller = makeQuestionController(question: .singleAnswer("Q1"))
         controller.loadViewIfNeeded()
         
         XCTAssertFalse(controller.tableView.allowsMultipleSelection)
+    }
+    
+    func test_questionViewController_multipleAnswer_createsControllerWithQuestion() {
+        let question = "Q1"
+        let controller = makeQuestionController(question: .multipleAnswer(question))
+        
+        XCTAssertEqual(controller.question, question)
+    }
+    
+    func test_questionViewController_multipleAnswer_createsControllerWithOptions() {
+        let controller = makeQuestionController(question: .multipleAnswer("Q1"))
+        
+        XCTAssertEqual(controller.options, options)
     }
     
     // MARK:- Helpers
@@ -49,8 +62,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
         return sut
     }
     
-    func makeRawQuestionController(question: String = "") -> UIViewController {
-        let question = Question.singleAnswer(question)
+    func makeRawQuestionController(question: Question<String>) -> UIViewController {
         let sut = makeSUT(options: [question: options])
         return sut.questionViewController(
             for: question,
@@ -58,7 +70,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
         )
     }
     
-    func makeQuestionController(question: String = "") -> QuestionViewController {
+    func makeQuestionController(question: Question<String>) -> QuestionViewController {
         let controller = makeRawQuestionController(question: question)
         return controller as! QuestionViewController
     }
