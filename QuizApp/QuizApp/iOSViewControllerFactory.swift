@@ -10,9 +10,14 @@ import QuizCore
 
 class iOSViewControllerFactory: ViewControllerFactory {
     
+    private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
     
-    init(options: [Question<String>: [String]]) {
+    init(
+        questions: [Question<String>],
+        options: [Question<String>: [String]]
+    ) {
+        self.questions = questions
         self.options = options
     }
     
