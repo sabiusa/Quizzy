@@ -11,11 +11,12 @@ import XCTest
 
 class QuestionPresenterTests: XCTestCase {
     
+    let question1 = Question.singleAnswer("Q1")
+    let question2 = Question.multipleAnswer("Q2")
+    
     func test_title_forFirstQuestion() {
-        let question1 = Question.singleAnswer("Q1")
-        
         let sut = QuestionPresenter(
-            allQuestions: [question1],
+            allQuestions: [question1, question2],
             currentQuestion: question1
         )
         
@@ -23,9 +24,6 @@ class QuestionPresenterTests: XCTestCase {
     }
     
     func test_title_formatsTitleForIndex() {
-        let question1 = Question.singleAnswer("Q1")
-        let question2 = Question.singleAnswer("Q2")
-        
         let sut = QuestionPresenter(
             allQuestions: [question1, question2],
             currentQuestion: question2
@@ -35,8 +33,6 @@ class QuestionPresenterTests: XCTestCase {
     }
     
     func test_title_forNonexistantQuestion_isEmpty() {
-        let question1 = Question.singleAnswer("Q1")
-        
         let sut = QuestionPresenter(
             allQuestions: [],
             currentQuestion: question1
