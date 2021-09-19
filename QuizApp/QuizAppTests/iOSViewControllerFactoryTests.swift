@@ -51,6 +51,16 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertFalse(controller.tableView.allowsMultipleSelection)
     }
     
+    func test_questionViewController_multipleAnswer_createsControllerWithTitle() {
+        let presenter = QuestionPresenter(
+            allQuestions: [singleAnswerQuestion, multipleAnswerQuestion],
+            currentQuestion: multipleAnswerQuestion
+        )
+        let controller = makeQuestionController(question: multipleAnswerQuestion)
+        
+        XCTAssertEqual(controller.title, presenter.title)
+    }
+    
     func test_questionViewController_multipleAnswer_createsControllerWithQuestion() {
         let controller = makeQuestionController(question: multipleAnswerQuestion)
         
