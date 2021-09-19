@@ -21,10 +21,14 @@ class iOSViewControllerFactoryTests: XCTestCase {
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
-        let question = "Q1"
-        let controller = makeQuestionController(question: .singleAnswer(question))
+        let question = Question.singleAnswer("Q1")
+        let presenter = QuestionPresenter(
+            allQuestions: [question],
+            currentQuestion: question
+        )
+        let controller = makeQuestionController(question: question)
         
-        XCTAssertEqual(controller.title, "Question #1")
+        XCTAssertEqual(controller.title, presenter.title)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
