@@ -12,8 +12,11 @@ struct QuestionPresenter {
     let allQuestions: [Question<String>]
     let currentQuestion: Question<String>
     
-    var title: String {
-        return "Question #1"
+    var title: String? {
+        guard let index = allQuestions.firstIndex(of: currentQuestion)
+        else { return nil }
+        
+        return "Question #\(index + 1)"
     }
     
 }
