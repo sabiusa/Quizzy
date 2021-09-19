@@ -6,8 +6,8 @@
 //
 
 import XCTest
+import QuizCore
 
-@testable import QuizCore
 @testable import QuizApp
 
 class NavigationControllerRouterTests: XCTestCase {
@@ -49,10 +49,16 @@ class NavigationControllerRouterTests: XCTestCase {
     
     func test_routeToResult_showsResultController() {
         let viewController = UIViewController()
-        let result = QuizResult(answers: [Question.singleAnswer("Q1"): ["A1"]], score: 10)
+        let result = QuizResult.make(
+            answers: [Question.singleAnswer("Q1"): ["A1"]],
+            score: 10
+        )
         
         let secondViewController = UIViewController()
-        let secondResult = QuizResult(answers: [Question.singleAnswer("Q2"): ["A2"]], score: 20)
+        let secondResult = QuizResult.make(
+            answers: [Question.singleAnswer("Q2"): ["A2"]],
+            score: 20
+        )
         
         factory.stub(result: result, with: viewController)
         factory.stub(result: secondResult, with: secondViewController)
@@ -125,38 +131,6 @@ class NavigationControllerRouterTests: XCTestCase {
             answerCallbacks[question]?(answers)
         }
         
-    }
-    
-}
-
-extension QuizResult {
-    
-    static func make(
-        answers: [Question: Answer],
-        score: Int
-    ) -> QuizResult {
-        return QuizResult(answers: answers, score: score)
-    }
-    
-}
- 
-extension QuizResult: Equatable where Answer: Equatable {
-    
-    public static func ==(
-        lhs: QuizResult<Question, Answer>,
-        rhs: QuizResult<Question, Answer>
-    ) -> Bool {
-        return
-            lhs.score == rhs.score &&
-            lhs.answers == rhs.answers
-    }
-    
-}
-
-extension QuizResult: Hashable where Answer: Equatable {
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(answers.map(\.key))
     }
     
 }
