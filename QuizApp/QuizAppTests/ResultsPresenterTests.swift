@@ -19,7 +19,7 @@ class ResultsPresenterTests: XCTestCase {
         ]
         let result = QuizResult.make(answers: answers, score: 1)
         
-        let sut = ResultsPresenter(result: result)
+        let sut = ResultsPresenter(result: result, correctAnswers: [:])
         
         XCTAssertEqual(sut.summary, "You go 1/2 correct")
     }
@@ -28,9 +28,22 @@ class ResultsPresenterTests: XCTestCase {
         let answers = [Question<String>: [String]]()
         let result = QuizResult.make(answers: answers, score: 0)
         
-        let sut = ResultsPresenter(result: result)
+        let sut = ResultsPresenter(result: result, correctAnswers: [:])
         
         XCTAssertTrue(sut.presentableAnswers.isEmpty)
+    }
+    
+    func test_presentableAnswers_withOneSingleAnswer_mapsAnswer() {
+        let userAnswers = [Question.singleAnswer("Q1"): ["A1"]]
+        let correctAnswers = [Question.singleAnswer("Q1"): ["A2"]]
+        let result = QuizResult.make(answers: userAnswers, score: 0)
+        
+        let sut = ResultsPresenter(result: result, correctAnswers: correctAnswers)
+        
+        XCTAssertEqual(sut.presentableAnswers.count, 1)
+        XCTAssertEqual(sut.presentableAnswers.first!.question, "Q1")
+        XCTAssertEqual(sut.presentableAnswers.first!.correctAnswer, "A2")
+        XCTAssertEqual(sut.presentableAnswers.first!.wrongAnswer, "A1")
     }
     
 }
