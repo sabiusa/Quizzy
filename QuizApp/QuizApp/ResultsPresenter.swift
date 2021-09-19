@@ -12,7 +12,7 @@ struct ResultsPresenter {
     let result: QuizResult<Question<String>, [String]>
     
     var summary: String {
-        return "You go 1/2 correct"
+        return "You go \(result.score)/\(result.answers.count) correct"
     }
     
 }
