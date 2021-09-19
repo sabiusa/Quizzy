@@ -43,7 +43,7 @@ class QuestionViewControllerTests: XCTestCase {
         let sut = makeSUT(
             question: "Q1",
             options: ["A1", "A2"],
-            isMultipleSelection: false
+            allowsMultipleSelection: false
         )
         
         sut.loadViewIfNeeded()
@@ -55,7 +55,7 @@ class QuestionViewControllerTests: XCTestCase {
         let sut = makeSUT(
             question: "Q1",
             options: ["A1", "A2"],
-            isMultipleSelection: true
+            allowsMultipleSelection: true
         )
         
         sut.loadViewIfNeeded()
@@ -65,7 +65,7 @@ class QuestionViewControllerTests: XCTestCase {
     
     func test_optionSelected_withSingleSelection_notifiesDelegateWithLastSelection() {
         var receivedAnswer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"], isMultipleSelection: false) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false) {
             receivedAnswer = $0
         }
         sut.loadViewIfNeeded()
@@ -79,7 +79,7 @@ class QuestionViewControllerTests: XCTestCase {
     
     func test_optionDeselected_withSingleSelection_doesNotNotifyDelegateWithEmptySelection() {
         var callbackCount = 0
-        let sut = makeSUT(options: ["A1", "A2"], isMultipleSelection: false) { _ in
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false) { _ in
             callbackCount += 1
         }
         sut.loadViewIfNeeded()
@@ -93,7 +93,7 @@ class QuestionViewControllerTests: XCTestCase {
     
     func test_optionSelected_withMultipleSelectionEnabled_notifiesDelegateWithSelections() {
         var receivedAnswer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"], isMultipleSelection: true) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true) {
             receivedAnswer = $0
         }
         sut.loadViewIfNeeded()
@@ -107,7 +107,7 @@ class QuestionViewControllerTests: XCTestCase {
     
     func test_optionDeselected_withMultipleSelectionEnabled_notifiesDelegate() {
         var receivedAnswer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"], isMultipleSelection: true) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true) {
             receivedAnswer = $0
         }
         sut.loadViewIfNeeded()
@@ -124,16 +124,15 @@ class QuestionViewControllerTests: XCTestCase {
     func makeSUT(
         question: String = "",
         options: [String] = [],
-        isMultipleSelection: Bool = false,
+        allowsMultipleSelection: Bool = false,
         selection: @escaping (([String]) -> Void) = { _ in }
     ) -> QuestionViewController {
         let sut = QuestionViewController(
             question: question,
             options: options,
+            allowsMultipleSelection: allowsMultipleSelection,
             selection: selection
         )
-        sut.loadViewIfNeeded()
-        sut.tableView.allowsMultipleSelection = isMultipleSelection
         return sut
     }
     

@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return QuestionViewController(
             question: "A question?",
             options: ["Option 1", "Option 2", "Option 3"],
+            allowsMultipleSelection: false,
             selection: { print($0) }
         )
     }

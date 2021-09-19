@@ -15,17 +15,20 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private(set) var question = ""
     private(set) var options = [String]()
+    private(set) var allowsMultipleSelection = false
     private var selection: (([String]) -> Void)? = nil
     private let cellIdentifier = "Cell"
     
     convenience init(
         question: String,
         options: [String],
+        allowsMultipleSelection: Bool,
         selection: @escaping ([String]) -> Void
     ) {
         self.init()
         self.question = question
         self.options = options
+        self.allowsMultipleSelection = allowsMultipleSelection
         self.selection = selection
     }
     
@@ -33,6 +36,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         
         headerLabel.text = question
+        tableView.allowsMultipleSelection = allowsMultipleSelection
     }
     
     func tableView(

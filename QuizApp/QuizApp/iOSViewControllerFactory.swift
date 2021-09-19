@@ -54,6 +54,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
             let controller = QuestionViewController(
                 question: text,
                 options: options,
+                allowsMultipleSelection: true,
                 selection: answerCallback
             )
             controller.title = "Question #2"
@@ -76,6 +77,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         let controller = QuestionViewController(
             question: questionText,
             options: options,
+            allowsMultipleSelection: false,
             selection: answerCallback
         )
         controller.title = presenter.title
