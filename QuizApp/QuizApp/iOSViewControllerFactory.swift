@@ -38,11 +38,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
     ) -> UIViewController {
         switch question {
         case .singleAnswer(let text):
-            return QuestionViewController(
+            let controller = QuestionViewController(
                 question: text,
                 options: options,
                 selection: answerCallback
             )
+            controller.title = "Question #1"
+            return controller
+            
         case .multipleAnswer(let text):
             let controller = QuestionViewController(
                 question: text,

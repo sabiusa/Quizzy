@@ -20,6 +20,13 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertNotNil(questionViewController)
     }
     
+    func test_questionViewController_singleAnswer_createsControllerWithTitle() {
+        let question = "Q1"
+        let controller = makeQuestionController(question: .singleAnswer(question))
+        
+        XCTAssertEqual(controller.title, "Question #1")
+    }
+    
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let question = "Q1"
         let controller = makeQuestionController(question: .singleAnswer(question))
