@@ -73,8 +73,8 @@ class ResultsPresenterTests: XCTestCase {
     }
     
     func test_presentableAnswers_withRightMultipleAnswer_mapsAnswer() {
-        let userAnswers = [Question.singleAnswer("Q1"): ["A1", "A4"]]
-        let correctAnswers = [Question.singleAnswer("Q1"): ["A1", "A4"]]
+        let userAnswers = [Question.multipleAnswer("Q1"): ["A1", "A4"]]
+        let correctAnswers = [Question.multipleAnswer("Q1"): ["A1", "A4"]]
         let result = QuizResult.make(answers: userAnswers, score: 0)
         
         let sut = ResultsPresenter(result: result, correctAnswers: correctAnswers)
