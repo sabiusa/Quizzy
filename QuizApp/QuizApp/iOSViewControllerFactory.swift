@@ -47,20 +47,18 @@ class iOSViewControllerFactory: ViewControllerFactory {
                 question: question,
                 questionText: text,
                 options: options,
+                allowsMultipleSelection: false,
                 answerCallback: answerCallback
             )
             
         case .multipleAnswer(let text):
-            let controller = QuestionViewController(
-                question: text,
+            return questionViewController(
+                question: question,
+                questionText: text,
                 options: options,
                 allowsMultipleSelection: true,
-                selection: answerCallback
+                answerCallback: answerCallback
             )
-            controller.title = "Question #2"
-            controller.loadViewIfNeeded()
-            controller.tableView.allowsMultipleSelection = true
-            return controller
         }
     }
     
@@ -68,6 +66,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         question: Question<String>,
         questionText: String,
         options: [String],
+        allowsMultipleSelection: Bool,
         answerCallback: @escaping ([String]) -> Void
     ) -> UIViewController {
         let presenter = QuestionPresenter(
@@ -77,7 +76,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         let controller = QuestionViewController(
             question: questionText,
             options: options,
-            allowsMultipleSelection: false,
+            allowsMultipleSelection: allowsMultipleSelection,
             selection: answerCallback
         )
         controller.title = presenter.title

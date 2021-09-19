@@ -46,9 +46,8 @@ class iOSViewControllerFactoryTests: XCTestCase {
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
         let controller = makeQuestionController(question: singleAnswerQuestion)
-        controller.loadViewIfNeeded()
         
-        XCTAssertFalse(controller.tableView.allowsMultipleSelection)
+        XCTAssertFalse(controller.allowsMultipleSelection)
     }
     
     func test_questionViewController_multipleAnswer_createsControllerWithTitle() {
@@ -75,9 +74,8 @@ class iOSViewControllerFactoryTests: XCTestCase {
     
     func test_questionViewController_multipleAnswer_createsControllerWithSingleSelection() {
         let controller = makeQuestionController(question: multipleAnswerQuestion)
-        controller.loadViewIfNeeded()
         
-        XCTAssertTrue(controller.tableView.allowsMultipleSelection)
+        XCTAssertTrue(controller.allowsMultipleSelection)
     }
     
     // MARK:- Helpers
