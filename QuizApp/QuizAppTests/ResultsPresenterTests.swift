@@ -24,7 +24,7 @@ class ResultsPresenterTests: XCTestCase {
         XCTAssertEqual(sut.summary, "You go 1/2 correct")
     }
     
-    func test_presentableAnswers_empty_shouldBeEmpty() {
+    func test_presentableAnswers_withoutQuestions_isEmpty() {
         let answers = [Question<String>: [String]]()
         let result = QuizResult.make(answers: answers, score: 0)
         
