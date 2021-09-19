@@ -35,18 +35,26 @@ struct ResultsPresenter {
         userAnswer: [String],
         correctAnswer: [String]
     ) -> PresentableAnswer {
-        let wrongAnswer = correctAnswer == userAnswer
-            ? nil
-            : userAnswer.joined(separator: ", ")
-        
         switch question {
         case .singleAnswer(let text), .multipleAnswer(let text):
             return PresentableAnswer(
                 question: text,
-                correctAnswer: correctAnswer.joined(separator: ", "),
-                wrongAnswer: wrongAnswer
+                correctAnswer: formattedAnswer(correctAnswer),
+                wrongAnswer: formattedWrongAnswer(userAnswer, correctAnswer)
             )
         }
+    }
+    
+    
+    private func formattedAnswer(_ answer: [String]) -> String {
+        return answer.joined(separator: ", ")
+    }
+    
+    private func formattedWrongAnswer(
+        _ userAnswer: [String],
+        _ correctAnswer: [String]
+    ) -> String? {
+        return correctAnswer == userAnswer ? nil : formattedAnswer(userAnswer)
     }
     
 }
