@@ -9,6 +9,7 @@ import QuizCore
 
 struct ResultsPresenter {
     
+    let questions: [Question<String>]
     let result: QuizResult<Question<String>, [String]>
     let correctAnswers: [Question<String>: [String]]
     
@@ -17,8 +18,11 @@ struct ResultsPresenter {
     }
     
     var presentableAnswers: [PresentableAnswer] {
-        return result.answers.map { question, userAnswer in
-            guard let correctAnswer = correctAnswers[question] else {
+        return questions.map { question in
+            guard
+                let userAnswer = result.answers[question],
+                let correctAnswer = correctAnswers[question]
+            else {
                 fatalError("Couldn't find correct answer for question \(question)")
             }
             
