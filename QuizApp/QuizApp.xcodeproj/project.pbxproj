@@ -128,6 +128,63 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		3E89AD8B26F88E38008C7D3E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3E89AD8F26F88EC3008C7D3E /* Helpers */,
+				3E89AD9026F88ED7008C7D3E /* Launch */,
+				3E89AD8C26F88E75008C7D3E /* Question */,
+				3E89AD8D26F88E82008C7D3E /* Result */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3E89AD8C26F88E75008C7D3E /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3EA2DADB26F2162B008EB32F /* QuestionViewController.swift */,
+				3EA2DADD26F219A3008EB32F /* QuestionViewController.xib */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3E89AD8D26F88E82008C7D3E /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				3E89AD8E26F88EAE008C7D3E /* Cells */,
+				779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */,
+				779D29EF26F2F8070077EF53 /* ResultsViewController.xib */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		3E89AD8E26F88EAE008C7D3E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */,
+				3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */,
+				3E8445AA26F367F0008EE770 /* WrongAnswerCell.swift */,
+				3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3E89AD8F26F88EC3008C7D3E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3E89AD9026F88ED7008C7D3E /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		3EA2DA9D26F21169008EB32F = {
 			isa = PBXGroup;
 			children = (
@@ -151,21 +208,12 @@
 			isa = PBXGroup;
 			children = (
 				3E89AD8A26F88DA2008C7D3E /* Main */,
-				3EA2DADB26F2162B008EB32F /* QuestionViewController.swift */,
-				3EA2DADD26F219A3008EB32F /* QuestionViewController.xib */,
+				3E89AD8B26F88E38008C7D3E /* UI */,
 				3E8445A626F367BD008EE770 /* PresentableAnswer.swift */,
-				779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */,
-				779D29EF26F2F8070077EF53 /* ResultsViewController.xib */,
-				3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */,
-				3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */,
-				3E8445AA26F367F0008EE770 /* WrongAnswerCell.swift */,
-				3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */,
-				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
 				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
 				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
 				77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */,
 				77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */,
-				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
