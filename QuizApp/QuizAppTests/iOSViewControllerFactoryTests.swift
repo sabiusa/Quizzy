@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import QuizCore
 
 @testable import QuizApp
 
@@ -78,14 +79,40 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertTrue(controller.allowsMultipleSelection)
     }
     
+    func test_resultsViewController_createsControllerWithSummary() {
+        let questions = [singleAnswerQuestion, multipleAnswerQuestion]
+        let correctAnswers = [
+            singleAnswerQuestion: ["A1"],
+            multipleAnswerQuestion: ["A2", "A3"]
+        ]
+        let userAnswers = correctAnswers
+        let result = QuizResult.make(
+            answers: userAnswers,
+            score: 2
+        )
+        let sut = makeSUT(correctAnswers: correctAnswers)
+        let presenter = ResultsPresenter(
+            questions: questions,
+            result: result,
+            correctAnswers: correctAnswers
+        )
+        
+        let controller = sut.resultViewController(for: result)
+        let resultController = controller as! ResultsViewController
+        
+        XCTAssertEqual(resultController.summary, presenter.summary)
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
-        options: [Question<String>: [String]] = [:]
+        options: [Question<String>: [String]] = [:],
+        correctAnswers: [Question<String>: [String]] = [:]
     ) -> iOSViewControllerFactory {
         let sut = iOSViewControllerFactory(
             questions: [singleAnswerQuestion, multipleAnswerQuestion],
-            options: options
+            options: options,
+            correctAnswers: correctAnswers
         )
         return sut
     }
