@@ -134,7 +134,7 @@
 				3E89AD8F26F88EC3008C7D3E /* Helpers */,
 				3E89AD9026F88ED7008C7D3E /* Launch */,
 				3E89AD8C26F88E75008C7D3E /* Question */,
-				3E89AD8D26F88E82008C7D3E /* Result */,
+				3E89AD8D26F88E82008C7D3E /* Results */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -148,14 +148,14 @@
 			path = Question;
 			sourceTree = "<group>";
 		};
-		3E89AD8D26F88E82008C7D3E /* Result */ = {
+		3E89AD8D26F88E82008C7D3E /* Results */ = {
 			isa = PBXGroup;
 			children = (
 				3E89AD8E26F88EAE008C7D3E /* Cells */,
 				779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */,
 				779D29EF26F2F8070077EF53 /* ResultsViewController.xib */,
 			);
-			path = Result;
+			path = Results;
 			sourceTree = "<group>";
 		};
 		3E89AD8E26F88EAE008C7D3E /* Cells */ = {
@@ -185,6 +185,32 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		3E89AD9126F88EFC008C7D3E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3E89AD9226F88F1E008C7D3E /* Question */,
+				3E89AD9326F88F31008C7D3E /* Results */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3E89AD9226F88F1E008C7D3E /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3E89AD9326F88F31008C7D3E /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */,
+				3E8445A626F367BD008EE770 /* PresentableAnswer.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		3EA2DA9D26F21169008EB32F = {
 			isa = PBXGroup;
 			children = (
@@ -209,11 +235,9 @@
 			children = (
 				3E89AD8A26F88DA2008C7D3E /* Main */,
 				3E89AD8B26F88E38008C7D3E /* UI */,
-				3E8445A626F367BD008EE770 /* PresentableAnswer.swift */,
+				3E89AD9126F88EFC008C7D3E /* Presentation */,
 				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
 				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
-				77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */,
-				77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
