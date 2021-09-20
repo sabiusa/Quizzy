@@ -81,7 +81,7 @@ private class QuizDelegateToRouterAdapter<R: Router>: QuizDelegate {
     
 }
 
-private func scoring<Question, Answer: Equatable>(
+func scoring<Question, Answer: Equatable>(
     answers: [Question: Answer],
     correctAnswers: [Question: Answer]
 ) -> Int {

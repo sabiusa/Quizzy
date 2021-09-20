@@ -6,19 +6,52 @@
 //
 
 import XCTest
-import QuizCore
+
+@testable import QuizCore
+
+final class Quiz {
+    
+    let flow: Any
+    
+    init(flow: Any) {
+        self.flow = flow
+    }
+    
+    static func start<Question, Answer: Equatable, Delegate: QuizDelegate>(
+        questions: [Question],
+        delegate: Delegate,
+        correctAnswers: [Question: Answer]
+    ) -> Quiz
+    where Delegate.Question == Question,
+          Delegate.Answer == Answer
+    {
+        let flow = Flow(
+            questions: questions,
+            delegate: delegate,
+            scoring: { answers in
+                scoring(
+                    answers: answers,
+                    correctAnswers: correctAnswers
+                )
+            }
+        )
+        flow.start()
+        return Quiz(flow: flow)
+    }
+    
+}
 
 class QuizTests: XCTestCase {
     
     private let delegate = DelegateSpy()
-    private var quiz: Game<String, String, DelegateSpy>!
+    private var quiz: Quiz!
     
     override func setUp() {
         super.setUp()
         
-        quiz = startGame(
+        quiz = Quiz.start(
             questions: ["Q1", "Q2"],
-            router: delegate,
+            delegate: delegate,
             correctAnswers: ["Q1": "A1", "Q2": "A2"]
         )
     }
@@ -49,21 +82,29 @@ class QuizTests: XCTestCase {
     
     // MARK:- Helpers
     
-    private class DelegateSpy: Router {
+    private class DelegateSpy: Router, QuizDelegate {
         
         var handledResult: QuizResult<String, String>? = nil
         
         var answerCallback: ((String) -> Void) = { _ in }
         
+        func handle(question: String, answerCallback: @escaping (String) -> Void) {
+            self.answerCallback = answerCallback
+        }
+        
         func route(
             to question: String,
             answerCallback: @escaping (String) -> Void
         ) {
-            self.answerCallback = answerCallback
+            handle(question: question, answerCallback: answerCallback)
+        }
+        
+        func handle(result: QuizResult<String, String>) {
+            handledResult = result
         }
         
         func route(to result: QuizResult<String, String>) {
-            handledResult = result
+            handle(result: result)
         }
         
     }
