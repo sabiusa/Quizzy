@@ -1,5 +1,5 @@
 //
-//  GameTests.swift
+//  DeprecatedGameTests.swift
 //  QuizCoreTests
 //
 //  Created by Saba Khutsishvili on 16.09.21.
@@ -8,7 +8,8 @@
 import XCTest
 import QuizCore
 
-class GameTests: XCTestCase {
+@available(*, deprecated)
+class DeprecatedGameTests: XCTestCase {
     
     let router = RouterSpy()
     var game: Game<String, String, RouterSpy>!
