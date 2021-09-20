@@ -133,6 +133,14 @@ class FlowTests: XCTestCase {
     
     // MARK:- Helpers
     
+    private weak var weakSUT: Flow<RouterSpy>?
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        XCTAssertNil(weakSUT, "Expected weakSUT to be deallocated, possible memory leak")
+    }
+    
     private func makeSUT(
         questions: [String],
         scoring: @escaping ([String: String]) -> Int = { _ in 0 }
@@ -142,6 +150,7 @@ class FlowTests: XCTestCase {
             router: router,
             scoring: scoring
         )
+        weakSUT = sut
         return sut;
     }
     
