@@ -7,44 +7,44 @@
 
 import Foundation
 
-class Flow<R: QuizDelegate> {
+class Flow<Delegate: QuizDelegate> {
     
-    typealias Question = R.Question
-    typealias Answer = R.Answer
+    typealias Question = Delegate.Question
+    typealias Answer = Delegate.Answer
     
-    private let router: R
+    private let delegate: Delegate
     private let questions: [Question]
     private var answers = [Question: Answer]()
     private let scoring: ([Question: Answer]) -> Int
     
     init(
         questions: [Question],
-        router: R,
+        router: Delegate,
         scoring: @escaping ([Question: Answer]) -> Int
     ) {
         self.questions = questions
-        self.router = router
+        self.delegate = router
         self.scoring = scoring
     }
     
     func start() {
-        routeToQuestion(at: questions.startIndex)
+        delegateQuestionHandling(at: questions.startIndex)
     }
     
-    func routeToQuestion(at index: Int) {
+    func delegateQuestionHandling(at index: Int) {
         if index < questions.endIndex {
             let question = questions[index]
-            router.handle(
+            delegate.handle(
                 question: question,
                 answerCallback: callback(for: question, at: index)
             )
         } else {
-            router.handle(result: result())
+            delegate.handle(result: result())
         }
     }
     
-    private func routeToQuestion(after index: Int) {
-        routeToQuestion(at: questions.index(after: index))
+    private func delegateQuestionHandling(after index: Int) {
+        delegateQuestionHandling(at: questions.index(after: index))
     }
     
     private func callback(
@@ -53,7 +53,7 @@ class Flow<R: QuizDelegate> {
     ) -> ((Answer) -> Void) {
         return { [weak self] answer in
             self?.answers[question] = answer
-            self?.routeToQuestion(after: index)
+            self?.delegateQuestionHandling(after: index)
         }
     }
     
