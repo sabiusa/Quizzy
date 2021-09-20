@@ -11,8 +11,8 @@ import QuizCore
 @available(*, deprecated)
 class DeprecatedGameTests: XCTestCase {
     
-    let router = RouterSpy()
-    var game: Game<String, String, RouterSpy>!
+    private let router = RouterSpy()
+    private var game: Game<String, String, RouterSpy>!
     
     override func setUp() {
         super.setUp()
@@ -46,6 +46,27 @@ class DeprecatedGameTests: XCTestCase {
         router.answerCallback("A2")
         
         XCTAssertEqual(router.routedResult!.score, 2)
+    }
+    
+    // MARK:- Helpers
+    
+    private class RouterSpy: Router {
+        
+        var routedResult: QuizResult<String, String>? = nil
+        
+        var answerCallback: ((String) -> Void) = { _ in }
+        
+        func route(
+            to question: String,
+            answerCallback: @escaping (String) -> Void
+        ) {
+            self.answerCallback = answerCallback
+        }
+        
+        func route(to result: QuizResult<String, String>) {
+            routedResult = result
+        }
+        
     }
     
 }
