@@ -116,6 +116,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E89AD8A26F88DA2008C7D3E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3EA2DAA926F21169008EB32F /* AppDelegate.swift */,
+				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
+				779D2A0626F490590077EF53 /* iOSViewControllerFactory.swift */,
+				3EA2DAB726F2116C008EB32F /* Info.plist */,
+				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		3EA2DA9D26F21169008EB32F = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +150,7 @@
 		3EA2DAA826F21169008EB32F /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
-				3EA2DAA926F21169008EB32F /* AppDelegate.swift */,
-				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
+				3E89AD8A26F88DA2008C7D3E /* Main */,
 				3EA2DADB26F2162B008EB32F /* QuestionViewController.swift */,
 				3EA2DADD26F219A3008EB32F /* QuestionViewController.xib */,
 				3E8445A626F367BD008EE770 /* PresentableAnswer.swift */,
@@ -152,12 +163,9 @@
 				3E8445A426F36754008EE770 /* UITableView+Extensions.swift */,
 				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
 				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
-				779D2A0626F490590077EF53 /* iOSViewControllerFactory.swift */,
 				77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */,
 				77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */,
-				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
-				3EA2DAB726F2116C008EB32F /* Info.plist */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -467,7 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GY7TL5G8Y;
-				INFOPLIST_FILE = QuizApp/Info.plist;
+				INFOPLIST_FILE = QuizApp/Main/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +494,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GY7TL5G8Y;
-				INFOPLIST_FILE = QuizApp/Info.plist;
+				INFOPLIST_FILE = QuizApp/Main/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
