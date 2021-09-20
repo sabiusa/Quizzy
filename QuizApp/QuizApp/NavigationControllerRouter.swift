@@ -34,12 +34,18 @@ class NavigationControllerRouter: Router {
                 )
             )
         case .multipleAnswer:
-            show(
-                factory.questionViewController(
-                    for: question,
-                    answerCallback: { _ in }
-                )
+            let controller = factory.questionViewController(
+                for: question,
+                answerCallback: { _ in }
             )
+            let barButton = UIBarButtonItem(
+                title: "Submit",
+                style: .done,
+                target: nil,
+                action: nil
+            )
+            controller.navigationItem.rightBarButtonItem = barButton
+            show(controller)
         }
     }
     
