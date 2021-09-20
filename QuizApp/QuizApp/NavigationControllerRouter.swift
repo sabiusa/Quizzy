@@ -40,11 +40,14 @@ class NavigationControllerRouter: Router {
                 target: nil,
                 action: nil
             )
-            barButton.isEnabled = false
+            let buttonController = SubmitButtonController(
+                button: barButton,
+                callback: answerCallback
+            )
             let controller = factory.questionViewController(
                 for: question,
                 answerCallback: { selection in
-                    barButton.isEnabled = !selection.isEmpty
+                    buttonController.update(with: selection)
                 }
             )
             controller.navigationItem.rightBarButtonItem = barButton
@@ -61,6 +64,45 @@ class NavigationControllerRouter: Router {
             viewController,
             animated: true
         )
+    }
+    
+}
+
+private class SubmitButtonController: NSObject {
+    
+    let button: UIBarButtonItem
+    let callback: ([String]) -> Void
+    
+    private var model: [String] = []
+    
+    init(
+        button: UIBarButtonItem,
+        callback: @escaping ([String]) -> Void
+    ) {
+        self.button = button
+        self.callback = callback
+        super.init()
+        self.setup()
+    }
+    
+    private func setup() {
+        button.target = self
+        button.action = #selector(fireCallback)
+        updateButtonSate()
+    }
+    
+    func update(with newModel: [String]) {
+        model = newModel
+        updateButtonSate()
+    }
+    
+    private func updateButtonSate() {
+        button.isEnabled = model.count > 0
+    }
+    
+    @objc
+    private func fireCallback() {
+        callback(model)
     }
     
 }

@@ -97,6 +97,24 @@ class NavigationControllerRouterTests: XCTestCase {
         XCTAssertFalse(viewController.navigationItem.rightBarButtonItem!.isEnabled)
     }
     
+    func test_routeToQuestion_multipleAnswer_submitButton_progressesToNextQuestion() {
+        let viewController = UIViewController()
+        factory.stub(question: Question.multipleAnswer("Q1"), with: viewController)
+        let sut = NavigationControllerRouter(
+            navigationController,
+            factory: factory
+        )
+        
+        var callbackWasFired = false
+        sut.route(to: Question.multipleAnswer("Q1"), answerCallback: { _ in
+            callbackWasFired = true
+        })
+        factory.fireCallback(for: Question.multipleAnswer("Q1"), with: ["A1"])
+        viewController.navigationItem.rightBarButtonItem?.simulateTap()
+        
+        XCTAssertTrue(callbackWasFired)
+    }
+    
     func test_routeToResult_showsResultController() {
         let viewController = UIViewController()
         let result = QuizResult.make(
@@ -181,6 +199,18 @@ class NavigationControllerRouterTests: XCTestCase {
             answerCallbacks[question]?(answers)
         }
         
+    }
+    
+}
+
+private extension UIBarButtonItem {
+    
+    func simulateTap() {
+        target?.performSelector(
+            onMainThread: action!,
+            with: nil,
+            waitUntilDone: true
+        )
     }
     
 }
