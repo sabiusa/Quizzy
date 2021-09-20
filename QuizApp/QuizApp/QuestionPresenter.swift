@@ -5,7 +5,7 @@
 //  Created by Saba Khutsishvili on 19.09.21.
 //
 
-import Foundation
+import QuizCore
 
 struct QuestionPresenter {
     

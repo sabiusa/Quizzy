@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Question<T: Hashable>: Hashable {
+public enum Question<T: Hashable>: Hashable {
     case singleAnswer(T)
     case multipleAnswer(T)
 }
