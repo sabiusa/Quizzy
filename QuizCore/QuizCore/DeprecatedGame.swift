@@ -43,16 +43,7 @@ where R.Question == Question,
       R.Answer == Answer
 {
     let delegate = QuizDelegateToRouterAdapter(router, correctAnswers)
-    let flow = Flow(
-        questions: questions,
-        delegate: delegate,
-        scoring: { answers in
-            scoring(
-                answers: answers,
-                correctAnswers: correctAnswers
-            )
-        }
-    )
+    let flow = Flow(questions: questions, delegate: delegate)
     let game: Game<R.Question, R.Answer, R> = Game(flow: flow)
     flow.start()
     return game
