@@ -25,7 +25,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(delegate.routedQuestions, ["Q1"])
+        XCTAssertEqual(delegate.handledQuestions, ["Q1"])
     }
     
     func test_start_withTwoQuestions_routesToFirstQuestion() {
@@ -33,7 +33,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(delegate.routedQuestions, ["Q1"])
+        XCTAssertEqual(delegate.handledQuestions, ["Q1"])
     }
     
     func test_startTwice_withTwoQuestions_routesToFirstQuestionTwice() {
@@ -42,7 +42,7 @@ class FlowTests: XCTestCase {
         sut.start()
         sut.start()
 
-        XCTAssertEqual(delegate.routedQuestions, ["Q1", "Q1"])
+        XCTAssertEqual(delegate.handledQuestions, ["Q1", "Q1"])
     }
     
     func test_startAndAnswerFirstTwoQuestions_withThreeQuestions_routesToSecondAndThirdQuestion() {
@@ -52,7 +52,7 @@ class FlowTests: XCTestCase {
         delegate.answerCallback("A1")
         delegate.answerCallback("A2")
         
-        XCTAssertEqual(delegate.routedQuestions, ["Q1", "Q2", "Q3"])
+        XCTAssertEqual(delegate.handledQuestions, ["Q1", "Q2", "Q3"])
     }
     
     func test_startAndAnswerFirstQuestion_withOneQuestion_doesNotRouteToAnotherQuestion() {
@@ -61,7 +61,7 @@ class FlowTests: XCTestCase {
         sut.start()
         delegate.answerCallback("A1")
         
-        XCTAssertEqual(delegate.routedQuestions, ["Q1"])
+        XCTAssertEqual(delegate.handledQuestions, ["Q1"])
     }
     
     func test_start_withNoQuestions_routesToResult() {
@@ -69,7 +69,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(delegate.routedResult!.answers, [:])
+        XCTAssertEqual(delegate.handledResult!.answers, [:])
     }
     
     func test_start_withOneQuestions_doesNotRouteToResult() {
@@ -77,7 +77,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertNil(delegate.routedResult)
+        XCTAssertNil(delegate.handledResult)
     }
     
     func test_startAndAnswerFirstQuestion_withTwoQuestions_doesNotRouteToResult() {
@@ -86,7 +86,7 @@ class FlowTests: XCTestCase {
         sut.start()
         delegate.answerCallback("A1")
         
-        XCTAssertNil(delegate.routedResult)
+        XCTAssertNil(delegate.handledResult)
     }
     
     func test_startAndAnswerFirstTwoQuestions_withTwoQuestions_routesToResult() {
@@ -96,7 +96,7 @@ class FlowTests: XCTestCase {
         delegate.answerCallback("A1")
         delegate.answerCallback("A2")
         
-        XCTAssertEqual(delegate.routedResult!.answers, ["Q1": "A1", "Q2": "A2"])
+        XCTAssertEqual(delegate.handledResult!.answers, ["Q1": "A1", "Q2": "A2"])
     }
     
     func test_startAndAnswerFirstTwoQuestions_withTwoQuestions_scores() {
@@ -109,7 +109,7 @@ class FlowTests: XCTestCase {
         delegate.answerCallback("A1")
         delegate.answerCallback("A2")
         
-        XCTAssertEqual(delegate.routedResult!.score, 10)
+        XCTAssertEqual(delegate.handledResult!.score, 10)
     }
     
     func test_startAndAnswerFirstTwoQuestions_withTwoQuestions_scoresWithRightAnswers() {
@@ -156,17 +156,17 @@ class FlowTests: XCTestCase {
     
     private class DelegateSpy: Router, QuizDelegate {
         
-        var routedQuestions = [String]()
-        var routedResult: QuizResult<String, String>? = nil
+        var handledQuestions = [String]()
+        var handledResult: QuizResult<String, String>? = nil
         
         var answerCallback: ((String) -> Void) = { _ in }
         
         var routedQuestionCount: Int {
-            return routedQuestions.count
+            return handledQuestions.count
         }
         
         func handle(question: String, answerCallback: @escaping (String) -> Void) {
-            self.routedQuestions.append(question)
+            self.handledQuestions.append(question)
             self.answerCallback = answerCallback
         }
         
@@ -178,7 +178,7 @@ class FlowTests: XCTestCase {
         }
         
         func handle(result: QuizResult<String, String>) {
-            routedResult = result
+            handledResult = result
         }
         
         func route(to result: QuizResult<String, String>) {
