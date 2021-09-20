@@ -17,7 +17,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(delegate.routedQuestionCount, 0)
+        XCTAssertEqual(delegate.handledQuestionCount, 0)
     }
     
     func test_start_withOneQuestions_delegatesCorrectQuestionHandling() {
@@ -161,7 +161,7 @@ class FlowTests: XCTestCase {
         
         var answerCallback: ((String) -> Void) = { _ in }
         
-        var routedQuestionCount: Int {
+        var handledQuestionCount: Int {
             return handledQuestions.count
         }
         
