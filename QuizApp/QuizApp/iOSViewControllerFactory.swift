@@ -96,7 +96,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         )
         return ResultsViewController(
             summary: presenter.summary,
-            answers: []
+            answers: presenter.presentableAnswers
         )
     }
     

@@ -103,6 +103,30 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertEqual(resultController.summary, presenter.summary)
     }
     
+    func test_resultsViewController_createsControllerWithPresentableAnswers() {
+        let questions = [singleAnswerQuestion, multipleAnswerQuestion]
+        let correctAnswers = [
+            singleAnswerQuestion: ["A1"],
+            multipleAnswerQuestion: ["A2", "A3"]
+        ]
+        let userAnswers = correctAnswers
+        let result = QuizResult.make(
+            answers: userAnswers,
+            score: 2
+        )
+        let sut = makeSUT(correctAnswers: correctAnswers)
+        let presenter = ResultsPresenter(
+            questions: questions,
+            result: result,
+            correctAnswers: correctAnswers
+        )
+        
+        let controller = sut.resultViewController(for: result)
+        let resultController = controller as! ResultsViewController
+        
+        XCTAssertEqual(resultController.answers.count, presenter.presentableAnswers.count)
+    }
+    
     // MARK:- Helpers
     
     func makeSUT(
