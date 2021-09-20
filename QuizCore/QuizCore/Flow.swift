@@ -27,35 +27,32 @@ where R.Question == Question,
     }
     
     func start() {
-        if let firstQuestion = questions.first {
+        routeToQuestion(at: questions.startIndex)
+    }
+    
+    func routeToQuestion(at index: Int) {
+        if index < questions.endIndex {
+            let question = questions[index]
             router.route(
-                to: firstQuestion,
-                answerCallback: nextCallback(from: firstQuestion)
+                to: question,
+                answerCallback: callback(for: question, at: index)
             )
         } else {
             router.route(to: result())
         }
     }
     
-    private func nextCallback(from question: Question) -> ((Answer) -> Void) {
-        return { [weak self] answer in
-            self?.routeNext(question, answer)
-        }
+    private func routeToQuestion(after index: Int) {
+        routeToQuestion(at: questions.index(after: index))
     }
     
-    private func routeNext(_ question: Question, _ answer: Answer) {
-        if let currentQuestionIndex = questions.firstIndex(of: question) {
-            answers[question] = answer
-            let nextQuestionIndex = currentQuestionIndex + 1
-            if nextQuestionIndex < questions.count {
-                let nextQuestion = questions[nextQuestionIndex]
-                router.route(
-                    to: nextQuestion,
-                    answerCallback: nextCallback(from: nextQuestion)
-                )
-            } else {
-                router.route(to: result())
-            }
+    private func callback(
+        for question: Question,
+        at index: Int
+    ) -> ((Answer) -> Void) {
+        return { [weak self] answer in
+            self?.answers[question] = answer
+            self?.routeToQuestion(after: index)
         }
     }
     
