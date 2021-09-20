@@ -147,7 +147,7 @@ class FlowTests: XCTestCase {
     ) -> Flow<DelegateSpy> {
         let sut = Flow(
             questions: questions,
-            router: delegate,
+            delegate: delegate,
             scoring: scoring
         )
         weakSUT = sut

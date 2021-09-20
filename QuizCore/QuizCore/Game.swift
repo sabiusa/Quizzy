@@ -29,7 +29,7 @@ where R.Question == Question,
 {
     let flow = Flow(
         questions: questions,
-        router: QuizDelegateToRouterAdapter(router),
+        delegate: QuizDelegateToRouterAdapter(router),
         scoring: { answers in
             scoring(
                 answers: answers,
