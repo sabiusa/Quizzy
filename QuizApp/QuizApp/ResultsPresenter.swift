@@ -13,6 +13,10 @@ struct ResultsPresenter {
     let result: QuizResult<Question<String>, [String]>
     let correctAnswers: [Question<String>: [String]]
     
+    var title: String {
+        return "Result"
+    }
+    
     var summary: String {
         return "You go \(result.score)/\(result.answers.count) correct"
     }
