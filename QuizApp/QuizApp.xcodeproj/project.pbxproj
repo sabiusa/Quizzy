@@ -211,6 +211,15 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
+		3E89AD9426F88F70008C7D3E /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
+				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		3EA2DA9D26F21169008EB32F = {
 			isa = PBXGroup;
 			children = (
@@ -236,8 +245,7 @@
 				3E89AD8A26F88DA2008C7D3E /* Main */,
 				3E89AD8B26F88E38008C7D3E /* UI */,
 				3E89AD9126F88EFC008C7D3E /* Presentation */,
-				779D29FC26F3ADB20077EF53 /* NavigationControllerRouter.swift */,
-				779D2A0226F48C150077EF53 /* ViewControllerFactory.swift */,
+				3E89AD9426F88F70008C7D3E /* Routing */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
