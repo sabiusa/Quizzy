@@ -80,13 +80,3 @@ private class QuizDelegateToRouterAdapter<R: Router>: QuizDelegate {
     }
     
 }
-
-func scoring<Question, Answer: Equatable>(
-    answers: [Question: Answer],
-    correctAnswers: [Question: Answer]
-) -> Int {
-    return answers.reduce(0) { score, kvp in
-        let current = correctAnswers[kvp.key] == kvp.value ? 1 : 0
-        return score + current
-    }
-}
