@@ -49,7 +49,7 @@ class QuizTests: XCTestCase {
     
     // MARK:- Helpers
     
-    private class DelegateSpy: Router, QuizDelegate {
+    private class DelegateSpy: QuizDelegate {
         
         var handledResult: QuizResult<String, String>? = nil
         
@@ -59,19 +59,8 @@ class QuizTests: XCTestCase {
             self.answerCallback = answerCallback
         }
         
-        func route(
-            to question: String,
-            answerCallback: @escaping (String) -> Void
-        ) {
-            handle(question: question, answerCallback: answerCallback)
-        }
-        
         func handle(result: QuizResult<String, String>) {
             handledResult = result
-        }
-        
-        func route(to result: QuizResult<String, String>) {
-            handle(result: result)
         }
         
     }
