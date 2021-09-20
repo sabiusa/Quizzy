@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  DeprecatedGame.swift
 //  QuizCore
 //
 //  Created by Saba Khutsishvili on 16.09.21.
