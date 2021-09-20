@@ -39,6 +39,7 @@ class Flow<Delegate: QuizDelegate> {
                 completion: answer(for: question, at: index)
             )
         } else {
+            delegate.didCompleteQuiz(with: [])
             delegate.handle(result: result())
         }
     }
