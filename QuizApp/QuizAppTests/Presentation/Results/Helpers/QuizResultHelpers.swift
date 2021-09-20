@@ -10,8 +10,8 @@
 extension QuizResult {
     
     static func make(
-        answers: [Question: Answer],
-        score: Int
+        answers: [Question: Answer] = [:],
+        score: Int = 0
     ) -> QuizResult {
         return QuizResult(answers: answers, score: score)
     }

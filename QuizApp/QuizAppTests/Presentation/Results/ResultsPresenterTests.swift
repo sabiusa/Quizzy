@@ -16,12 +16,9 @@ class ResultsPresenterTests: XCTestCase {
     let multipleAnswerQuestion = Question.multipleAnswer("Q2")
     
     func test_title_returnsFormattedTitle() {
-        let answers: [Question<String>: [String]] = [:]
-        let result = QuizResult.make(answers: answers, score: 0)
-        
         let sut = ResultsPresenter(
             questions: [],
-            result: result,
+            result: QuizResult.make(),
             correctAnswers: [:]
         )
         
@@ -46,12 +43,9 @@ class ResultsPresenterTests: XCTestCase {
     }
     
     func test_presentableAnswers_withoutQuestions_isEmpty() {
-        let answers = [Question<String>: [String]]()
-        let result = QuizResult.make(answers: answers, score: 0)
-        
         let sut = ResultsPresenter(
             questions: [],
-            result: result,
+            result: QuizResult.make(),
             correctAnswers: [:]
         )
         
