@@ -21,7 +21,7 @@ class Flow<Delegate: QuizDelegate> {
     init(
         questions: [Question],
         delegate: Delegate,
-        scoring: @escaping ([Question: Answer]) -> Int
+        scoring: @escaping ([Question: Answer]) -> Int = { _ in 0}
     ) {
         self.questions = questions
         self.delegate = delegate
