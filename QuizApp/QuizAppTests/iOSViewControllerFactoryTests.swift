@@ -79,6 +79,12 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertTrue(controller.allowsMultipleSelection)
     }
     
+    func test_resultsViewController_createsControllerWithTitle() {
+        let (resultController, presenter) = makeResults()
+        
+        XCTAssertEqual(resultController.title, presenter.title)
+    }
+    
     func test_resultsViewController_createsControllerWithSummary() {
         let (resultController, presenter) = makeResults()
         

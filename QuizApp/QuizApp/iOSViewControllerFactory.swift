@@ -94,10 +94,12 @@ class iOSViewControllerFactory: ViewControllerFactory {
             result: result,
             correctAnswers: correctAnswers
         )
-        return ResultsViewController(
+        let controller = ResultsViewController(
             summary: presenter.summary,
             answers: presenter.presentableAnswers
         )
+        controller.title = presenter.title
+        return controller
     }
     
 }
