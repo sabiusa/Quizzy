@@ -25,12 +25,22 @@ class NavigationControllerRouter: Router {
         to question: Question<String>,
         answerCallback: @escaping ([String]) -> Void
     ) {
-        show(
-            factory.questionViewController(
-                for: question,
-                answerCallback: answerCallback
+        switch question {
+        case .singleAnswer:
+            show(
+                factory.questionViewController(
+                    for: question,
+                    answerCallback: answerCallback
+                )
             )
-        )
+        case .multipleAnswer:
+            show(
+                factory.questionViewController(
+                    for: question,
+                    answerCallback: { _ in }
+                )
+            )
+        }
     }
     
     func route(to result: QuizResult<Question<String>, [String]>) {
