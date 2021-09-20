@@ -31,10 +31,11 @@ extension QuizResult: Equatable where Answer: Equatable {
     
 }
 
-extension QuizResult: Hashable where Answer: Equatable {
+extension QuizResult: Hashable where Answer: Hashable {
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(answers.map(\.key))
+        hasher.combine(answers)
+        hasher.combine(score)
     }
     
 }
