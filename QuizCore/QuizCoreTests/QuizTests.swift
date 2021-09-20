@@ -6,40 +6,7 @@
 //
 
 import XCTest
-
-@testable import QuizCore
-
-final class Quiz {
-    
-    let flow: Any
-    
-    init(flow: Any) {
-        self.flow = flow
-    }
-    
-    static func start<Question, Answer: Equatable, Delegate: QuizDelegate>(
-        questions: [Question],
-        delegate: Delegate,
-        correctAnswers: [Question: Answer]
-    ) -> Quiz
-    where Delegate.Question == Question,
-          Delegate.Answer == Answer
-    {
-        let flow = Flow(
-            questions: questions,
-            delegate: delegate,
-            scoring: { answers in
-                scoring(
-                    answers: answers,
-                    correctAnswers: correctAnswers
-                )
-            }
-        )
-        flow.start()
-        return Quiz(flow: flow)
-    }
-    
-}
+import QuizCore
 
 class QuizTests: XCTestCase {
     
