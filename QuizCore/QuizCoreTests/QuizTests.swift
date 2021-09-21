@@ -20,8 +20,8 @@ class QuizTests: XCTestCase {
             delegate: delegate
         )
         
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
         
         XCTAssertEqual(delegate.completedQuizzes.count, 1)
         assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
@@ -46,11 +46,10 @@ class QuizTests: XCTestCase {
     private class DelegateSpy: QuizDelegate {
         
         var completedQuizzes: [[(String, String)]] = []
-        
-        var answerCompletion: ((String) -> Void) = { _ in }
+        var answerCompletions: [(String) -> Void] = []
         
         func answer(for question: String, completion: @escaping (String) -> Void) {
-            self.answerCompletion = completion
+            self.answerCompletions.append(completion)
         }
         
         func didCompleteQuiz(with answers: [(question: String, answer: String)]) {
