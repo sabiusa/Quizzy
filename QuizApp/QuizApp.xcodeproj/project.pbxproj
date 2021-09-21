@@ -37,6 +37,7 @@
 		77FD745E26F6F8E90092FFC0 /* ResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */; };
 		77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */; };
 		77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */; };
+		77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		77FD745D26F6F8E90092FFC0 /* ResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPresenter.swift; sourceTree = "<group>"; };
 		77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenterTests.swift; sourceTree = "<group>"; };
 		77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
+		77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		3E89AD8B26F88E38008C7D3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				77FD747126FA55870092FFC0 /* SwiftUI */,
 				77FD746E26FA52CD0092FFC0 /* UIKit */,
 			);
 			path = UI;
@@ -373,6 +376,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		77FD747126FA55870092FFC0 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -478,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */,
 				3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */,
 				3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */,
 				3EA2DAAA26F21169008EB32F /* AppDelegate.swift in Sources */,
