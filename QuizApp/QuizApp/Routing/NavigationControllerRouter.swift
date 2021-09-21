@@ -62,6 +62,12 @@ class NavigationControllerRouter: Router {
         answer(for: question, completion: answerCallback)
     }
     
+    func didCompleteQuiz(
+        with answers: [(question: Question<String>, answers: [String])]
+    ) {
+        show(factory.resultViewController(for: answers))
+    }
+    
     func route(to result: QuizResult<Question<String>, [String]>) {
         show(factory.resultViewController(for: result))
     }
