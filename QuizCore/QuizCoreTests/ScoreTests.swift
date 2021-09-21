@@ -27,14 +27,26 @@ class ScoreTests: XCTestCase {
         XCTAssertEqual(score, 1)
     }
     
+    func test_oneCorrectAnswerOneWrong_scoresOne() {
+        let score = BasicScore.score(
+            for: ["correct 1", "wrong"],
+            comparingTo: ["correct 1", "correct 2"]
+        )
+        
+        XCTAssertEqual(score, 1)
+    }
+    
     private class BasicScore {
         
         static func score(
             for userAnswers: [String],
             comparingTo correctAnswers: [String]
         ) -> Int {
-            if userAnswers.isEmpty { return 0 }
-            return userAnswers == correctAnswers ? 1 : 0
+            var score = 0
+            for (index, answer) in userAnswers.enumerated() {
+                score += (answer == correctAnswers[index]) ? 1 : 0
+            }
+            return score
         }
         
     }
