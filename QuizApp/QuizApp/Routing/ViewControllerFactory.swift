@@ -19,8 +19,4 @@ protocol ViewControllerFactory {
     
     func resultViewController(for userAnswers: Answers) -> UIViewController
     
-    func resultViewController(
-        for result: QuizResult<Question<String>, [String]>
-    ) -> UIViewController
-    
 }
