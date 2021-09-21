@@ -8,7 +8,7 @@
 import UIKit
 import QuizCore
 
-class NavigationControllerRouter: Router {
+class NavigationControllerRouter: Router, QuizDelegate {
     
     private let navigationController: UINavigationController
     private let factory: ViewControllerFactory
@@ -63,9 +63,9 @@ class NavigationControllerRouter: Router {
     }
     
     func didCompleteQuiz(
-        with answers: [(question: Question<String>, answers: [String])]
+        with answers: [(question: Question<String>, answer: [String])]
     ) {
-        show(factory.resultViewController(for: answers))
+        show(factory.resultViewController(for: answers.map { $0 } ))
     }
     
     func route(to result: QuizResult<Question<String>, [String]>) {
