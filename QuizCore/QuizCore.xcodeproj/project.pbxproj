@@ -16,6 +16,7 @@
 		3EA2DA9A26F1E087008EB32F /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DA9926F1E087008EB32F /* FlowTests.swift */; };
 		3EA2DA9C26F1E27E008EB32F /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2DA9B26F1E27E008EB32F /* Flow.swift */; };
 		77FD746426F851C00092FFC0 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746326F851C00092FFC0 /* Question.swift */; };
+		77FD746826F9915C0092FFC0 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746726F9915C0092FFC0 /* Assertions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		3EA2DA9926F1E087008EB32F /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
 		3EA2DA9B26F1E27E008EB32F /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		77FD746326F851C00092FFC0 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		77FD746726F9915C0092FFC0 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +98,10 @@
 		3EA2DA8C26F1DFF9008EB32F /* QuizCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				77FD746726F9915C0092FFC0 /* Assertions.swift */,
 				3EA2DA9926F1E087008EB32F /* FlowTests.swift */,
-				3E8445B026F38648008EE770 /* DeprecatedGameTests.swift */,
 				3E53D48726F8C435008601FA /* QuizTests.swift */,
+				3E8445B026F38648008EE770 /* DeprecatedGameTests.swift */,
 				3EA2DA8F26F1DFF9008EB32F /* Info.plist */,
 			);
 			path = QuizCoreTests;
@@ -227,6 +230,7 @@
 			files = (
 				3E53D48826F8C435008601FA /* QuizTests.swift in Sources */,
 				3EA2DA9A26F1E087008EB32F /* FlowTests.swift in Sources */,
+				77FD746826F9915C0092FFC0 /* Assertions.swift in Sources */,
 				3E8445B126F38648008EE770 /* DeprecatedGameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
