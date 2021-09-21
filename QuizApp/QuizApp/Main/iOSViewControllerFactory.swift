@@ -8,18 +8,21 @@
 import UIKit
 import QuizCore
 
-class iOSViewControllerFactory: ViewControllerFactory {
+final class iOSViewControllerFactory: ViewControllerFactory {
     
-    private let questions: [Question<String>]
+    typealias Answers = [(question: Question<String>, answer: [String])]
+    
     private let options: [Question<String>: [String]]
-    private let correctAnswers: [Question<String>: [String]]
+    private let correctAnswers: Answers
+    
+    private var questions: [Question<String>] {
+        return correctAnswers.map(\.question)
+    }
     
     init(
-        questions: [Question<String>],
         options: [Question<String>: [String]],
-        correctAnswers: [Question<String>: [String]]
+        correctAnswers: Answers
     ) {
-        self.questions = questions
         self.options = options
         self.correctAnswers = correctAnswers
     }
@@ -86,13 +89,11 @@ class iOSViewControllerFactory: ViewControllerFactory {
         return controller
     }
     
-    func resultViewController(
-        for result: QuizResult<Question<String>, [String]>
-    ) -> UIViewController {
+    func resultViewController(for userAnswers: Answers) -> UIViewController {
         let presenter = ResultsPresenter(
-            questions: questions,
-            result: result,
-            correctAnswers: correctAnswers
+            userAnswers: userAnswers,
+            correctAnswers: correctAnswers,
+            scorer: BasicScore.score
         )
         let controller = ResultsViewController(
             summary: presenter.summary,
