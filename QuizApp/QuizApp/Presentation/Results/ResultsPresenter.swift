@@ -7,33 +7,47 @@
 
 import QuizCore
 
-struct ResultsPresenter {
+final class ResultsPresenter {
     
-    let questions: [Question<String>]
-    let result: QuizResult<Question<String>, [String]>
-    let correctAnswers: [Question<String>: [String]]
+    typealias Answers = [(question: Question<String>, answers: [String])]
+    typealias Scorer = ([[String]], [[String]]) -> Int
+    
+    private let userAnswers: Answers
+    private let correctAnswers: Answers
+    private let scorer: Scorer
+    
+    init(
+        questions: [Question<String>],
+        result: QuizResult<Question<String>, [String]>,
+        correctAnswers: [Question<String>: [String]]
+    ) {
+        self.userAnswers = questions.map { question in
+            return (question, result.answers[question]!)
+        }
+        self.correctAnswers = questions.map { question in
+            return (question, correctAnswers[question]!)
+        }
+        self.scorer = { _, _ in result.score }
+    }
     
     var title: String {
         return "Result"
     }
     
+    var score: Int {
+        return scorer(userAnswers.map(\.answers), correctAnswers.map(\.answers))
+    }
+    
     var summary: String {
-        return "You go \(result.score)/\(result.answers.count) correct"
+        return "You go \(score)/\(userAnswers.count) correct"
     }
     
     var presentableAnswers: [PresentableAnswer] {
-        return questions.map { question in
-            guard
-                let userAnswer = result.answers[question],
-                let correctAnswer = correctAnswers[question]
-            else {
-                fatalError("Couldn't find correct answer for question \(question)")
-            }
-            
+        return zip(userAnswers, correctAnswers).map { userAnswer, correctAnswer in
             return presentableAnswer(
-                question: question,
-                userAnswer: userAnswer,
-                correctAnswer: correctAnswer
+                question: userAnswer.question,
+                userAnswer: userAnswer.answers,
+                correctAnswer: correctAnswer.answers
             )
         }
     }
