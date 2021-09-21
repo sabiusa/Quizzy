@@ -10,19 +10,19 @@ import XCTest
 class ScoreTests: XCTestCase {
     
     func test_noAnswers_scoresZero() {
-        let score = BasicScore.score(for: [], comparingTo: [])
+        let score = BasicScore.score(for: [], comparedTo: [])
         
         XCTAssertEqual(score, 0)
     }
     
     func test_oneWrongAnswer_scoresZero() {
-        let score = BasicScore.score(for: ["wrong"], comparingTo: ["correct"])
+        let score = BasicScore.score(for: ["wrong"], comparedTo: ["correct"])
         
         XCTAssertEqual(score, 0)
     }
     
     func test_oneCorrectAnswer_scoresOne() {
-        let score = BasicScore.score(for: ["correct"], comparingTo: ["correct"])
+        let score = BasicScore.score(for: ["correct"], comparedTo: ["correct"])
         
         XCTAssertEqual(score, 1)
     }
@@ -30,7 +30,7 @@ class ScoreTests: XCTestCase {
     func test_oneCorrectAnswerOneWrong_scoresOne() {
         let score = BasicScore.score(
             for: ["correct 1", "wrong"],
-            comparingTo: ["correct 1", "correct 2"]
+            comparedTo: ["correct 1", "correct 2"]
         )
         
         XCTAssertEqual(score, 1)
@@ -39,7 +39,7 @@ class ScoreTests: XCTestCase {
     func test_twoCorrectAnswers_scoresTwo() {
         let score = BasicScore.score(
             for: ["correct 1", "correct 2"],
-            comparingTo: ["correct 1", "correct 2"]
+            comparedTo: ["correct 1", "correct 2"]
         )
         
         XCTAssertEqual(score, 2)
@@ -48,7 +48,7 @@ class ScoreTests: XCTestCase {
     func test_withUnequalSizedData_twoCorrectAnswers_scoresTwo() {
         let score = BasicScore.score(
             for: ["correct 1", "correct 2", "extra"],
-            comparingTo: ["correct 1", "correct 2"]
+            comparedTo: ["correct 1", "correct 2"]
         )
         
         XCTAssertEqual(score, 2)
@@ -58,7 +58,7 @@ class ScoreTests: XCTestCase {
         
         static func score(
             for userAnswers: [String],
-            comparingTo correctAnswers: [String]
+            comparedTo correctAnswers: [String]
         ) -> Int {
             var score = 0
             for (index, answer) in userAnswers.enumerated() {
