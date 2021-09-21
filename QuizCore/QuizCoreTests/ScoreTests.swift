@@ -45,13 +45,22 @@ class ScoreTests: XCTestCase {
         XCTAssertEqual(score, 2)
     }
     
-    func test_withTooManyAnswers_twoMatchingAnswers_scoresTwo() {
+    func test_withTooManyUserAnswers_twoMatchingAnswers_scoresTwo() {
         let score = BasicScore.score(
             for: ["answer", "another answer", "extra answer"],
             comparedTo: ["answer", "another answer"]
         )
         
         XCTAssertEqual(score, 2)
+    }
+    
+    func test_withTooManyCorrectAnswers_oneMatchingAnswer_scoresOne() {
+        let score = BasicScore.score(
+            for: ["no match", "another answer"],
+            comparedTo: ["answer", "another answer", "extra answer"]
+        )
+        
+        XCTAssertEqual(score, 1)
     }
     
     private class BasicScore {
