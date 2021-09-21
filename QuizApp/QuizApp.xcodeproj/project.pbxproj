@@ -150,9 +150,7 @@
 		3E89AD8B26F88E38008C7D3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3E89AD8F26F88EC3008C7D3E /* Helpers */,
-				3E89AD8C26F88E75008C7D3E /* Question */,
-				3E89AD8D26F88E82008C7D3E /* Results */,
+				77FD746E26FA52CD0092FFC0 /* UIKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -242,9 +240,7 @@
 		3E89AD9626F88FA8008C7D3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3E89AD9726F88FB7008C7D3E /* Helpers */,
-				3E89AD9826F88FBC008C7D3E /* Question */,
-				3E89AD9926F88FC2008C7D3E /* Results */,
+				77FD747026FA53350092FFC0 /* UIKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -355,6 +351,26 @@
 				779D29F626F3AB580077EF53 /* QuizCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77FD746E26FA52CD0092FFC0 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3E89AD8F26F88EC3008C7D3E /* Helpers */,
+				3E89AD8C26F88E75008C7D3E /* Question */,
+				3E89AD8D26F88E82008C7D3E /* Results */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		77FD747026FA53350092FFC0 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3E89AD9726F88FB7008C7D3E /* Helpers */,
+				3E89AD9826F88FBC008C7D3E /* Question */,
+				3E89AD9926F88FC2008C7D3E /* Results */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
