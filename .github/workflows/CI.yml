@@ -18,4 +18,3 @@ jobs:
 
     - name: Build and test
       run: xcodebuild clean build test -workspace Quizzy.xcworkspace -scheme "CI" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
-
