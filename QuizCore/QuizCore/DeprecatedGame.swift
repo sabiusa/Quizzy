@@ -22,7 +22,7 @@ public protocol Router {
     
 }
 
-@available(*, deprecated)
+@available(*, deprecated, message: "scoring will not be supported")
 public struct QuizResult<Question: Hashable, Answer> {
     
     public let answers: [Question: Answer]
