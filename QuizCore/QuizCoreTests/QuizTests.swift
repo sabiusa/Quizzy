@@ -12,7 +12,7 @@ class QuizTests: XCTestCase {
     
     private var quiz: Quiz!
     
-    func test_startQuiz_answerZeroOutOfTwoCorrectly_scoresZero() {
+    func test_startQuiz_answerAllQuestions_completesQuizWithAnswers() {
         let delegate = DelegateSpy()
         
         quiz = Quiz.start(
