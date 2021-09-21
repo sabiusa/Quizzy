@@ -19,11 +19,3 @@ public protocol QuizDelegate {
     func handle(result: QuizResult<Question, Answer>)
     
 }
-
-public extension QuizDelegate {
-    
-    func didCompleteQuiz(with answers: [(question: Question, answer: Answer)]) {
-        
-    }
-    
-}
