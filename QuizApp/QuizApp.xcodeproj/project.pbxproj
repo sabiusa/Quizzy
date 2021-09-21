@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTests.swift; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2808C226F9CFD600ABBE9B /* Scoring */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */,
+			);
+			path = Scoring;
+			sourceTree = "<group>";
+		};
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +352,7 @@
 				3E89AD9626F88FA8008C7D3E /* UI */,
 				3E89AD9A26F88FE4008C7D3E /* Presentation */,
 				3E89AD9E26F89049008C7D3E /* Routing */,
+				3E2808C226F9CFD600ABBE9B /* Scoring */,
 			);
 			path = QuizAppTests;
 			sourceTree = "<group>";
@@ -482,6 +493,7 @@
 				779D2A0526F48FAF0077EF53 /* iOSViewControllerFactoryTests.swift in Sources */,
 				77FD745C26F6F7870092FFC0 /* QuizResultHelpers.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
+				3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */,
 				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
 				779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */,
 				77FD745A26F6F6A20092FFC0 /* ResultsPresenterTests.swift in Sources */,
