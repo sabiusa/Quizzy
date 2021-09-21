@@ -12,7 +12,8 @@ import XCTest
 class ScoreTests: XCTestCase {
     
     func test_noAnswers_scoresZero() {
-        let score = BasicScore.score(for: [], comparedTo: [])
+        let empty = [String]()
+        let score = BasicScore.score(for: empty, comparedTo: empty)
         
         XCTAssertEqual(score, 0)
     }
