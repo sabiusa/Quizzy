@@ -47,14 +47,13 @@ class ResultsPresenterTests: XCTestCase {
     }
     
     func test_presentableAnswers_withWrongSingleAnswer_mapsAnswer() {
-        let userAnswers = [singleAnswerQuestion: ["A1"]]
-        let correctAnswers = [singleAnswerQuestion: ["A2"]]
-        let result = QuizResult.make(answers: userAnswers, score: 0)
+        let userAnswers = [(singleAnswerQuestion, ["A1"])]
+        let correctAnswers = [(singleAnswerQuestion, ["A2"])]
         
-        let sut = ResultsPresenter(
-            questions: [singleAnswerQuestion],
-            result: result,
-            correctAnswers: correctAnswers
+        let sut = makeSUT(
+            userAnswers: userAnswers,
+            correctAnswers: correctAnswers,
+            score: 0
         )
         
         XCTAssertEqual(sut.presentableAnswers.count, 1)
