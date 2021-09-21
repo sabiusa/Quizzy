@@ -12,12 +12,6 @@ import QuizCore
 
 class NavigationControllerRouterTests: XCTestCase {
     
-    let singleAnswerQuestion = Question.singleAnswer("Q1")
-    let multipleAnswerQuestion = Question.multipleAnswer("Q2")
-    
-    let navigationController = NonAnimatedNavigationController()
-    let factory = ViewControllerFactoryStub()
-    
     func test_answerForQuestion_showsQuestionController() {
         let viewController = UIViewController()
         let secondViewController = UIViewController()
@@ -131,7 +125,7 @@ class NavigationControllerRouterTests: XCTestCase {
         XCTAssertTrue(callbackWasFired)
     }
     
-    func test_routeToResult_showsResultController() {
+    func test_didCompleteQuiz_showsResultController() {
         let viewController = UIViewController()
         let userAnswers = [(singleAnswerQuestion, ["A1"])]
         
@@ -156,7 +150,13 @@ class NavigationControllerRouterTests: XCTestCase {
     
     // MARK:- Helpers
     
-    class NonAnimatedNavigationController: UINavigationController {
+    private let singleAnswerQuestion = Question.singleAnswer("Q1")
+    private let multipleAnswerQuestion = Question.multipleAnswer("Q2")
+    
+    private let navigationController = NonAnimatedNavigationController()
+    private let factory = ViewControllerFactoryStub()
+    
+    private class NonAnimatedNavigationController: UINavigationController {
         
         override func pushViewController(
             _ viewController: UIViewController,
@@ -167,7 +167,7 @@ class NavigationControllerRouterTests: XCTestCase {
         
     }
     
-    class ViewControllerFactoryStub: ViewControllerFactory {
+    private class ViewControllerFactoryStub: ViewControllerFactory {
         
         private var stubbedQuestions = [Question<String>: UIViewController]()
         private var stubbedResults = [[Question<String>]: UIViewController]()
