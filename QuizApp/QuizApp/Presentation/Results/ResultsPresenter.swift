@@ -17,6 +17,16 @@ final class ResultsPresenter {
     private let scorer: Scorer
     
     init(
+        userAnswers: Answers,
+        correctAnswers: Answers,
+        scorer: @escaping Scorer
+    ) {
+        self.userAnswers = userAnswers
+        self.correctAnswers = correctAnswers
+        self.scorer = scorer
+    }
+    
+    init(
         questions: [Question<String>],
         result: QuizResult<Question<String>, [String]>,
         correctAnswers: [Question<String>: [String]]
