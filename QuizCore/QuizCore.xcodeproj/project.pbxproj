@@ -18,6 +18,7 @@
 		77FD746426F851C00092FFC0 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746326F851C00092FFC0 /* Question.swift */; };
 		77FD746826F9915C0092FFC0 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746726F9915C0092FFC0 /* Assertions.swift */; };
 		77FD746A26F991E50092FFC0 /* DelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746926F991E50092FFC0 /* DelegateSpy.swift */; };
+		77FD746C26F993F30092FFC0 /* ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746B26F993F30092FFC0 /* ScoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		77FD746326F851C00092FFC0 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		77FD746726F9915C0092FFC0 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 		77FD746926F991E50092FFC0 /* DelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateSpy.swift; sourceTree = "<group>"; };
+		77FD746B26F993F30092FFC0 /* ScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				77FD746926F991E50092FFC0 /* DelegateSpy.swift */,
 				3EA2DA9926F1E087008EB32F /* FlowTests.swift */,
 				3E53D48726F8C435008601FA /* QuizTests.swift */,
+				77FD746B26F993F30092FFC0 /* ScoreTests.swift */,
 				3E8445B026F38648008EE770 /* DeprecatedGameTests.swift */,
 				3EA2DA8F26F1DFF9008EB32F /* Info.plist */,
 			);
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FD746C26F993F30092FFC0 /* ScoreTests.swift in Sources */,
 				3E53D48826F8C435008601FA /* QuizTests.swift in Sources */,
 				3EA2DA9A26F1E087008EB32F /* FlowTests.swift in Sources */,
 				77FD746826F9915C0092FFC0 /* Assertions.swift in Sources */,
