@@ -79,4 +79,14 @@ where R.Answer: Equatable {
     
     func handle(result: QuizResult<R.Question, R.Answer>) {}
     
+    private func scoring(
+        answers: [R.Question: R.Answer],
+        correctAnswers: [R.Question: R.Answer]
+    ) -> Int {
+        return answers.reduce(0) { score, kvp in
+            let current = correctAnswers[kvp.key] == kvp.value ? 1 : 0
+            return score + current
+        }
+    }
+    
 }
