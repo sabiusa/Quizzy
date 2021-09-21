@@ -9,7 +9,7 @@ import QuizCore
 
 final class ResultsPresenter {
     
-    typealias Answers = [(question: Question<String>, answers: [String])]
+    typealias Answers = [(question: Question<String>, answer: [String])]
     typealias Scorer = ([[String]], [[String]]) -> Int
     
     private let userAnswers: Answers
@@ -31,7 +31,7 @@ final class ResultsPresenter {
     }
     
     var score: Int {
-        return scorer(userAnswers.map(\.answers), correctAnswers.map(\.answers))
+        return scorer(userAnswers.map(\.answer), correctAnswers.map(\.answer))
     }
     
     var summary: String {
@@ -42,8 +42,8 @@ final class ResultsPresenter {
         return zip(userAnswers, correctAnswers).map { userAnswer, correctAnswer in
             return presentableAnswer(
                 question: userAnswer.question,
-                userAnswer: userAnswer.answers,
-                correctAnswer: correctAnswer.answers
+                userAnswer: userAnswer.answer,
+                correctAnswer: correctAnswer.answer
             )
         }
     }
