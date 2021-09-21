@@ -10,9 +10,20 @@ import QuizCore
 
 class iOSViewControllerFactory: ViewControllerFactory {
     
+    typealias Answers = [(question: Question<String>, answers: [String])]
+    
     private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
-    private let correctAnswers: [Question<String>: [String]]
+    private let correctAnswers: () -> Answers
+    
+    init(
+        options: [Question<String>: [String]],
+        correctAnswers: Answers
+    ) {
+        self.questions = correctAnswers.map(\.question)
+        self.options = options
+        self.correctAnswers = { correctAnswers }
+    }
     
     init(
         questions: [Question<String>],
@@ -21,7 +32,10 @@ class iOSViewControllerFactory: ViewControllerFactory {
     ) {
         self.questions = questions
         self.options = options
-        self.correctAnswers = correctAnswers
+        self.correctAnswers = { questions.map { question in
+                return (question, correctAnswers[question]!)
+            }
+        }
     }
     
     func questionViewController(
@@ -93,9 +107,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
             userAnswers: questions.map { question in
                 return (question, result.answers[question]!)
             },
-            correctAnswers: questions.map { question in
-                return (question, correctAnswers[question]!)
-            },
+            correctAnswers: correctAnswers(),
             scorer: { _, _ in result.score }
         )
         let controller = ResultsViewController(
