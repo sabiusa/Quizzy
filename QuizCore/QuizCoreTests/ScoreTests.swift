@@ -69,12 +69,9 @@ class ScoreTests: XCTestCase {
             for userAnswers: [String],
             comparedTo correctAnswers: [String]
         ) -> Int {
-            var score = 0
-            for (index, answer) in userAnswers.enumerated() {
-                if index >= correctAnswers.count { return score }
-                score += (answer == correctAnswers[index]) ? 1 : 0
+            return zip(userAnswers, correctAnswers).reduce(0) { score, tuple in
+                return score + (tuple.0 == tuple.1 ? 1 : 0)
             }
-            return score
         }
         
     }
