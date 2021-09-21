@@ -49,8 +49,8 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2", "Q3"])
         
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
         
         XCTAssertEqual(delegate.askedQuestions, ["Q1", "Q2", "Q3"])
     }
@@ -59,7 +59,7 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(questions: ["Q1"])
         
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
         
         XCTAssertEqual(delegate.askedQuestions, ["Q1"])
     }
@@ -85,7 +85,7 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
         
         XCTAssertTrue(delegate.completedQuizzes.isEmpty)
     }
@@ -94,8 +94,8 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
         
         XCTAssertEqual(delegate.completedQuizzes.count, 1)
         assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
@@ -141,10 +141,9 @@ class FlowTests: XCTestCase {
     private class DelegateSpy: QuizDelegate {
         
         var askedQuestions = [String]()
+        var answerCompletions: [(String) -> Void] = []
         var handledResult: QuizResult<String, String>? = nil
         var completedQuizzes: [[(String, String)]] = []
-        
-        var answerCompletion: ((String) -> Void) = { _ in }
         
         var handledQuestionCount: Int {
             return askedQuestions.count
@@ -152,7 +151,7 @@ class FlowTests: XCTestCase {
         
         func answer(for question: String, completion: @escaping (String) -> Void) {
             self.askedQuestions.append(question)
-            self.answerCompletion = completion
+            self.answerCompletions.append(completion)
         }
         
         func didCompleteQuiz(with answers: [(question: String, answer: String)]) {
