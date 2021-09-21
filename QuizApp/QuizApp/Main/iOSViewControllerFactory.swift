@@ -90,9 +90,13 @@ class iOSViewControllerFactory: ViewControllerFactory {
         for result: QuizResult<Question<String>, [String]>
     ) -> UIViewController {
         let presenter = ResultsPresenter(
-            questions: questions,
-            result: result,
-            correctAnswers: correctAnswers
+            userAnswers: questions.map { question in
+                return (question, result.answers[question]!)
+            },
+            correctAnswers: questions.map { question in
+                return (question, correctAnswers[question]!)
+            },
+            scorer: { _, _ in result.score }
         )
         let controller = ResultsViewController(
             summary: presenter.summary,
