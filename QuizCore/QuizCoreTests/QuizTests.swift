@@ -10,48 +10,43 @@ import QuizCore
 
 class QuizTests: XCTestCase {
     
-    private let delegate = DelegateSpy()
     private var quiz: Quiz!
     
-    override func setUp() {
-        super.setUp()
+    func test_startQuiz_answerZeroOutOfTwoCorrectly_scoresZero() {
+        let delegate = DelegateSpy()
         
         quiz = Quiz.start(
             questions: ["Q1", "Q2"],
             delegate: delegate,
             correctAnswers: ["Q1": "A1", "Q2": "A2"]
         )
-    }
-    
-    func test_startQuiz_answerZeroOutOfTwoCorrectly_scoresZero() {
-        
-        delegate.answerCompletion("wrong")
-        delegate.answerCompletion("wrong")
-        
-        XCTAssertEqual(delegate.handledResult!.score, 0)
-    }
-    
-    func test_startQuiz_answerOneOutOfTwoCorrectly_scoresOne() {
-        
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("wrong")
-        
-        XCTAssertEqual(delegate.handledResult!.score, 1)
-    }
-    
-    func test_startQuiz_answerTwoOutOfTwoCorrectly_scoresTwo() {
         
         delegate.answerCompletion("A1")
         delegate.answerCompletion("A2")
         
-        XCTAssertEqual(delegate.handledResult!.score, 2)
+        XCTAssertEqual(delegate.completedQuizzes.count, 1)
+        assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
     }
     
     // MARK:- Helpers
     
+    private func assertEqual(
+        _ a1: [(String, String)],
+        _ a2: [(String, String)],
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        XCTAssertTrue(
+            a1.elementsEqual(a2, by: ==),
+            "\(a1) does not equal \(a2)",
+            file: file,
+            line: line
+        )
+    }
+    
     private class DelegateSpy: QuizDelegate {
         
-        var handledResult: QuizResult<String, String>? = nil
+        var completedQuizzes: [[(String, String)]] = []
         
         var answerCompletion: ((String) -> Void) = { _ in }
         
@@ -59,9 +54,11 @@ class QuizTests: XCTestCase {
             self.answerCompletion = completion
         }
         
-        func handle(result: QuizResult<String, String>) {
-            handledResult = result
+        func didCompleteQuiz(with answers: [(question: String, answer: String)]) {
+            completedQuizzes.append(answers)
         }
+        
+        func handle(result: QuizResult<String, String>) {}
         
     }
     
