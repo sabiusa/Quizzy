@@ -157,7 +157,6 @@ class FlowTests: XCTestCase {
         
         var askedQuestions = [String]()
         var answerCompletions: [(String) -> Void] = []
-        var handledResult: QuizResult<String, String>? = nil
         var completedQuizzes: [[(String, String)]] = []
         
         var handledQuestionCount: Int {
@@ -171,10 +170,6 @@ class FlowTests: XCTestCase {
         
         func didCompleteQuiz(with answers: [(question: String, answer: String)]) {
             completedQuizzes.append(answers)
-        }
-        
-        func handle(result: QuizResult<String, String>) {
-            handledResult = result
         }
         
     }

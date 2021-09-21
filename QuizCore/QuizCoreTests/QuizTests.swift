@@ -75,8 +75,6 @@ class QuizTests: XCTestCase {
             completedQuizzes.append(answers)
         }
         
-        func handle(result: QuizResult<String, String>) {}
-        
     }
     
 }

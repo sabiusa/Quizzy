@@ -15,7 +15,4 @@ public protocol QuizDelegate {
     func answer(for question: Question, completion: @escaping (Answer) -> Void)
     func didCompleteQuiz(with answers: [(question: Question, answer: Answer)])
     
-    @available(*, deprecated)
-    func handle(result: QuizResult<Question, Answer>)
-    
 }

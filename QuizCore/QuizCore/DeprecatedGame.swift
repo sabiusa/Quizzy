@@ -76,9 +76,7 @@ where R.Answer: Equatable {
         let result = QuizResult(answers: userAnswers, score: score)
         router.route(to: result)
     }
-    
-    func handle(result: QuizResult<R.Question, R.Answer>) {}
-    
+        
     private func scoring(
         answers: [R.Question: R.Answer],
         correctAnswers: [R.Question: R.Answer]
