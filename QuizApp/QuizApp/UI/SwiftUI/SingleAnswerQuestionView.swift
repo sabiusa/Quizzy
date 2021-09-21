@@ -19,22 +19,9 @@ struct SingleAnswerQuestionView: View {
             QuestionHeaderView(title: title, question: question)
             
             ForEach(options, id: \.self) { option in
-                Button(
-                    action: {},
-                    label: {
-                        HStack {
-                            Circle()
-                                .stroke(Color.secondary, lineWidth: 2.5)
-                                .frame(width: 40.0, height: 40.0)
-                            
-                            Text(option)
-                                .font(.title)
-                                .foregroundColor(.secondary)
-                            
-                            Spacer()
-                        }
-                        .padding()
-                    }
+                SingleTextSelectionView(
+                    text: option,
+                    selection: {}
                 )
             }
             
