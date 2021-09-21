@@ -15,16 +15,26 @@ class ScoreTests: XCTestCase {
         XCTAssertEqual(score, 0)
     }
     
-    func test_oneWrongAnswer_scores_zero() {
-        let score = BasicScore.score(for: ["wrong"], comparingTo: ["right"])
+    func test_oneWrongAnswer_scoresZero() {
+        let score = BasicScore.score(for: ["wrong"], comparingTo: ["correct"])
         
         XCTAssertEqual(score, 0)
     }
     
+    func test_oneCorrectAnswer_scoresOne() {
+        let score = BasicScore.score(for: ["correct"], comparingTo: ["correct"])
+        
+        XCTAssertEqual(score, 1)
+    }
+    
     private class BasicScore {
         
-        static func score(for: [Any], comparingTo: [Any]) -> Int {
-            return 0
+        static func score(
+            for userAnswers: [String],
+            comparingTo correctAnswers: [String]
+        ) -> Int {
+            if userAnswers.isEmpty { return 0 }
+            return userAnswers == correctAnswers ? 1 : 0
         }
         
     }
