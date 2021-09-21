@@ -24,11 +24,3 @@ protocol ViewControllerFactory {
     ) -> UIViewController
     
 }
-
-extension ViewControllerFactory {
-    
-    func resultViewController(for userAnswers: Answers) -> UIViewController {
-        return UIViewController()
-    }
-    
-}
