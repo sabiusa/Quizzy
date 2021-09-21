@@ -21,7 +21,9 @@ struct SingleAnswerQuestionView: View {
             ForEach(options, id: \.self) { option in
                 SingleTextSelectionView(
                     text: option,
-                    selection: {}
+                    selection: {
+                        selection(option)
+                    }
                 )
             }
             
@@ -34,12 +36,26 @@ struct SingleAnswerQuestionView: View {
 struct SingleAnswerQuestionView_Previews: PreviewProvider {
     
     static var previews: some View {
-        SingleAnswerQuestionView(
-            title: "1 of 2",
-            question: "What is 2x2?",
-            options: ["2", "4", "6", "22"],
-            selection: { _ in }
-        )
+        SingleAnswerQuestionTestView()
+    }
+    
+    struct SingleAnswerQuestionTestView: View {
+        
+        @State var selection: String = "none"
+        
+        var body: some View {
+            VStack {
+                SingleAnswerQuestionView(
+                    title: "1 of 2",
+                    question: "What is 2x2?",
+                    options: ["2", "4", "6", "22"],
+                    selection: { selection = $0 }
+                )
+                
+                Text("Last selection: " + selection)
+            }
+        }
+        
     }
     
 }
