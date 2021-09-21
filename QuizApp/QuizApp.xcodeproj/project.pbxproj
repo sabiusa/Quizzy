@@ -38,6 +38,7 @@
 		77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */; };
 		77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */; };
 		77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */; };
+		77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenterTests.swift; sourceTree = "<group>"; };
 		77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
 		77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestionView.swift; sourceTree = "<group>"; };
+		77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */,
+				77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */,
 				3EA2DADC26F2162B008EB32F /* QuestionViewController.swift in Sources */,
 				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
+				77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
