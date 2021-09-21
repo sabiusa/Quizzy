@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */; };
+		3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C626F9D07D00ABBE9B /* BasicScore.swift */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTests.swift; sourceTree = "<group>"; };
+		3E2808C626F9D07D00ABBE9B /* BasicScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScore.swift; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */,
+			);
+			path = Scoring;
+			sourceTree = "<group>";
+		};
+		3E2808C526F9D06E00ABBE9B /* Scoring */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808C626F9D07D00ABBE9B /* BasicScore.swift */,
 			);
 			path = Scoring;
 			sourceTree = "<group>";
@@ -341,6 +351,7 @@
 				3E89AD8B26F88E38008C7D3E /* UI */,
 				3E89AD9126F88EFC008C7D3E /* Presentation */,
 				3E89AD9426F88F70008C7D3E /* Routing */,
+				3E2808C526F9D06E00ABBE9B /* Scoring */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -471,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */,
+				3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */,
 				3EA2DAAA26F21169008EB32F /* AppDelegate.swift in Sources */,
 				77FD745E26F6F8E90092FFC0 /* ResultsPresenter.swift in Sources */,
 				3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */,
