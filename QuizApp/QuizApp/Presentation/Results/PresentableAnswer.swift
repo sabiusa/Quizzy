@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PresentableAnswer {
+struct PresentableAnswer: Equatable {
     let question: String
     let correctAnswer: String
     let wrongAnswer: String?

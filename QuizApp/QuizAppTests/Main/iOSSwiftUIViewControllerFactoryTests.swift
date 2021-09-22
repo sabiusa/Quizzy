@@ -89,21 +89,21 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
     }
     
     func test_resultsViewController_createsControllerWithTitle() {
-        let (resultController, presenter) = makeResults()
+        let (resultsView, presenter) = makeResults()
         
-        XCTAssertEqual(resultController.title, presenter.title)
+        XCTAssertEqual(resultsView.title, presenter.title)
     }
     
     func test_resultsViewController_createsControllerWithSummary() {
-        let (resultController, presenter) = makeResults()
+        let (resultsView, presenter) = makeResults()
         
-        XCTAssertEqual(resultController.summary, presenter.summary)
+        XCTAssertEqual(resultsView.summary, presenter.summary)
     }
     
     func test_resultsViewController_createsControllerWithPresentableAnswers() {
-        let (resultController, presenter) = makeResults()
+        let (resultsView, presenter) = makeResults()
         
-        XCTAssertEqual(resultController.answers.count, presenter.presentableAnswers.count)
+        XCTAssertEqual(resultsView.answers, presenter.presentableAnswers)
     }
     
     // MARK:- Helpers
@@ -177,7 +177,7 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
         return host.rootView
     }
     
-    func makeResults() -> (ResultsViewController, ResultsPresenter) {
+    func makeResults() -> (ResultsView, ResultsPresenter) {
         let presenter = ResultsPresenter(
             userAnswers: correctAnswers,
             correctAnswers: correctAnswers,
@@ -186,9 +186,9 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
         
         let sut = makeSUT()
         let controller = sut.resultViewController(for: correctAnswers)
-        let resultController = controller as! ResultsViewController
+        let resultHost = controller as! UIHostingController<ResultsView>
         
-        return (resultController, presenter)
+        return (resultHost.rootView, presenter)
     }
     
 }

@@ -106,12 +106,15 @@ final class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
             correctAnswers: correctAnswers,
             scorer: BasicScore.score
         )
-        let controller = ResultsViewController(
-            summary: presenter.summary,
-            answers: presenter.presentableAnswers
+        let resultsHost = UIHostingController(
+            rootView: ResultsView(
+                title: presenter.title,
+                summary: presenter.summary,
+                answers: presenter.presentableAnswers,
+                playAgain: {}
+            )
         )
-        controller.title = presenter.title
-        return controller
+        return resultsHost
     }
     
 }
