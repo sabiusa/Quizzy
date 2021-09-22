@@ -1,5 +1,5 @@
 //
-//  QuestionHeaderView.swift
+//  HeaderView.swift
 //  QuizApp
 //
 //  Created by Saba Khutsishvili on 21.09.21.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct QuestionHeaderView: View {
+struct HeaderView: View {
     
     let title: String
-    let question: String
+    let subtitle: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16.0) {
@@ -20,7 +20,7 @@ struct QuestionHeaderView: View {
                 .foregroundColor(Color.blue)
                 .padding(.top)
             
-            Text(question)
+            Text(subtitle)
                 .font(.largeTitle)
                 .fontWeight(.medium)
         }
@@ -29,10 +29,10 @@ struct QuestionHeaderView: View {
     
 }
 
-struct QuestionHeaderView_Previews: PreviewProvider {
+struct HeaderView_Previews: PreviewProvider {
     
     static var previews: some View {
-        QuestionHeaderView(title: "Title", question: "Question")
+        HeaderView(title: "Title", subtitle: "Subtitle")
             .previewLayout(.sizeThatFits)
     }
     

@@ -48,7 +48,7 @@
 		77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */; };
 		77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */; };
 		77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */; };
-		77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */; };
+		77FD747526FA5F930092FFC0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747426FA5F930092FFC0 /* HeaderView.swift */; };
 		77FD747726FA614C0092FFC0 /* SingleTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */; };
 		77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */; };
 		77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */; };
@@ -124,7 +124,7 @@
 		77FD745F26F75A4F0092FFC0 /* QuestionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenterTests.swift; sourceTree = "<group>"; };
 		77FD746126F75AA10092FFC0 /* QuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
 		77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestionView.swift; sourceTree = "<group>"; };
-		77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHeaderView.swift; sourceTree = "<group>"; };
+		77FD747426FA5F930092FFC0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextSelectionView.swift; sourceTree = "<group>"; };
 		77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTests.swift; sourceTree = "<group>"; };
 		77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
@@ -192,6 +192,14 @@
 				3E2808E126FB3D1B00ABBE9B /* three_options.png */,
 			);
 			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		3E2808E326FB54D600ABBE9B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				77FD747426FA5F930092FFC0 /* HeaderView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
@@ -441,8 +449,8 @@
 		77FD747126FA55870092FFC0 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				3E2808E326FB54D600ABBE9B /* Helpers */,
 				77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */,
-				77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */,
 				77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */,
 				3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */,
 				3E2808CE26FB1F5D00ABBE9B /* MultipleAnswerQuestionView.swift */,
@@ -587,7 +595,7 @@
 				3E2808D126FB203200ABBE9B /* MultipleTextSelectionView.swift in Sources */,
 				77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */,
 				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
-				77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */,
+				77FD747526FA5F930092FFC0 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

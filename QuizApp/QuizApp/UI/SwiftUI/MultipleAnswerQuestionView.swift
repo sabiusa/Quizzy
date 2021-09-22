@@ -16,7 +16,7 @@ struct MultipleAnswerQuestionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0.0) {
-            QuestionHeaderView(title: title, question: question)
+            HeaderView(title: title, subtitle: question)
             
             ForEach(store.options.indices) { i in
                 MultipleTextSelectionView(option: $store.options[i])
