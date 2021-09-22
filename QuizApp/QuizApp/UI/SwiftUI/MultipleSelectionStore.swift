@@ -40,6 +40,11 @@ struct MultipleSelectionOption {
         self.text = text
     }
     
+    init(text: String, isSelected: Bool = false) {
+        self.text = text
+        self.isSelected = isSelected
+    }
+    
     mutating func select() {
         isSelected.toggle()
     }
