@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             (question2, [option4, option7])
         ]
         
-        let factory = iOSViewControllerFactory(
+        let factory = iOSUIKitViewControllerFactory(
             options: allOptions,
             correctAnswers: correctAnswers
         )

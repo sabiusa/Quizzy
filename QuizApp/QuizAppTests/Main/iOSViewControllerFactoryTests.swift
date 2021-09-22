@@ -1,5 +1,5 @@
 //
-//  iOSViewControllerFactoryTests.swift
+//  iOSUIKitViewControllerFactoryTests.swift
 //  QuizAppTests
 //
 //  Created by Saba Khutsishvili on 17.09.21.
@@ -10,7 +10,7 @@ import QuizCore
 
 @testable import QuizApp
 
-class iOSViewControllerFactoryTests: XCTestCase {
+class iOSUIKitViewControllerFactoryTests: XCTestCase {
     
     func test_questionViewController_isCreatedForSingleOption() {
         let controller = makeRawQuestionController(question: singleAnswerQuestion)
@@ -116,8 +116,8 @@ class iOSViewControllerFactoryTests: XCTestCase {
         ]
     }
     
-    private func makeSUT() -> iOSViewControllerFactory {
-        let sut = iOSViewControllerFactory(
+    private func makeSUT() -> iOSUIKitViewControllerFactory {
+        let sut = iOSUIKitViewControllerFactory(
             options: options,
             correctAnswers: correctAnswers
         )
