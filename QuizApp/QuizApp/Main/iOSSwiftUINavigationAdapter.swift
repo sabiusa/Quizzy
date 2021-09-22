@@ -40,11 +40,16 @@ final class iOSSwiftUINavigationAdapter: ViewControllerFactory, QuizDelegate {
             for: question,
             answerCallback: completion
         )
-        navigation.pushViewController(controller, animated: true)
+        show(controller)
     }
     
     func didCompleteQuiz(with answers: Answers) {
-        
+        let controller = resultViewController(for: answers)
+        show(controller)
+    }
+    
+    func show(_ controller: UIViewController) {
+        navigation.pushViewController(controller, animated: true)
     }
     
     func questionViewController(
