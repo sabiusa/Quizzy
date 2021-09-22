@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */; };
 		3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C626F9D07D00ABBE9B /* BasicScore.swift */; };
+		3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		3E2808C326F9CFE500ABBE9B /* ScoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTests.swift; sourceTree = "<group>"; };
 		3E2808C626F9D07D00ABBE9B /* BasicScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScore.swift; sourceTree = "<group>"; };
+		3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStore.swift; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */,
 				77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */,
 				77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */,
+				3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */,
 				779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */,
 				3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */,
+				3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */,
 				3E8445AB26F367F0008EE770 /* WrongAnswerCell.swift in Sources */,
 				77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */,
 				779D2A0726F490590077EF53 /* iOSUIKitViewControllerFactory.swift in Sources */,
