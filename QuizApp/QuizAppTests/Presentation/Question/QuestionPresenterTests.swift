@@ -21,7 +21,7 @@ class QuestionPresenterTests: XCTestCase {
             currentQuestion: question1
         )
         
-        XCTAssertEqual(sut.title, "Question #1")
+        XCTAssertEqual(sut.title, "1 of 2")
     }
     
     func test_title_formatsTitleForIndex() {
@@ -30,7 +30,7 @@ class QuestionPresenterTests: XCTestCase {
             currentQuestion: question2
         )
         
-        XCTAssertEqual(sut.title, "Question #2")
+        XCTAssertEqual(sut.title, "2 of 2")
     }
     
     func test_title_forNonexistantQuestion_isEmpty() {

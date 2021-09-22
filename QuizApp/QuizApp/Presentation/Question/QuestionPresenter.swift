@@ -16,7 +16,7 @@ struct QuestionPresenter {
         guard let index = allQuestions.firstIndex(of: currentQuestion)
         else { return "" }
         
-        return "Question #\(index + 1)"
+        return "\(index + 1) of \(allQuestions.count)"
     }
     
 }
