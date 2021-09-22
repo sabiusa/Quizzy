@@ -12,6 +12,13 @@
 		3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */; };
 		3E2808CF26FB1F5D00ABBE9B /* MultipleAnswerQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808CE26FB1F5D00ABBE9B /* MultipleAnswerQuestionView.swift */; };
 		3E2808D126FB203200ABBE9B /* MultipleTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808D026FB203200ABBE9B /* MultipleTextSelectionView.swift */; };
+		3E2808D326FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808D226FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift */; };
+		3E2808D726FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808D626FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift */; };
+		3E2808D926FB2F4C00ABBE9B /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808D826FB2F4C00ABBE9B /* UIViewController+Snapshot.swift */; };
+		3E2808DB26FB387400ABBE9B /* View+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808DA26FB387400ABBE9B /* View+Snapshot.swift */; };
+		3E2808DD26FB396400ABBE9B /* SnapshotWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808DC26FB396400ABBE9B /* SnapshotWindow.swift */; };
+		3E2808DF26FB3B2400ABBE9B /* SnapshotConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808DE26FB3B2400ABBE9B /* SnapshotConfiguration.swift */; };
+		3E2808E226FB3D1B00ABBE9B /* three_options.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2808E126FB3D1B00ABBE9B /* three_options.png */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -78,6 +85,13 @@
 		3E2808C826FB1E9C00ABBE9B /* MultipleSelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStore.swift; sourceTree = "<group>"; };
 		3E2808CE26FB1F5D00ABBE9B /* MultipleAnswerQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleAnswerQuestionView.swift; sourceTree = "<group>"; };
 		3E2808D026FB203200ABBE9B /* MultipleTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextSelectionView.swift; sourceTree = "<group>"; };
+		3E2808D226FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleAnswerQuestionSnapshotTests.swift; sourceTree = "<group>"; };
+		3E2808D626FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
+		3E2808D826FB2F4C00ABBE9B /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		3E2808DA26FB387400ABBE9B /* View+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Snapshot.swift"; sourceTree = "<group>"; };
+		3E2808DC26FB396400ABBE9B /* SnapshotWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotWindow.swift; sourceTree = "<group>"; };
+		3E2808DE26FB3B2400ABBE9B /* SnapshotConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotConfiguration.swift; sourceTree = "<group>"; };
+		3E2808E126FB3D1B00ABBE9B /* three_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three_options.png; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -150,6 +164,34 @@
 				3E2808C626F9D07D00ABBE9B /* BasicScore.swift */,
 			);
 			path = Scoring;
+			sourceTree = "<group>";
+		};
+		3E2808D426FB2ED000ABBE9B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808D526FB2ED600ABBE9B /* Snapshot */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3E2808D526FB2ED600ABBE9B /* Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808DE26FB3B2400ABBE9B /* SnapshotConfiguration.swift */,
+				3E2808DC26FB396400ABBE9B /* SnapshotWindow.swift */,
+				3E2808D826FB2F4C00ABBE9B /* UIViewController+Snapshot.swift */,
+				3E2808DA26FB387400ABBE9B /* View+Snapshot.swift */,
+				3E2808D626FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift */,
+			);
+			path = Snapshot;
+			sourceTree = "<group>";
+		};
+		3E2808E026FB3D1B00ABBE9B /* Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808E126FB3D1B00ABBE9B /* three_options.png */,
+			);
+			path = Snapshots;
 			sourceTree = "<group>";
 		};
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
@@ -261,6 +303,7 @@
 		3E89AD9626F88FA8008C7D3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3E2808D426FB2ED000ABBE9B /* Helpers */,
 				77FD747C26FB060B0092FFC0 /* SwiftUI */,
 				77FD747026FA53350092FFC0 /* UIKit */,
 			);
@@ -411,7 +454,9 @@
 		77FD747C26FB060B0092FFC0 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				3E2808E026FB3D1B00ABBE9B /* Snapshots */,
 				77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */,
+				3E2808D226FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -511,6 +556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2808E226FB3D1B00ABBE9B /* three_options.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,16 +595,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2808DB26FB387400ABBE9B /* View+Snapshot.swift in Sources */,
 				77FD747E26FB06230092FFC0 /* MultipleSelectionStoreTests.swift in Sources */,
 				779D2A0526F48FAF0077EF53 /* iOSViewControllerFactoryTests.swift in Sources */,
+				3E2808D326FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift in Sources */,
 				77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
 				3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */,
+				3E2808D726FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift in Sources */,
 				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
 				779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */,
 				77FD745A26F6F6A20092FFC0 /* ResultsPresenterTests.swift in Sources */,
 				779D29F426F2FF150077EF53 /* TableViewHelpers.swift in Sources */,
 				3EA2DADA26F21587008EB32F /* QuestionViewControllerTests.swift in Sources */,
+				3E2808D926FB2F4C00ABBE9B /* UIViewController+Snapshot.swift in Sources */,
+				3E2808DF26FB3B2400ABBE9B /* SnapshotConfiguration.swift in Sources */,
+				3E2808DD26FB396400ABBE9B /* SnapshotWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

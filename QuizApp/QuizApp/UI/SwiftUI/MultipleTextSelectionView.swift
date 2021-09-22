@@ -15,7 +15,7 @@ struct MultipleTextSelectionView: View {
         Button(action: { option.select() }) {
             HStack {
                 Rectangle()
-                    .strokeBorder(option.isSelected ? Color.blue : Color.secondary, lineWidth: 2.5)
+                    .strokeBorder(option.isSelected ? Color.blue : .secondary, lineWidth: 2.5)
                     .frame(width: 40.0, height: 40.0)
                     .overlay(
                         Rectangle()
@@ -25,7 +25,7 @@ struct MultipleTextSelectionView: View {
                 
                 Text(option.text)
                     .font(.title)
-                    .foregroundColor(option.isSelected ? Color.blue : Color.secondary)
+                    .foregroundColor(option.isSelected ? Color.blue : .secondary)
                 
                 Spacer()
             }
