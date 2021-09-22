@@ -17,10 +17,6 @@ struct MultipleSelectionStore {
         self.options = options.map(MultipleSelectionOption.init)
     }
     
-    func select(_ option: String) {
-        
-    }
-    
 }
 
 struct MultipleSelectionOption {
