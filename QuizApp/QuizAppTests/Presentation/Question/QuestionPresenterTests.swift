@@ -39,7 +39,7 @@ class QuestionPresenterTests: XCTestCase {
             currentQuestion: question1
         )
         
-        XCTAssertNil(sut.title)
+        XCTAssertEqual(sut.title, "")
     }
     
 }
