@@ -40,6 +40,8 @@
 		77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */; };
 		77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */; };
 		77FD747726FA614C0092FFC0 /* SingleTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */; };
+		77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */; };
+		77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		77FD747226FA55A60092FFC0 /* SingleAnswerQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestionView.swift; sourceTree = "<group>"; };
 		77FD747426FA5F930092FFC0 /* QuestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHeaderView.swift; sourceTree = "<group>"; };
 		77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextSelectionView.swift; sourceTree = "<group>"; };
+		77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTests.swift; sourceTree = "<group>"; };
+		77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				3EA2DAA926F21169008EB32F /* AppDelegate.swift */,
 				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
 				779D2A0626F490590077EF53 /* iOSUIKitViewControllerFactory.swift */,
+				77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
@@ -239,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				779D2A0426F48FAE0077EF53 /* iOSViewControllerFactoryTests.swift */,
+				77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */,
 				3EA2DAC226F2116C008EB32F /* Info.plist */,
 			);
 			path = Main;
@@ -510,6 +516,7 @@
 				779D29FD26F3ADB20077EF53 /* NavigationControllerRouter.swift in Sources */,
 				3EA2DAAC26F21169008EB32F /* SceneDelegate.swift in Sources */,
 				3EA2DADC26F2162B008EB32F /* QuestionViewController.swift in Sources */,
+				77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */,
 				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
 				77FD747526FA5F930092FFC0 /* QuestionHeaderView.swift in Sources */,
 			);
@@ -520,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				779D2A0526F48FAF0077EF53 /* iOSViewControllerFactoryTests.swift in Sources */,
+				77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
 				3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */,
 				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
