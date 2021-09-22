@@ -17,7 +17,7 @@ struct MultipleSelectionStore {
     
     init(
         options: [String],
-        handler: @escaping ([String]) -> Void = { _ in }
+        handler: @escaping ([String]) -> Void
     ) {
         self.options = options.map(MultipleSelectionOption.init)
         self.handler = handler

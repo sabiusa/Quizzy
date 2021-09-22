@@ -16,7 +16,8 @@ class MultipleAnswerQuestionSnapshotTests: XCTestCase {
             title: "Title",
             question: "Question",
             store: MultipleSelectionStore(
-                options: ["Option 1", "Option 2", "Option 3"]
+                options: ["Option 1", "Option 2", "Option 3"],
+                handler: { _ in }
             )
         )
         
