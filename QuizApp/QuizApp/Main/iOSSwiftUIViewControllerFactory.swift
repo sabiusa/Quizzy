@@ -15,6 +15,7 @@ final class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
     
     private let options: [Question<String>: [String]]
     private let correctAnswers: Answers
+    private let playAgain: () -> Void
     
     private var questions: [Question<String>] {
         return correctAnswers.map(\.question)
@@ -22,10 +23,12 @@ final class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
     
     init(
         options: [Question<String>: [String]],
-        correctAnswers: Answers
+        correctAnswers: Answers,
+        playAgain: @escaping () -> Void = {}
     ) {
         self.options = options
         self.correctAnswers = correctAnswers
+        self.playAgain = playAgain
     }
     
     func questionViewController(
@@ -111,7 +114,7 @@ final class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
                 title: presenter.title,
                 summary: presenter.summary,
                 answers: presenter.presentableAnswers,
-                playAgain: {}
+                playAgain: playAgain
             )
         )
         return resultsHost
