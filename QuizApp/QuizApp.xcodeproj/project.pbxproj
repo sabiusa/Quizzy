@@ -20,6 +20,8 @@
 		3E2808DF26FB3B2400ABBE9B /* SnapshotConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808DE26FB3B2400ABBE9B /* SnapshotConfiguration.swift */; };
 		3E2808E226FB3D1B00ABBE9B /* three_options.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2808E126FB3D1B00ABBE9B /* three_options.png */; };
 		3E2808E526FB555F00ABBE9B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808E426FB555F00ABBE9B /* RoundedButton.swift */; };
+		3E2808E926FB57A900ABBE9B /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808E826FB57A900ABBE9B /* ResultsView.swift */; };
+		3E6E129926FB5F8B00986998 /* ResultAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E129826FB5F8B00986998 /* ResultAnswerView.swift */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -94,6 +96,8 @@
 		3E2808DE26FB3B2400ABBE9B /* SnapshotConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotConfiguration.swift; sourceTree = "<group>"; };
 		3E2808E126FB3D1B00ABBE9B /* three_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three_options.png; sourceTree = "<group>"; };
 		3E2808E426FB555F00ABBE9B /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		3E2808E826FB57A900ABBE9B /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		3E6E129826FB5F8B00986998 /* ResultAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAnswerView.swift; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 				3E2808D026FB203200ABBE9B /* MultipleTextSelectionView.swift */,
 			);
 			path = Question;
+			sourceTree = "<group>";
+		};
+		3E2808E726FB578A00ABBE9B /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				3E2808E826FB57A900ABBE9B /* ResultsView.swift */,
+				3E6E129826FB5F8B00986998 /* ResultAnswerView.swift */,
+			);
+			path = Results;
 			sourceTree = "<group>";
 		};
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
@@ -466,6 +479,7 @@
 			children = (
 				3E2808E326FB54D600ABBE9B /* Helpers */,
 				3E2808E626FB573B00ABBE9B /* Question */,
+				3E2808E726FB578A00ABBE9B /* Results */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -589,6 +603,7 @@
 				77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */,
 				3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */,
 				3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */,
+				3E6E129926FB5F8B00986998 /* ResultAnswerView.swift in Sources */,
 				77FD747726FA614C0092FFC0 /* SingleTextSelectionView.swift in Sources */,
 				3E2808CF26FB1F5D00ABBE9B /* MultipleAnswerQuestionView.swift in Sources */,
 				3EA2DAAA26F21169008EB32F /* AppDelegate.swift in Sources */,
@@ -605,6 +620,7 @@
 				3EA2DADC26F2162B008EB32F /* QuestionViewController.swift in Sources */,
 				3E2808E526FB555F00ABBE9B /* RoundedButton.swift in Sources */,
 				3E2808D126FB203200ABBE9B /* MultipleTextSelectionView.swift in Sources */,
+				3E2808E926FB57A900ABBE9B /* ResultsView.swift in Sources */,
 				77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */,
 				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
 				77FD747526FA5F930092FFC0 /* HeaderView.swift in Sources */,
