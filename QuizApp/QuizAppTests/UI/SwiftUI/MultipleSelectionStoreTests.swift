@@ -15,10 +15,10 @@ class MultipleSelectionStoreTests: XCTestCase {
         var sut = MultipleSelectionStore(options: ["o1", "o2", "o3"])
         XCTAssertFalse(sut.options[0].isSelected)
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         XCTAssertTrue(sut.options[0].isSelected)
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         XCTAssertFalse(sut.options[0].isSelected)
     }
     
@@ -26,13 +26,13 @@ class MultipleSelectionStoreTests: XCTestCase {
         var sut = MultipleSelectionStore(options: ["o1", "o2", "o3"])
         XCTAssertFalse(sut.canSubmit)
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         XCTAssertTrue(sut.canSubmit)
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         XCTAssertFalse(sut.canSubmit)
         
-        sut.options[1].select()
+        sut.options[1].toggleSelection()
         XCTAssertTrue(sut.canSubmit)
     }
     
@@ -45,15 +45,15 @@ class MultipleSelectionStoreTests: XCTestCase {
         sut.submit()
         XCTAssertEqual(submittedOptions, [])
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         sut.submit()
         XCTAssertEqual(submittedOptions, [["o1"]])
         
-        sut.options[1].select()
+        sut.options[1].toggleSelection()
         sut.submit()
         XCTAssertEqual(submittedOptions, [["o1"], ["o1", "o2"]])
         
-        sut.options[0].select()
+        sut.options[0].toggleSelection()
         sut.submit()
         XCTAssertEqual(submittedOptions, [["o1"], ["o1", "o2"], ["o2"]])
     }
