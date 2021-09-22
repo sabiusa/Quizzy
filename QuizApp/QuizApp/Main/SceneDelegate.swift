@@ -53,6 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
 //        let factory = iOSSwiftUIViewControllerFactory(
+//            navigation: navigationController,
 //            options: allOptions,
 //            correctAnswers: correctAnswers,
 //            playAgain: startNewQuiz

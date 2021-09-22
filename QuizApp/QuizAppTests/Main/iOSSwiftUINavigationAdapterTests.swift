@@ -1,5 +1,5 @@
 //
-//  iOSSwiftUIViewControllerFactoryTests.swift
+//  iOSSwiftUINavigationAdapterTests.swift
 //  QuizAppTests
 //
 //  Created by Saba Khutsishvili on 22.09.21.
@@ -11,7 +11,7 @@ import QuizCore
 
 @testable import QuizApp
 
-class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
+class iOSSwiftUINavigationAdapterTests: XCTestCase {
     
     func test_questionViewController_isCreatedForSingleOption() {
         let controller = makeRawSingleAnswerQuestionView()
@@ -119,6 +119,17 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
         XCTAssertEqual(playAgainCount, 2)
     }
     
+    func test_answerForQuestion_pushesQuestionToNavigationStack() {
+        let (sut, navigation) = makeSUT()
+        
+        sut.answer(for: singleAnswerQuestion) { _ in }
+        sut.answer(for: multipleAnswerQuestion) { _ in }
+        
+        XCTAssertEqual(navigation.viewControllers.count, 2)
+        XCTAssertTrue(navigation.viewControllers[0] is UIHostingController<SingleAnswerQuestionView>)
+        XCTAssertTrue(navigation.viewControllers[1] is UIHostingController<MultipleAnswerQuestionView>)
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
@@ -142,21 +153,34 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
         ]
     }
     
+    private class NonAnimatedNavigationController: UINavigationController {
+        
+        override func pushViewController(
+            _ viewController: UIViewController,
+            animated: Bool
+        ) {
+            super.pushViewController(viewController, animated: false)
+        }
+        
+    }
+    
     private func makeSUT(
         playAgain: @escaping () -> Void = {}
-    ) -> iOSSwiftUIViewControllerFactory {
-        let sut = iOSSwiftUIViewControllerFactory(
+    ) -> (iOSSwiftUINavigationAdapter, UINavigationController) {
+        let navigation = NonAnimatedNavigationController()
+        let sut = iOSSwiftUINavigationAdapter(
+            navigation: navigation,
             options: options,
             correctAnswers: correctAnswers,
             playAgain: playAgain
         )
-        return sut
+        return (sut, navigation)
     }
     
     func makeRawSingleAnswerQuestionView(
         answerCallback: @escaping ([String]) -> Void = { _ in }
     ) -> UIViewController {
-        let sut = makeSUT()
+        let (sut, _) = makeSUT()
         return sut.questionViewController(
             for: singleAnswerQuestion,
             answerCallback: answerCallback
@@ -176,7 +200,7 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
     func makeRawMultipleAnswerQuestionView(
         answerCallback: @escaping ([String]) -> Void = { _ in }
     ) -> UIViewController {
-        let sut = makeSUT()
+        let (sut, _) = makeSUT()
         return sut.questionViewController(
             for: multipleAnswerQuestion,
             answerCallback: answerCallback
@@ -202,7 +226,7 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
             scorer: BasicScore.score
         )
         
-        let sut = makeSUT(playAgain: playAgain)
+        let (sut, _) = makeSUT(playAgain: playAgain)
         let controller = sut.resultViewController(for: correctAnswers)
         let resultHost = controller as! UIHostingController<ResultsView>
         
@@ -210,3 +234,5 @@ class iOSSwiftUIViewControllerFactoryTests: XCTestCase {
     }
     
 }
+
+

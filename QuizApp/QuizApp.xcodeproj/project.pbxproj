@@ -56,6 +56,8 @@
 		77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */; };
 		77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */; };
 		77FD747E26FB06230092FFC0 /* MultipleSelectionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */; };
+		77FD748026FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747F26FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift */; };
+		77FD748226FBA6A80092FFC0 /* iOSSwiftUINavigationAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD748126FBA6A80092FFC0 /* iOSSwiftUINavigationAdapterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,8 @@
 		77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTests.swift; sourceTree = "<group>"; };
 		77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
 		77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStoreTests.swift; sourceTree = "<group>"; };
+		77FD747F26FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationAdapter.swift; sourceTree = "<group>"; };
+		77FD748126FBA6A80092FFC0 /* iOSSwiftUINavigationAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationAdapterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +241,7 @@
 				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
 				779D2A0626F490590077EF53 /* iOSUIKitViewControllerFactory.swift */,
 				77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */,
+				77FD747F26FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
@@ -331,6 +336,7 @@
 			children = (
 				779D2A0426F48FAE0077EF53 /* iOSViewControllerFactoryTests.swift */,
 				77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */,
+				77FD748126FBA6A80092FFC0 /* iOSSwiftUINavigationAdapterTests.swift */,
 				3EA2DAC226F2116C008EB32F /* Info.plist */,
 			);
 			path = Main;
@@ -611,6 +617,7 @@
 				3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */,
 				779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */,
 				3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */,
+				77FD748026FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift in Sources */,
 				3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */,
 				3E8445AB26F367F0008EE770 /* WrongAnswerCell.swift in Sources */,
 				77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */,
@@ -641,6 +648,7 @@
 				3E2808D726FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift in Sources */,
 				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
 				779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */,
+				77FD748226FBA6A80092FFC0 /* iOSSwiftUINavigationAdapterTests.swift in Sources */,
 				77FD745A26F6F6A20092FFC0 /* ResultsPresenterTests.swift in Sources */,
 				779D29F426F2FF150077EF53 /* TableViewHelpers.swift in Sources */,
 				3EA2DADA26F21587008EB32F /* QuestionViewControllerTests.swift in Sources */,
