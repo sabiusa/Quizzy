@@ -42,6 +42,7 @@
 		77FD747726FA614C0092FFC0 /* SingleTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */; };
 		77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */; };
 		77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */; };
+		77FD747E26FB06230092FFC0 /* MultipleSelectionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		77FD747626FA614C0092FFC0 /* SingleTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextSelectionView.swift; sourceTree = "<group>"; };
 		77FD747826FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTests.swift; sourceTree = "<group>"; };
 		77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
+		77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		3E89AD9626F88FA8008C7D3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				77FD747C26FB060B0092FFC0 /* SwiftUI */,
 				77FD747026FA53350092FFC0 /* UIKit */,
 			);
 			path = UI;
@@ -396,6 +399,14 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		77FD747C26FB060B0092FFC0 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				77FD747D26FB06230092FFC0 /* MultipleSelectionStoreTests.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FD747E26FB06230092FFC0 /* MultipleSelectionStoreTests.swift in Sources */,
 				779D2A0526F48FAF0077EF53 /* iOSViewControllerFactoryTests.swift in Sources */,
 				77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
