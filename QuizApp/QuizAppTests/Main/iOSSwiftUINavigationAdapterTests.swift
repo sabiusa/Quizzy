@@ -119,26 +119,28 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         XCTAssertEqual(playAgainCount, 2)
     }
     
-    func test_answerForQuestion_pushesQuestionToNavigationStack() {
+    func test_answerForQuestion_replacesNavigationStack() {
         let (sut, navigation) = makeSUT()
         
         sut.answer(for: singleAnswerQuestion) { _ in }
-        sut.answer(for: multipleAnswerQuestion) { _ in }
-        
-        XCTAssertEqual(navigation.viewControllers.count, 2)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers[0] is UIHostingController<SingleAnswerQuestionView>)
-        XCTAssertTrue(navigation.viewControllers[1] is UIHostingController<MultipleAnswerQuestionView>)
+        
+        sut.answer(for: multipleAnswerQuestion) { _ in }
+        XCTAssertEqual(navigation.viewControllers.count, 1)
+        XCTAssertTrue(navigation.viewControllers[0] is UIHostingController<MultipleAnswerQuestionView>)
     }
     
-    func test_didCompleteQuiz_pushesResultToNavigationStack() {
+    func test_didCompleteQuiz_replacesNavigationStack() {
         let (sut, navigation) = makeSUT()
         
         sut.didCompleteQuiz(with: correctAnswers)
-        sut.didCompleteQuiz(with: correctAnswers)
-        
-        XCTAssertEqual(navigation.viewControllers.count, 2)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers[0] is UIHostingController<ResultsView>)
-        XCTAssertTrue(navigation.viewControllers[1] is UIHostingController<ResultsView>)
+        
+        sut.didCompleteQuiz(with: correctAnswers)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
+        XCTAssertTrue(navigation.viewControllers[0] is UIHostingController<ResultsView>)
     }
     
     // MARK:- Helpers
@@ -165,6 +167,13 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     }
     
     private class NonAnimatedNavigationController: UINavigationController {
+        
+        override func setViewControllers(
+            _ viewControllers: [UIViewController],
+            animated: Bool
+        ) {
+            super.setViewControllers(viewControllers, animated: false)
+        }
         
         override func pushViewController(
             _ viewController: UIViewController,
