@@ -171,9 +171,7 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     ) -> SingleAnswerQuestionView {
         let (sut, navigation) = makeSUT()
         sut.answer(for: singleAnswerQuestion, completion: answerCallback)
-        let controller = navigation.topViewController
-        let host = controller as! UIHostingController<SingleAnswerQuestionView>
-        return host.rootView
+        return navigation.singleAnswerTopView!
     }
     
     func makeMultipleAnswerQuestionView(
@@ -181,9 +179,7 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     ) -> MultipleAnswerQuestionView {
         let (sut, navigation) = makeSUT()
         sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
-        let controller = navigation.topViewController
-        let host = controller as! UIHostingController<MultipleAnswerQuestionView>
-        return host.rootView
+        return navigation.multipleAnswerTopView!
     }
     
     func makeResults(
@@ -197,10 +193,28 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         
         let (sut, navigation) = makeSUT(playAgain: playAgain)
         sut.didCompleteQuiz(with: correctAnswers)
-        let controller = navigation.topViewController
-        let resultHost = controller as! UIHostingController<ResultsView>
+        let resultsView = navigation.resultsTopView!
         
-        return (resultHost.rootView, presenter)
+        return (resultsView, presenter)
+    }
+    
+}
+
+private extension UINavigationController {
+    
+    var singleAnswerTopView: SingleAnswerQuestionView? {
+        let controller = topViewController as? UIHostingController<SingleAnswerQuestionView>
+        return controller?.rootView
+    }
+    
+    var multipleAnswerTopView: MultipleAnswerQuestionView? {
+        let controller = topViewController as? UIHostingController<MultipleAnswerQuestionView>
+        return controller?.rootView
+    }
+    
+    var resultsTopView: ResultsView? {
+        let controller = topViewController as? UIHostingController<ResultsView>
+        return controller?.rootView
     }
     
 }
