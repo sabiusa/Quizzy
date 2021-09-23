@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = newWindow
         window?.makeKeyAndVisible()
         
-        startNewUIKitQuiz()
+        startNewSwiftUIAdapterQuiz()
     }
     
     private func startNewUIKitQuiz() {
@@ -60,6 +60,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         quiz = Quiz.start(
             questions: questions,
             delegate: router
+        )
+    }
+    
+    private func startNewSwiftUIAdapterQuiz() {
+        let (questions, options, correctAnswers) = getQuizData()
+        
+        let adapter = iOSSwiftUINavigationAdapter(
+            navigation: navigationController,
+            options: options,
+            correctAnswers: correctAnswers,
+            playAgain: startNewSwiftUIRouterQuiz
+        )
+        
+        quiz = Quiz.start(
+            questions: questions,
+            delegate: adapter
         )
     }
     
