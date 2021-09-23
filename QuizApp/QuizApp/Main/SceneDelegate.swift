@@ -27,28 +27,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = newWindow
         window?.makeKeyAndVisible()
         
-        startNewSwiftUIRouterQuiz()
+        startNewUIKitQuiz()
     }
     
     private func startNewUIKitQuiz() {
-        let question1 = Question.singleAnswer("What is 2x2?")
-        let question2 = Question.multipleAnswer("How to get 8")
-        let questions = [question1, question2]
-        
-        let option1 = "2", option2 = "4", option3 = "6"
-        let options1 = [option1, option2, option3]
-        
-        let option4 = "3 + 5", option5 = "2 + 7", option6 = "5 + 5", option7 = "0 + 8"
-        let options2 = [option4, option5, option6, option7]
-        let allOptions = [question1: options1, question2: options2]
-        
-        let correctAnswers = [
-            (question1, [option2]),
-            (question2, [option4, option7])
-        ]
+        let (questions, options, correctAnswers) = getQuizData()
         
         let factory = iOSUIKitViewControllerFactory(
-            options: allOptions,
+            options: options,
             correctAnswers: correctAnswers
         )
         
@@ -61,24 +47,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func startNewSwiftUIRouterQuiz() {
-        let question1 = Question.singleAnswer("What is 2x2?")
-        let question2 = Question.multipleAnswer("How to get 8")
-        let questions = [question1, question2]
-        
-        let option1 = "2", option2 = "4", option3 = "6"
-        let options1 = [option1, option2, option3]
-        
-        let option4 = "3 + 5", option5 = "2 + 7", option6 = "5 + 5", option7 = "0 + 8"
-        let options2 = [option4, option5, option6, option7]
-        let allOptions = [question1: options1, question2: options2]
-        
-        let correctAnswers = [
-            (question1, [option2]),
-            (question2, [option4, option7])
-        ]
+        let (questions, options, correctAnswers) = getQuizData()
         
         let factory = iOSSwiftUIViewControllerFactory(
-            options: allOptions,
+            options: options,
             correctAnswers: correctAnswers,
             playAgain: startNewSwiftUIRouterQuiz
         )
@@ -89,6 +61,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             questions: questions,
             delegate: router
         )
+    }
+    
+    // MARK:- Helpers
+    
+    private typealias QuizData = (
+        questions: [Question<String>],
+        options: [Question<String> : [String]],
+        correctAnswers: [(Question<String>, [String])]
+    )
+    
+    private func getQuizData() -> QuizData {
+        let question1 = Question.singleAnswer("What is 2x2?")
+        let question2 = Question.multipleAnswer("How to get 8")
+        let questions = [question1, question2]
+        
+        let option1 = "2", option2 = "4", option3 = "6"
+        let options1 = [option1, option2, option3]
+        
+        let option4 = "3 + 5", option5 = "2 + 7", option6 = "5 + 5", option7 = "0 + 8"
+        let options2 = [option4, option5, option6, option7]
+        let options = [question1: options1, question2: options2]
+        
+        let correctAnswers = [
+            (question1, [option2]),
+            (question2, [option4, option7])
+        ]
+        
+        return (questions, options, correctAnswers)
     }
 
 }
