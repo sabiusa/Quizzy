@@ -166,24 +166,6 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         ]
     }
     
-    private class NonAnimatedNavigationController: UINavigationController {
-        
-        override func setViewControllers(
-            _ viewControllers: [UIViewController],
-            animated: Bool
-        ) {
-            super.setViewControllers(viewControllers, animated: false)
-        }
-        
-        override func pushViewController(
-            _ viewController: UIViewController,
-            animated: Bool
-        ) {
-            super.pushViewController(viewController, animated: false)
-        }
-        
-    }
-    
     private func makeSUT(
         playAgain: @escaping () -> Void = {}
     ) -> (iOSSwiftUINavigationAdapter, UINavigationController) {

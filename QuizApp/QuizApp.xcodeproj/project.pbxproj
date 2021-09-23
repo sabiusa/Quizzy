@@ -23,6 +23,8 @@
 		3E2808E926FB57A900ABBE9B /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2808E826FB57A900ABBE9B /* ResultsView.swift */; };
 		3E6E129926FB5F8B00986998 /* ResultAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E129826FB5F8B00986998 /* ResultAnswerView.swift */; };
 		3E6E129C26FCC22B00986998 /* ShowStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E129B26FCC22B00986998 /* ShowStrategy.swift */; };
+		3E6E129E26FCC6EF00986998 /* ShowStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E129D26FCC6EF00986998 /* ShowStrategyTests.swift */; };
+		3E6E12A126FCC7B700986998 /* NonAnimatedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E12A026FCC7B700986998 /* NonAnimatedNavigationController.swift */; };
 		3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A426F36754008EE770 /* UITableView+Extensions.swift */; };
 		3E8445A726F367BD008EE770 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A626F367BD008EE770 /* PresentableAnswer.swift */; };
 		3E8445A926F367D3008EE770 /* CorrectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */; };
@@ -102,6 +104,8 @@
 		3E2808E826FB57A900ABBE9B /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		3E6E129826FB5F8B00986998 /* ResultAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAnswerView.swift; sourceTree = "<group>"; };
 		3E6E129B26FCC22B00986998 /* ShowStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStrategy.swift; sourceTree = "<group>"; };
+		3E6E129D26FCC6EF00986998 /* ShowStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStrategyTests.swift; sourceTree = "<group>"; };
+		3E6E12A026FCC7B700986998 /* NonAnimatedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAnimatedNavigationController.swift; sourceTree = "<group>"; };
 		3E8445A426F36754008EE770 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8445A626F367BD008EE770 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		3E8445A826F367D3008EE770 /* CorrectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerCell.swift; sourceTree = "<group>"; };
@@ -242,6 +246,14 @@
 				3E6E129B26FCC22B00986998 /* ShowStrategy.swift */,
 			);
 			path = ShowStrategy;
+			sourceTree = "<group>";
+		};
+		3E6E129F26FCC7AC00986998 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3E6E12A026FCC7B700986998 /* NonAnimatedNavigationController.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
@@ -416,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */,
+				3E6E129D26FCC6EF00986998 /* ShowStrategyTests.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -454,6 +467,7 @@
 		3EA2DABF26F2116C008EB32F /* QuizAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3E6E129F26FCC7AC00986998 /* Helpers */,
 				3E89AD9526F88F94008C7D3E /* Main */,
 				3E89AD9626F88FA8008C7D3E /* UI */,
 				3E89AD9A26F88FE4008C7D3E /* Presentation */,
@@ -654,6 +668,7 @@
 				77FD747E26FB06230092FFC0 /* MultipleSelectionStoreTests.swift in Sources */,
 				779D2A0526F48FAF0077EF53 /* iOSViewControllerFactoryTests.swift in Sources */,
 				3E2808D326FB2A8700ABBE9B /* MultipleAnswerQuestionSnapshotTests.swift in Sources */,
+				3E6E12A126FCC7B700986998 /* NonAnimatedNavigationController.swift in Sources */,
 				77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
 				3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */,
@@ -665,6 +680,7 @@
 				779D29F426F2FF150077EF53 /* TableViewHelpers.swift in Sources */,
 				3EA2DADA26F21587008EB32F /* QuestionViewControllerTests.swift in Sources */,
 				3E2808D926FB2F4C00ABBE9B /* UIViewController+Snapshot.swift in Sources */,
+				3E6E129E26FCC6EF00986998 /* ShowStrategyTests.swift in Sources */,
 				3E2808DF26FB3B2400ABBE9B /* SnapshotConfiguration.swift in Sources */,
 				3E2808DD26FB396400ABBE9B /* SnapshotWindow.swift in Sources */,
 			);

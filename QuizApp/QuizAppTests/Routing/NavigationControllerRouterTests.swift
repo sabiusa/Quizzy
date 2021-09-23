@@ -156,17 +156,6 @@ class NavigationControllerRouterTests: XCTestCase {
     private let navigationController = NonAnimatedNavigationController()
     private let factory = ViewControllerFactoryStub()
     
-    private class NonAnimatedNavigationController: UINavigationController {
-        
-        override func pushViewController(
-            _ viewController: UIViewController,
-            animated: Bool
-        ) {
-            super.pushViewController(viewController, animated: false)
-        }
-        
-    }
-    
     private class ViewControllerFactoryStub: ViewControllerFactory {
         
         private var stubbedQuestions = [Question<String>: UIViewController]()
