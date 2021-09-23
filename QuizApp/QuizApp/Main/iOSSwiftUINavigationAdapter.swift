@@ -14,7 +14,7 @@ final class iOSSwiftUINavigationAdapter: QuizDelegate {
     typealias Answer = [String]
     typealias Answers = [(question: Question, answer: Answer)]
     
-    private let navigation: UINavigationController
+    private let shower: ShowStrategy
     private let options: [Question: Answer]
     private let correctAnswers: Answers
     private let playAgain: () -> Void
@@ -24,12 +24,12 @@ final class iOSSwiftUINavigationAdapter: QuizDelegate {
     }
     
     init(
-        navigation: UINavigationController,
+        shower: ShowStrategy,
         options: [Question: Answer],
         correctAnswers: Answers,
         playAgain: @escaping () -> Void
     ) {
-        self.navigation = navigation
+        self.shower = shower
         self.options = options
         self.correctAnswers = correctAnswers
         self.playAgain = playAgain
@@ -40,16 +40,12 @@ final class iOSSwiftUINavigationAdapter: QuizDelegate {
             for: question,
             answerCallback: completion
         )
-        show(controller)
+        shower.show(controller)
     }
     
     func didCompleteQuiz(with answers: Answers) {
         let controller = resultViewController(for: answers)
-        show(controller)
-    }
-    
-    private func show(_ controller: UIViewController) {
-        navigation.setViewControllers([controller], animated: true)
+        shower.show(controller)
     }
     
     private func questionViewController(

@@ -188,8 +188,9 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         playAgain: @escaping () -> Void = {}
     ) -> (iOSSwiftUINavigationAdapter, UINavigationController) {
         let navigation = NonAnimatedNavigationController()
+        let shower = ReplaceStrategy(navigationController: navigation)
         let sut = iOSSwiftUINavigationAdapter(
-            navigation: navigation,
+            shower: shower,
             options: options,
             correctAnswers: correctAnswers,
             playAgain: playAgain

@@ -67,7 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let (questions, options, correctAnswers) = getQuizData()
         
         let adapter = iOSSwiftUINavigationAdapter(
-            navigation: navigationController,
+            shower: ReplaceStrategy(navigationController: navigationController),
             options: options,
             correctAnswers: correctAnswers,
             playAgain: startNewSwiftUIRouterQuiz
