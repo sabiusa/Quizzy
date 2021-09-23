@@ -13,6 +13,14 @@ protocol ShowStrategy {
     
 }
 
+extension ShowStrategy {
+    
+    func callAsFunction(_ viewController: UIViewController) {
+        show(viewController)
+    }
+    
+}
+
 struct PushStrategy: ShowStrategy {
     
     let navigationController: UINavigationController

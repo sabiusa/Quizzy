@@ -40,12 +40,12 @@ final class iOSSwiftUINavigationAdapter: QuizDelegate {
             for: question,
             answerCallback: completion
         )
-        showStrategy.show(controller)
+        showStrategy(controller)
     }
     
     func didCompleteQuiz(with answers: Answers) {
         let controller = resultViewController(for: answers)
-        showStrategy.show(controller)
+        showStrategy(controller)
     }
     
     private func questionViewController(
