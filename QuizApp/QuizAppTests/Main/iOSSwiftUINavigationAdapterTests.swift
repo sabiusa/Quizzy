@@ -13,13 +13,6 @@ import QuizCore
 
 class iOSSwiftUINavigationAdapterTests: XCTestCase {
     
-    func test_questionViewController_isCreatedForSingleOption() {
-        let controller = makeRawSingleAnswerQuestionView()
-        let singleAnswerView = controller as? UIHostingController<SingleAnswerQuestionView>
-        
-        XCTAssertNotNil(singleAnswerView)
-    }
-    
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
         let presenter = QuestionPresenter(
             allQuestions: questions,
@@ -57,13 +50,6 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         let option2 = singleAnswerView.options[1]
         singleAnswerView.selection(option2)
         XCTAssertEqual(answers, [[option1], [option2]])
-    }
-    
-    func test_questionViewController_isCreatedForMultipleOption() {
-        let controller = makeRawMultipleAnswerQuestionView()
-        let multipleAnswerView = controller as? UIHostingController<MultipleAnswerQuestionView>
-        
-        XCTAssertNotNil(multipleAnswerView)
     }
     
     func test_questionViewController_multipleAnswer_createsControllerWithTitle() {
@@ -180,38 +166,22 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
         return (sut, navigation)
     }
     
-    func makeRawSingleAnswerQuestionView(
-        answerCallback: @escaping ([String]) -> Void = { _ in }
-    ) -> UIViewController? {
-        let (sut, navigation) = makeSUT()
-        sut.answer(for: singleAnswerQuestion, completion: answerCallback)
-        return navigation.topViewController
-    }
-    
     func makeSingleAnswerQuestionView(
         answerCallback: @escaping ([String]) -> Void = { _ in }
     ) -> SingleAnswerQuestionView {
-        let controller = makeRawSingleAnswerQuestionView(
-            answerCallback: answerCallback
-        )
+        let (sut, navigation) = makeSUT()
+        sut.answer(for: singleAnswerQuestion, completion: answerCallback)
+        let controller = navigation.topViewController
         let host = controller as! UIHostingController<SingleAnswerQuestionView>
         return host.rootView
-    }
-    
-    func makeRawMultipleAnswerQuestionView(
-        answerCallback: @escaping ([String]) -> Void = { _ in }
-    ) -> UIViewController? {
-        let (sut, navigation) = makeSUT()
-        sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
-        return navigation.topViewController
     }
     
     func makeMultipleAnswerQuestionView(
         answerCallback: @escaping ([String]) -> Void = { _ in }
     ) -> MultipleAnswerQuestionView {
-        let controller = makeRawMultipleAnswerQuestionView(
-            answerCallback: answerCallback
-        )
+        let (sut, navigation) = makeSUT()
+        sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
+        let controller = navigation.topViewController
         let host = controller as! UIHostingController<MultipleAnswerQuestionView>
         return host.rootView
     }
@@ -234,5 +204,3 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     }
     
 }
-
-
