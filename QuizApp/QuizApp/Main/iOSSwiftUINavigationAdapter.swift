@@ -8,7 +8,7 @@
 import SwiftUI
 import QuizCore
 
-final class iOSSwiftUINavigationAdapter: ViewControllerFactory, QuizDelegate {
+final class iOSSwiftUINavigationAdapter: QuizDelegate {
     
     typealias Question = QuizCore.Question<String>
     typealias Answer = [String]
@@ -48,11 +48,11 @@ final class iOSSwiftUINavigationAdapter: ViewControllerFactory, QuizDelegate {
         show(controller)
     }
     
-    func show(_ controller: UIViewController) {
+    private func show(_ controller: UIViewController) {
         navigation.pushViewController(controller, animated: true)
     }
     
-    func questionViewController(
+    private func questionViewController(
         for question: Question,
         answerCallback: @escaping (Answer) -> Void
     ) -> UIViewController {
@@ -103,7 +103,7 @@ final class iOSSwiftUINavigationAdapter: ViewControllerFactory, QuizDelegate {
         }
     }
     
-    func questionViewController(
+    private func questionViewController(
         question: Question,
         questionText: String,
         options: Answer,
@@ -124,7 +124,7 @@ final class iOSSwiftUINavigationAdapter: ViewControllerFactory, QuizDelegate {
         return controller
     }
     
-    func resultViewController(for userAnswers: Answers) -> UIViewController {
+    private func resultViewController(for userAnswers: Answers) -> UIViewController {
         let presenter = ResultsPresenter(
             userAnswers: userAnswers,
             correctAnswers: correctAnswers,
