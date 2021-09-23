@@ -11,7 +11,7 @@ import XCTest
 
 class ShowStrategyTests: XCTestCase {
     
-    func test_pushStrategy_pushesToStack() {
+    func test_pushStrategy_pushesToNavigationStack() {
         let navigation = NonAnimatedNavigationController()
         let sut = PushStrategy(navigationController: navigation)
 
@@ -22,6 +22,19 @@ class ShowStrategyTests: XCTestCase {
 
         sut.show(UIViewController())
         XCTAssertEqual(navigation.viewControllers.count, 2)
+    }
+    
+    func test_replaceStrategy_replacesNavigationStack() {
+        let navigation = NonAnimatedNavigationController()
+        let sut = ReplaceStrategy(navigationController: navigation)
+
+        XCTAssertEqual(navigation.viewControllers.count, 0)
+
+        sut.show(UIViewController())
+        XCTAssertEqual(navigation.viewControllers.count, 1)
+
+        sut.show(UIViewController())
+        XCTAssertEqual(navigation.viewControllers.count, 1)
     }
     
 }
