@@ -27,11 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = newWindow
         window?.makeKeyAndVisible()
         
-        startNewSwiftUIAdapterQuiz()
+        startNewSwiftUIRouterQuiz()
     }
     
     private func startNewUIKitQuiz() {
-        let (questions, options, correctAnswers) = getQuizData()
+        let (questions, options, correctAnswers) = Questionnare.getQuizData()
         
         let factory = iOSUIKitViewControllerFactory(
             options: options,
@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func startNewSwiftUIRouterQuiz() {
-        let (questions, options, correctAnswers) = getQuizData()
+        let (questions, options, correctAnswers) = Questionnare.getQuizData()
         
         let factory = iOSSwiftUIViewControllerFactory(
             options: options,
@@ -64,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func startNewSwiftUIAdapterQuiz() {
-        let (questions, options, correctAnswers) = getQuizData()
+        let (questions, options, correctAnswers) = Questionnare.getQuizData()
         let navigation = QuizNavigationStore()
         
         let adapter = iOSSwiftUINavigationAdapter(
@@ -80,15 +80,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
     }
     
-    // MARK:- Helpers
+}
+
+enum Questionnare {
     
-    private typealias QuizData = (
+    typealias Data = (
         questions: [Question<String>],
         options: [Question<String> : [String]],
         correctAnswers: [(Question<String>, [String])]
     )
     
-    private func getQuizData() -> QuizData {
+    static func getQuizData() -> Data {
         let question1 = Question.singleAnswer("What is 2x2?")
         let question2 = Question.multipleAnswer("How to get 8")
         let questions = [question1, question2]
@@ -107,6 +109,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         return (questions, options, correctAnswers)
     }
-
+    
 }
-

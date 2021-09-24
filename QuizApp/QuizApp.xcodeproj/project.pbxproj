@@ -39,6 +39,8 @@
 		3EA2DAE026F3332F008EB32F /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */; };
 		3EA2DAE226F337C5008EB32F /* WrongAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */; };
 		774AC53026FD7F4B00D5788C /* QuizNavigationStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */; };
+		774AC53426FD840100D5788C /* QuizNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC53326FD840100D5788C /* QuizNavigationView.swift */; };
+		774AC53626FD865D00D5788C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC53526FD865D00D5788C /* AppMain.swift */; };
 		779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */; };
 		779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */; };
 		779D29F026F2F8070077EF53 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779D29EF26F2F8070077EF53 /* ResultsViewController.xib */; };
@@ -125,6 +127,8 @@
 		3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 		3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WrongAnswerCell.xib; sourceTree = "<group>"; };
 		774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigationStoreTests.swift; sourceTree = "<group>"; };
+		774AC53326FD840100D5788C /* QuizNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigationView.swift; sourceTree = "<group>"; };
+		774AC53526FD865D00D5788C /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		3E89AD8A26F88DA2008C7D3E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				774AC53526FD865D00D5788C /* AppMain.swift */,
 				3EA2DAA926F21169008EB32F /* AppDelegate.swift */,
 				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
 				779D2A0626F490590077EF53 /* iOSUIKitViewControllerFactory.swift */,
@@ -514,6 +519,7 @@
 				3E2808E326FB54D600ABBE9B /* Helpers */,
 				3E2808E626FB573B00ABBE9B /* Question */,
 				3E2808E726FB578A00ABBE9B /* Results */,
+				774AC53326FD840100D5788C /* QuizNavigationView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -636,6 +642,7 @@
 			files = (
 				77FD747326FA55A60092FFC0 /* SingleAnswerQuestionView.swift in Sources */,
 				3E8445A526F36754008EE770 /* UITableView+Extensions.swift in Sources */,
+				774AC53626FD865D00D5788C /* AppMain.swift in Sources */,
 				3E2808C726F9D07D00ABBE9B /* BasicScore.swift in Sources */,
 				3E6E129926FB5F8B00986998 /* ResultAnswerView.swift in Sources */,
 				77FD747726FA614C0092FFC0 /* SingleTextSelectionView.swift in Sources */,
@@ -648,6 +655,7 @@
 				77FD748026FBA21E0092FFC0 /* iOSSwiftUINavigationAdapter.swift in Sources */,
 				3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */,
 				3E8445AB26F367F0008EE770 /* WrongAnswerCell.swift in Sources */,
+				774AC53426FD840100D5788C /* QuizNavigationView.swift in Sources */,
 				77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */,
 				3E6E129C26FCC22B00986998 /* ShowStrategy.swift in Sources */,
 				779D2A0726F490590077EF53 /* iOSUIKitViewControllerFactory.swift in Sources */,

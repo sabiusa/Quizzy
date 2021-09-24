@@ -8,18 +8,6 @@
 import SwiftUI
 import QuizCore
 
-class QuizNavigationStore: ObservableObject {
-    
-    enum CurrentView {
-        case single(SingleAnswerQuestionView)
-        case multiple(MultipleAnswerQuestionView)
-        case result(ResultsView)
-    }
-    
-    @Published var currentView: CurrentView?
-    
-}
-
 final class iOSSwiftUINavigationAdapter: QuizDelegate {
     
     typealias Question = QuizCore.Question<String>
