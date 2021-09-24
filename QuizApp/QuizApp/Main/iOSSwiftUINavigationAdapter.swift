@@ -8,7 +8,7 @@
 import SwiftUI
 import QuizCore
 
-class QuizNavigationStore {
+class QuizNavigationStore: ObservableObject {
     
     enum CurrentView {
         case single(SingleAnswerQuestionView)
@@ -16,7 +16,7 @@ class QuizNavigationStore {
         case result(ResultsView)
     }
     
-    var currentView: CurrentView?
+    @Published var currentView: CurrentView?
     
 }
 

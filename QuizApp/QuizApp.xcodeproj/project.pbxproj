@@ -38,6 +38,7 @@
 		3EA2DADE26F219A3008EB32F /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DADD26F219A3008EB32F /* QuestionViewController.xib */; };
 		3EA2DAE026F3332F008EB32F /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */; };
 		3EA2DAE226F337C5008EB32F /* WrongAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */; };
+		774AC53026FD7F4B00D5788C /* QuizNavigationStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */; };
 		779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */; };
 		779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */; };
 		779D29F026F2F8070077EF53 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779D29EF26F2F8070077EF53 /* ResultsViewController.xib */; };
@@ -123,6 +124,7 @@
 		3EA2DADD26F219A3008EB32F /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		3EA2DADF26F3332F008EB32F /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 		3EA2DAE126F337C5008EB32F /* WrongAnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WrongAnswerCell.xib; sourceTree = "<group>"; };
+		774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigationStoreTests.swift; sourceTree = "<group>"; };
 		779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			children = (
 				779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */,
 				3E6E129D26FCC6EF00986998 /* ShowStrategyTests.swift */,
+				774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				3E2808D926FB2F4C00ABBE9B /* UIViewController+Snapshot.swift in Sources */,
 				3E6E129E26FCC6EF00986998 /* ShowStrategyTests.swift in Sources */,
 				3E2808DF26FB3B2400ABBE9B /* SnapshotConfiguration.swift in Sources */,
+				774AC53026FD7F4B00D5788C /* QuizNavigationStoreTests.swift in Sources */,
 				3E2808DD26FB396400ABBE9B /* SnapshotWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
