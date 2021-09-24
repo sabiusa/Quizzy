@@ -150,11 +150,10 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     
     private func makeSUT(
         playAgain: @escaping () -> Void = {}
-    ) -> (iOSSwiftUINavigationAdapter, UINavigationController) {
-        let navigation = NonAnimatedNavigationController()
-        let showStrategy = ReplaceStrategy(navigationController: navigation)
+    ) -> (iOSSwiftUINavigationAdapter, QuizNavigationStore) {
+        let navigation = QuizNavigationStore()
         let sut = iOSSwiftUINavigationAdapter(
-            showStrategy: showStrategy,
+            navigation: navigation,
             options: options,
             correctAnswers: correctAnswers,
             playAgain: playAgain
@@ -196,21 +195,21 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     
 }
 
-private extension UINavigationController {
+private extension QuizNavigationStore {
     
     var singleAnswerTopView: SingleAnswerQuestionView? {
-        let controller = topViewController as? UIHostingController<SingleAnswerQuestionView>
-        return controller?.rootView
+        if case let .single(view) = currentView { return view }
+        return nil
     }
     
     var multipleAnswerTopView: MultipleAnswerQuestionView? {
-        let controller = topViewController as? UIHostingController<MultipleAnswerQuestionView>
-        return controller?.rootView
+        if case let .multiple(view) = currentView { return view }
+        return nil
     }
     
     var resultsTopView: ResultsView? {
-        let controller = topViewController as? UIHostingController<ResultsView>
-        return controller?.rootView
+        if case let .result(view) = currentView { return view }
+        return nil
     }
     
 }

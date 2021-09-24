@@ -65,9 +65,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startNewSwiftUIAdapterQuiz() {
         let (questions, options, correctAnswers) = getQuizData()
+        let navigation = QuizNavigationStore()
         
         let adapter = iOSSwiftUINavigationAdapter(
-            showStrategy: ReplaceStrategy(navigationController: navigationController),
+            navigation: navigation,
             options: options,
             correctAnswers: correctAnswers,
             playAgain: startNewSwiftUIRouterQuiz
