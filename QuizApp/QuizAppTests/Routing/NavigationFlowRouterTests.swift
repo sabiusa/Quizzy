@@ -40,14 +40,9 @@ class NavigationFlowRouterTests: XCTestCase {
     
     func test_answerForQuestion_showsQuestionController() {
         let vc1 = UIViewController()
-        let navigator = NonAnimatedNavigationController()
-        let factory = ViewControllerFactoryStub()
         let question = singleAnswerQuestion
         
-        let sut = NavigationFlowRouter(
-            navigator: navigator,
-            factory: factory
-        )
+        let (sut, navigator, factory) = makeSUT()
         XCTAssertEqual(navigator.viewControllers.count, 0)
         
         factory.stub(for: question, with: vc1)
@@ -61,6 +56,20 @@ class NavigationFlowRouterTests: XCTestCase {
     
     private let singleAnswerQuestion = Question.singleAnswer("Q1")
     private let multipleAnswerQuestion = Question.multipleAnswer("Q2")
+    
+    private func makeSUT() -> (
+        NavigationFlowRouter,
+        NonAnimatedNavigationController,
+        ViewControllerFactoryStub
+    ) {
+        let navigationController = NonAnimatedNavigationController()
+        let factory = ViewControllerFactoryStub()
+        let sut = NavigationFlowRouter(
+            navigator: navigationController,
+            factory: factory
+        )
+        return (sut, navigationController, factory)
+    }
     
     private class ViewControllerFactoryStub: ViewControllerFactory {
         
