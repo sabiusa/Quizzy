@@ -52,6 +52,17 @@ class NavigationFlowRouterTests: XCTestCase {
         XCTAssertEqual(navigator.viewControllers.first, vc1)
     }
     
+    func test_answerFor_singleAnswerQuestion_firesAnswerCallback() {
+        let (sut, _, factory) = makeSUT()
+        let question = singleAnswerQuestion
+        
+        var callbackWasFired = false
+        sut.answer(for: question, completion: { _ in callbackWasFired = true })
+        factory.fireCallback(for: question)
+        
+        XCTAssertTrue(callbackWasFired)
+    }
+    
     // MARK:- Helpers
     
     private let singleAnswerQuestion = Question.singleAnswer("Q1")
@@ -74,11 +85,13 @@ class NavigationFlowRouterTests: XCTestCase {
     private class ViewControllerFactoryStub: ViewControllerFactory {
         
         private var stubbedQuestions = [Question<String>: UIViewController]()
+        private var answerCallbacks = [Question<String>: ([String]) -> Void]()
         
         func questionViewController(
             for question: Question<String>,
             answerCallback: @escaping ([String]) -> Void
         ) -> UIViewController {
+            answerCallbacks[question] = answerCallback
             let controller = stubbedQuestions[question] ?? UIViewController()
             return controller
         }
@@ -92,6 +105,13 @@ class NavigationFlowRouterTests: XCTestCase {
             with viewController: UIViewController
         ) {
             stubbedQuestions[question] = viewController
+        }
+        
+        func fireCallback(
+            for question: Question<String>,
+            with answers: [String] = []
+        ) {
+            answerCallbacks[question]?(answers)
         }
         
     }
