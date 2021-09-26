@@ -41,6 +41,7 @@
 		774AC53026FD7F4B00D5788C /* QuizNavigationStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */; };
 		774AC53426FD840100D5788C /* QuizNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC53326FD840100D5788C /* QuizNavigationView.swift */; };
 		774AC53626FD865D00D5788C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC53526FD865D00D5788C /* AppMain.swift */; };
+		774AC55826FF88EB00D5788C /* NavigationFlowRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC55726FF88EB00D5788C /* NavigationFlowRouterTests.swift */; };
 		779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */; };
 		779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */; };
 		779D29F026F2F8070077EF53 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779D29EF26F2F8070077EF53 /* ResultsViewController.xib */; };
@@ -129,6 +130,7 @@
 		774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigationStoreTests.swift; sourceTree = "<group>"; };
 		774AC53326FD840100D5788C /* QuizNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigationView.swift; sourceTree = "<group>"; };
 		774AC53526FD865D00D5788C /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		774AC55726FF88EB00D5788C /* NavigationFlowRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFlowRouterTests.swift; sourceTree = "<group>"; };
 		779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		3E89AD9E26F89049008C7D3E /* Routing */ = {
 			isa = PBXGroup;
 			children = (
+				774AC55726FF88EB00D5788C /* NavigationFlowRouterTests.swift */,
 				779D29FA26F3AC900077EF53 /* NavigationControllerRouterTests.swift */,
 				3E6E129D26FCC6EF00986998 /* ShowStrategyTests.swift */,
 				774AC52F26FD7F4B00D5788C /* QuizNavigationStoreTests.swift */,
@@ -683,6 +686,7 @@
 				77FD747926FAD81B0092FFC0 /* iOSSwiftUIViewControllerFactoryTests.swift in Sources */,
 				77FD746026F75A4F0092FFC0 /* QuestionPresenterTests.swift in Sources */,
 				3E2808C426F9CFE500ABBE9B /* ScoreTests.swift in Sources */,
+				774AC55826FF88EB00D5788C /* NavigationFlowRouterTests.swift in Sources */,
 				3E2808D726FB2F1B00ABBE9B /* XCTestCase+Snapshot.swift in Sources */,
 				779D29FB26F3AC900077EF53 /* NavigationControllerRouterTests.swift in Sources */,
 				779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */,
