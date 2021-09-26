@@ -27,11 +27,21 @@ class NavigationFlowRouter  {
         for question: Question<String>,
         completion: @escaping ([String]) -> Void
     ) {
-        let controller = factory.questionViewController(
-            for: question,
-            answerCallback: completion
-        )
-        navigator.setViewControllers([controller], animated: true)
+        switch question {
+        case .singleAnswer:
+            let controller = factory.questionViewController(
+                for: question,
+                answerCallback: completion
+            )
+            navigator.setViewControllers([controller], animated: true)
+        case .multipleAnswer:
+            let controller = factory.questionViewController(
+                for: question,
+                answerCallback: { _ in }
+            )
+            navigator.setViewControllers([controller], animated: true)
+        }
+        
     }
     
 }
@@ -61,6 +71,17 @@ class NavigationFlowRouterTests: XCTestCase {
         factory.fireCallback(for: question)
         
         XCTAssertTrue(callbackWasFired)
+    }
+    
+    func test_answerFor_multipleAnswerQuestion_doesNotFireAnswerCallback() {
+        let (sut, _, factory) = makeSUT()
+        let question = multipleAnswerQuestion
+        
+        var callbackWasFired = false
+        sut.answer(for: question, completion: { _ in callbackWasFired = true })
+        factory.fireCallback(for: question)
+        
+        XCTAssertFalse(callbackWasFired)
     }
     
     // MARK:- Helpers
