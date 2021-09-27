@@ -49,7 +49,9 @@ class iOSSwiftUINavigationFlowAdapter {
                 title: presenter.title,
                 question: text,
                 options: options,
-                selection: { _ in }
+                selection: { selection in
+                    completion([selection])
+                }
             )
             let host = UIHostingController(rootView: singleView)
             navigator.setViewControllers([host], animated: true)
@@ -80,6 +82,24 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(singleAnswerView.options, options[singleAnswerQuestion])
     }
     
+    func test_answerFor_singleAnswerQuestion_createsControllerWithAnswerCallback() {
+        var selections = [[String]]()
+        let singleAnswerView = makeSingleAnswerQuestionView(
+            answerCallback: { answer in
+                selections.append(answer)
+            }
+        )
+        XCTAssertEqual(selections.count, 0)
+        
+        let option0 = singleAnswerView.options[0]
+        singleAnswerView.selection(option0)
+        XCTAssertEqual(selections, [[option0]])
+        
+        let option1 = singleAnswerView.options[1]
+        singleAnswerView.selection(option1)
+        XCTAssertEqual(selections, [[option0], [option1]])
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
@@ -107,9 +127,11 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         return (sut, navigator)
     }
     
-    private func makeSingleAnswerQuestionView() -> SingleAnswerQuestionView {
+    private func makeSingleAnswerQuestionView(
+        answerCallback: @escaping ([String]) -> Void = { _ in }
+    ) -> SingleAnswerQuestionView {
         let (sut, navigator) = makeSUT()
-        sut.answer(for: singleAnswerQuestion, completion: { _ in })
+        sut.answer(for: singleAnswerQuestion, completion: answerCallback)
         let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
         return host.rootView
     }
