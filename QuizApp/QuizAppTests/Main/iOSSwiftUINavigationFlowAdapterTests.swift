@@ -63,39 +63,18 @@ class iOSSwiftUINavigationFlowAdapter {
 class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     
     func test_answerFor_singleAnswerQuestion_createsControllerWithTitle() {
-        let question = singleAnswerQuestion
         let presenter = QuestionPresenter(
             allQuestions: questions,
-            currentQuestion: question
-        )
-        let navigator = NonAnimatedNavigationController()
-        let sut = iOSSwiftUINavigationFlowAdapter(
-            navigator: navigator,
-            questions: questions,
-            options: options
+            currentQuestion: singleAnswerQuestion
         )
         
-        sut.answer(for: question, completion: { _ in })
-        
-        let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
-        let singleAnswerView = host.rootView
+        let singleAnswerView = makeSingleAnswerQuestionView()
         
         XCTAssertEqual(singleAnswerView.title, presenter.title)
     }
     
     func test_answerFor_singleAnswerQuestion_createsControllerWithCorrectData() {
-        let question = singleAnswerQuestion
-        let navigator = NonAnimatedNavigationController()
-        let sut = iOSSwiftUINavigationFlowAdapter(
-            navigator: navigator,
-            questions: questions,
-            options: options
-        )
-        
-        sut.answer(for: question, completion: { _ in })
-        
-        let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
-        let singleAnswerView = host.rootView
+        let singleAnswerView = makeSingleAnswerQuestionView()
         
         XCTAssertEqual(singleAnswerView.question, "Q1")
         XCTAssertEqual(singleAnswerView.options, options[singleAnswerQuestion])
@@ -115,6 +94,24 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
             singleAnswerQuestion: ["A1", "A2", "A3"],
             multipleAnswerQuestion: ["A4", "A5", "A6"]
         ]
+    }
+    
+    private func makeSUT(
+    ) ->(iOSSwiftUINavigationFlowAdapter, NonAnimatedNavigationController) {
+        let navigator = NonAnimatedNavigationController()
+        let sut = iOSSwiftUINavigationFlowAdapter(
+            navigator: navigator,
+            questions: questions,
+            options: options
+        )
+        return (sut, navigator)
+    }
+    
+    private func makeSingleAnswerQuestionView() -> SingleAnswerQuestionView {
+        let (sut, navigator) = makeSUT()
+        sut.answer(for: singleAnswerQuestion, completion: { _ in })
+        let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
+        return host.rootView
     }
     
 }
