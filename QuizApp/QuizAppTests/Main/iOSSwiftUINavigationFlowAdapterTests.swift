@@ -120,6 +120,12 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(multipleAnswerView.title, presenter.title)
     }
     
+    func test_answerFor_multipleAnswerQuestion_createsControllerWithQuestion() {
+        let multipleAnswerView = makeMultipleAnswerQuestionView()
+        
+        XCTAssertEqual(multipleAnswerView.question, "Q2")
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
