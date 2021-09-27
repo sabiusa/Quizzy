@@ -62,7 +62,7 @@ class iOSSwiftUINavigationFlowAdapter {
 
 class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     
-    func test_answerFor_singleAnswer_createsControllerWithTitle() {
+    func test_answerFor_singleAnswerQuestion_createsControllerWithTitle() {
         let question = singleAnswerQuestion
         let presenter = QuestionPresenter(
             allQuestions: questions,
