@@ -13,7 +13,7 @@ class QuizAppStore {
 }
 
 @available(iOS 14, *)
-//@main
+@main
 struct QuizApp: App {
     
     let appStore = QuizAppStore()
@@ -21,11 +21,10 @@ struct QuizApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Color.green
-//            QuizNavigationView(store: navigationStore)
-//                .onAppear {
-//                    startNewQuiz()
-//                }
+            QuizNavigationView(store: navigationStore)
+                .onAppear {
+                    startNewQuiz()
+                }
         }
     }
 
