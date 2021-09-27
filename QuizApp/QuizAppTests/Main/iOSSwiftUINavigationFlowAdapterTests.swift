@@ -83,6 +83,24 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(singleAnswerView.title, presenter.title)
     }
     
+    func test_answerFor_singleAnswerQuestion_createsControllerWithCorrectData() {
+        let question = singleAnswerQuestion
+        let navigator = NonAnimatedNavigationController()
+        let sut = iOSSwiftUINavigationFlowAdapter(
+            navigator: navigator,
+            questions: questions,
+            options: options
+        )
+        
+        sut.answer(for: question, completion: { _ in })
+        
+        let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
+        let singleAnswerView = host.rootView
+        
+        XCTAssertEqual(singleAnswerView.question, "Q1")
+        XCTAssertEqual(singleAnswerView.options, options[singleAnswerQuestion])
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
