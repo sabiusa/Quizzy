@@ -1,5 +1,5 @@
 //
-//  iOSSwiftUINavigationAdapter.swift
+//  iOSSwiftUINavigationStoreAdapter.swift
 //  QuizApp
 //
 //  Created by Saba Khutsishvili on 22.09.21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import QuizCore
 
-final class iOSSwiftUINavigationAdapter: QuizDelegate {
+final class iOSSwiftUINavigationStoreAdapter: QuizDelegate {
     
     typealias Question = QuizCore.Question<String>
     typealias Answer = [String]

@@ -1,5 +1,5 @@
 //
-//  iOSSwiftUINavigationAdapterTests.swift
+//  iOSSwiftUINavigationStoreAdapterTests.swift
 //  QuizAppTests
 //
 //  Created by Saba Khutsishvili on 22.09.21.
@@ -11,7 +11,7 @@ import QuizCore
 
 @testable import QuizApp
 
-class iOSSwiftUINavigationAdapterTests: XCTestCase {
+class iOSSwiftUINavigationStoreAdapterTests: XCTestCase {
     
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
         let presenter = QuestionPresenter(
@@ -150,9 +150,9 @@ class iOSSwiftUINavigationAdapterTests: XCTestCase {
     
     private func makeSUT(
         playAgain: @escaping () -> Void = {}
-    ) -> (iOSSwiftUINavigationAdapter, QuizNavigationStore) {
+    ) -> (iOSSwiftUINavigationStoreAdapter, QuizNavigationStore) {
         let navigation = QuizNavigationStore()
-        let sut = iOSSwiftUINavigationAdapter(
+        let sut = iOSSwiftUINavigationStoreAdapter(
             navigation: navigation,
             options: options,
             correctAnswers: correctAnswers,

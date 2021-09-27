@@ -67,7 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let (questions, options, correctAnswers) = Questionnare.getQuizData()
         let navigation = QuizNavigationStore()
         
-        let adapter = iOSSwiftUINavigationAdapter(
+        let adapter = iOSSwiftUINavigationStoreAdapter(
             navigation: navigation,
             options: options,
             correctAnswers: correctAnswers,

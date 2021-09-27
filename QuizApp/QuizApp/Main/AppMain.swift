@@ -31,7 +31,7 @@ struct QuizApp: App {
     private func startNewQuiz() {
         let (questions, options, correctAnswers) = Questionnare.getQuizData()
         
-        let adapter = iOSSwiftUINavigationAdapter(
+        let adapter = iOSSwiftUINavigationStoreAdapter(
             navigation: navigationStore,
             options: options,
             correctAnswers: correctAnswers,

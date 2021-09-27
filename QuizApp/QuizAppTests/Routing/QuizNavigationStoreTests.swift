@@ -56,9 +56,9 @@ class QuizNavigationStoreTests: XCTestCase {
         ]
     }
     
-    private func makeSUT() -> (QuizNavigationStore, iOSSwiftUINavigationAdapter) {
+    private func makeSUT() -> (QuizNavigationStore, iOSSwiftUINavigationStoreAdapter) {
         let sut = QuizNavigationStore()
-        let adapter = iOSSwiftUINavigationAdapter(
+        let adapter = iOSSwiftUINavigationStoreAdapter(
             navigation: sut,
             options: options,
             correctAnswers: correctAnswers,
