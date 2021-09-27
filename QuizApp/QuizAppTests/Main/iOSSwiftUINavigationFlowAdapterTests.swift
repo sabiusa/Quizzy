@@ -55,8 +55,17 @@ class iOSSwiftUINavigationFlowAdapter {
             )
             let host = UIHostingController(rootView: singleView)
             navigator.setViewControllers([host], animated: true)
-        default:
-            break
+        case .multipleAnswer(let text):
+            let multipleView = MultipleAnswerQuestionView(
+                title: presenter.title,
+                question: text,
+                store: MultipleSelectionStore(
+                    options: [],
+                    handler: { _ in }
+                )
+            )
+            let host = UIHostingController(rootView: multipleView)
+            navigator.setViewControllers([host], animated: true)
         }
     }
     
@@ -100,6 +109,17 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(selections, [[option0], [option1]])
     }
     
+    func test_answerFor_multipleAnswerQuestion_createsControllerWithTitle() {
+        let presenter = QuestionPresenter(
+            allQuestions: questions,
+            currentQuestion: multipleAnswerQuestion
+        )
+        
+        let multipleAnswerView = makeMultipleAnswerQuestionView()
+        
+        XCTAssertEqual(multipleAnswerView.title, presenter.title)
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
@@ -133,6 +153,15 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         let (sut, navigator) = makeSUT()
         sut.answer(for: singleAnswerQuestion, completion: answerCallback)
         let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
+        return host.rootView
+    }
+    
+    private func makeMultipleAnswerQuestionView(
+        answerCallback: @escaping ([String]) -> Void = { _ in }
+    ) -> MultipleAnswerQuestionView {
+        let (sut, navigator) = makeSUT()
+        sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
+        let host = navigator.topViewController as! UIHostingController<MultipleAnswerQuestionView>
         return host.rootView
     }
     
