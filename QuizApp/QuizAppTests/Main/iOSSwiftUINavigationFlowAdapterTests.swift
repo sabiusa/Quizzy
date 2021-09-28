@@ -15,19 +15,26 @@ class iOSSwiftUINavigationFlowAdapter {
     
     typealias Question = QuizCore.Question<String>
     typealias Answer = [String]
+    typealias Answers = [(question: Question, answer: Answer)]
     
     private let navigator: UINavigationController
     private let questions: [Question]
     private let options: [Question: Answer]
+    private let userAnswers: Answers
+    private let correctAnswers: Answers
     
     init(
         navigator: UINavigationController,
         questions: [Question],
-        options: [Question: Answer]
+        options: [Question: Answer],
+        userAnswers: Answers,
+        correctAnswers: Answers
     ) {
         self.navigator = navigator
         self.questions = questions
         self.options = options
+        self.userAnswers = userAnswers
+        self.correctAnswers = correctAnswers
     }
     
     func answer(
@@ -67,6 +74,23 @@ class iOSSwiftUINavigationFlowAdapter {
             let host = UIHostingController(rootView: multipleView)
             navigator.setViewControllers([host], animated: true)
         }
+    }
+    
+    func didCompleteQuiz(with answers: Answers) {
+        let presenter = ResultsPresenter(
+            userAnswers: userAnswers,
+            correctAnswers: correctAnswers,
+            scorer: BasicScore.score
+        )
+        
+        let resultsView = ResultsView(
+            title: presenter.title,
+            summary: "",
+            answers: [],
+            playAgain: {}
+        )
+        let host = UIHostingController(rootView: resultsView)
+        navigator.setViewControllers([host], animated: true)
     }
     
 }
@@ -132,6 +156,18 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(multipleAnswerView.store.options.map(\.text), options[multipleAnswerQuestion])
     }
     
+    func test_resultsViewController_createsControllerWithTitle() {
+        let presenter = ResultsPresenter(
+            userAnswers: correctAnswers,
+            correctAnswers: correctAnswers,
+            scorer: { _, _ in 0 }
+        )
+        
+        let resultsView = makeResults()
+        
+        XCTAssertEqual(presenter.title, resultsView.title)
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
@@ -148,13 +184,22 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         ]
     }
     
+    private var correctAnswers: [(Question<String>, [String])] {
+        return [
+            (singleAnswerQuestion, ["A1"]),
+            (multipleAnswerQuestion, ["A4", "A5"])
+        ]
+    }
+    
     private func makeSUT(
     ) ->(iOSSwiftUINavigationFlowAdapter, NonAnimatedNavigationController) {
         let navigator = NonAnimatedNavigationController()
         let sut = iOSSwiftUINavigationFlowAdapter(
             navigator: navigator,
             questions: questions,
-            options: options
+            options: options,
+            userAnswers: correctAnswers,
+            correctAnswers: correctAnswers
         )
         return (sut, navigator)
     }
@@ -174,6 +219,13 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         let (sut, navigator) = makeSUT()
         sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
         let host = navigator.topViewController as! UIHostingController<MultipleAnswerQuestionView>
+        return host.rootView
+    }
+    
+    private func makeResults() -> ResultsView {
+        let (sut, navigator) = makeSUT()
+        sut.didCompleteQuiz(with: correctAnswers)
+        let host = navigator.topViewController as! UIHostingController<ResultsView>
         return host.rootView
     }
     
