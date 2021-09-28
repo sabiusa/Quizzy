@@ -11,7 +11,7 @@ import QuizCore
 
 @testable import QuizApp
 
-class iOSSwiftUINavigationFlowAdapter {
+class iOSSwiftUINavigationFlowAdapter: QuizDelegate {
     
     typealias Question = QuizCore.Question<String>
     typealias Answer = [String]
