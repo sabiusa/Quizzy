@@ -65,7 +65,7 @@ class iOSSwiftUINavigationFlowAdapter: QuizDelegate {
                 question: text,
                 store: MultipleSelectionStore(
                     options: options,
-                    handler: { _ in }
+                    handler: completion
                 )
             )
             let host = UIHostingController(rootView: multipleView)

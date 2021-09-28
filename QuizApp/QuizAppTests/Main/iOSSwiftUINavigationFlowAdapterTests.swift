@@ -72,6 +72,30 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(multipleAnswerView.store.options.map(\.text), options[multipleAnswerQuestion])
     }
     
+    func test_answerFor_multipleAnswerQuestion_createsControllerWithAnswerCallback() {
+        var submittedAnswer = [String]()
+        let multipleAnswerView = makeMultipleAnswerQuestionView(
+            answerCallback: { answer in
+                submittedAnswer = answer
+            }
+        )
+        var store = multipleAnswerView.store
+        
+        let option0 = store.options[0].text
+        store.options[0].toggleSelection()
+        store.submit()
+        XCTAssertEqual(submittedAnswer, [option0])
+        
+        let option1 = store.options[1].text
+        store.options[1].toggleSelection()
+        store.submit()
+        XCTAssertEqual(submittedAnswer, [option0, option1])
+        
+        store.options[1].toggleSelection()
+        store.submit()
+        XCTAssertEqual(submittedAnswer, [option0])
+    }
+    
     func test_resultsViewController_createsControllerWithCorrectData() {
         let presenter = ResultsPresenter(
             userAnswers: correctAnswers,
