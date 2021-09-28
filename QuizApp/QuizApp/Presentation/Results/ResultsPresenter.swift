@@ -35,7 +35,7 @@ final class ResultsPresenter {
     }
     
     var summary: String {
-        return "You go \(score)/\(userAnswers.count) correct"
+        return "You got \(score)/\(userAnswers.count) correct"
     }
     
     var presentableAnswers: [PresentableAnswer] {

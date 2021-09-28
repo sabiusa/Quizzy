@@ -34,7 +34,7 @@ class ResultsPresenterTests: XCTestCase {
             score: 1
         )
 
-        XCTAssertEqual(sut.summary, "You go 1/2 correct")
+        XCTAssertEqual(sut.summary, "You got 1/2 correct")
     }
     
     func test_presentableAnswers_withoutQuestions_isEmpty() {
