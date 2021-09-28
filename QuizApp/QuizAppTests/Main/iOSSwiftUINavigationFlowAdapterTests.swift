@@ -60,7 +60,7 @@ class iOSSwiftUINavigationFlowAdapter {
                 title: presenter.title,
                 question: text,
                 store: MultipleSelectionStore(
-                    options: [],
+                    options: options,
                     handler: { _ in }
                 )
             )
@@ -124,6 +124,12 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         let multipleAnswerView = makeMultipleAnswerQuestionView()
         
         XCTAssertEqual(multipleAnswerView.question, "Q2")
+    }
+    
+    func test_answerFor_multipleAnswerQuestion_createsControllerWithOptions() {
+        let multipleAnswerView = makeMultipleAnswerQuestionView()
+        
+        XCTAssertEqual(multipleAnswerView.store.options.map(\.text), options[multipleAnswerQuestion])
     }
     
     // MARK:- Helpers
