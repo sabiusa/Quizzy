@@ -43,6 +43,7 @@
 		774AC53626FD865D00D5788C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC53526FD865D00D5788C /* AppMain.swift */; };
 		774AC55826FF88EB00D5788C /* NavigationFlowRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC55726FF88EB00D5788C /* NavigationFlowRouterTests.swift */; };
 		774AC55A2701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC5592701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift */; };
+		774AC55C270338EC00D5788C /* iOSSwiftUINavigationFlowAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC55B270338EB00D5788C /* iOSSwiftUINavigationFlowAdapter.swift */; };
 		779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */; };
 		779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */; };
 		779D29F026F2F8070077EF53 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779D29EF26F2F8070077EF53 /* ResultsViewController.xib */; };
@@ -133,6 +134,7 @@
 		774AC53526FD865D00D5788C /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		774AC55726FF88EB00D5788C /* NavigationFlowRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFlowRouterTests.swift; sourceTree = "<group>"; };
 		774AC5592701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationFlowAdapterTests.swift; sourceTree = "<group>"; };
+		774AC55B270338EB00D5788C /* iOSSwiftUINavigationFlowAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationFlowAdapter.swift; sourceTree = "<group>"; };
 		779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				779D2A0626F490590077EF53 /* iOSUIKitViewControllerFactory.swift */,
 				77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */,
 				77FD747F26FBA21E0092FFC0 /* iOSSwiftUINavigationStoreAdapter.swift */,
+				774AC55B270338EB00D5788C /* iOSSwiftUINavigationFlowAdapter.swift */,
 				3EA2DAB426F2116C008EB32F /* LaunchScreen.storyboard */,
 				3EA2DAB726F2116C008EB32F /* Info.plist */,
 				3EA2DAB226F2116C008EB32F /* Assets.xcassets */,
@@ -661,6 +664,7 @@
 				77FD748026FBA21E0092FFC0 /* iOSSwiftUINavigationStoreAdapter.swift in Sources */,
 				3E2808C926FB1E9C00ABBE9B /* MultipleSelectionStore.swift in Sources */,
 				3E8445AB26F367F0008EE770 /* WrongAnswerCell.swift in Sources */,
+				774AC55C270338EC00D5788C /* iOSSwiftUINavigationFlowAdapter.swift in Sources */,
 				774AC53426FD840100D5788C /* QuizNavigationView.swift in Sources */,
 				77FD746226F75AA10092FFC0 /* QuestionPresenter.swift in Sources */,
 				3E6E129C26FCC22B00986998 /* ShowStrategy.swift in Sources */,
