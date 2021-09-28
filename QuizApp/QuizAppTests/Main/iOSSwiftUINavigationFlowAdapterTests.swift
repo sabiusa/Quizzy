@@ -190,11 +190,11 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         
         sut.answer(for: singleAnswerQuestion, completion: { _ in })
         XCTAssertEqual(navigator.viewControllers.count, 1)
-        XCTAssertTrue(navigator.topViewController is UIHostingController<SingleAnswerQuestionView>)
+        XCTAssertNotNil(navigator.topSingleAnswerView)
         
         sut.answer(for: multipleAnswerQuestion, completion: { _ in })
         XCTAssertEqual(navigator.viewControllers.count, 1)
-        XCTAssertTrue(navigator.topViewController is UIHostingController<MultipleAnswerQuestionView>)
+        XCTAssertNotNil(navigator.topMultipleAnswerView)
     }
     
     func test_didCompleteQuiz_replacesNavigationStack() {
@@ -203,11 +203,11 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         
         sut.didCompleteQuiz(with: correctAnswers)
         XCTAssertEqual(navigator.viewControllers.count, 1)
-        XCTAssertTrue(navigator.topViewController is UIHostingController<ResultsView>)
+        XCTAssertNotNil(navigator.topResultsView)
         
         sut.didCompleteQuiz(with: correctAnswers)
         XCTAssertEqual(navigator.viewControllers.count, 1)
-        XCTAssertTrue(navigator.topViewController is UIHostingController<ResultsView>)
+        XCTAssertNotNil(navigator.topResultsView)
     }
     
     // MARK:- Helpers
@@ -252,8 +252,7 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     ) -> SingleAnswerQuestionView {
         let (sut, navigator) = makeSUT()
         sut.answer(for: singleAnswerQuestion, completion: answerCallback)
-        let host = navigator.topViewController as! UIHostingController<SingleAnswerQuestionView>
-        return host.rootView
+        return navigator.topSingleAnswerView!
     }
     
     private func makeMultipleAnswerQuestionView(
@@ -261,8 +260,7 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     ) -> MultipleAnswerQuestionView {
         let (sut, navigator) = makeSUT()
         sut.answer(for: multipleAnswerQuestion, completion: answerCallback)
-        let host = navigator.topViewController as! UIHostingController<MultipleAnswerQuestionView>
-        return host.rootView
+        return navigator.topMultipleAnswerView!
     }
     
     private func makeResults(
@@ -270,8 +268,26 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     ) -> ResultsView {
         let (sut, navigator) = makeSUT(playAgain: playAgain)
         sut.didCompleteQuiz(with: correctAnswers)
-        let host = navigator.topViewController as! UIHostingController<ResultsView>
-        return host.rootView
+        return navigator.topResultsView!
+    }
+    
+}
+
+private extension UINavigationController {
+    
+    var topSingleAnswerView: SingleAnswerQuestionView? {
+        let top = topViewController as? UIHostingController<SingleAnswerQuestionView>
+        return top?.rootView
+    }
+    
+    var topMultipleAnswerView: MultipleAnswerQuestionView? {
+        let top = topViewController as? UIHostingController<MultipleAnswerQuestionView>
+        return top?.rootView
+    }
+    
+    var topResultsView: ResultsView? {
+        let top = topViewController as? UIHostingController<ResultsView>
+        return top?.rootView
     }
     
 }
