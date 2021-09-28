@@ -85,8 +85,8 @@ class iOSSwiftUINavigationFlowAdapter {
         
         let resultsView = ResultsView(
             title: presenter.title,
-            summary: "",
-            answers: [],
+            summary: presenter.summary,
+            answers: presenter.presentableAnswers,
             playAgain: {}
         )
         let host = UIHostingController(rootView: resultsView)
@@ -156,16 +156,18 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(multipleAnswerView.store.options.map(\.text), options[multipleAnswerQuestion])
     }
     
-    func test_resultsViewController_createsControllerWithTitle() {
+    func test_resultsViewController_createsControllerWithCorrectData() {
         let presenter = ResultsPresenter(
             userAnswers: correctAnswers,
             correctAnswers: correctAnswers,
-            scorer: { _, _ in 0 }
+            scorer: BasicScore.score
         )
         
         let resultsView = makeResults()
         
-        XCTAssertEqual(presenter.title, resultsView.title)
+        XCTAssertEqual(resultsView.title, presenter.title)
+        XCTAssertEqual(resultsView.summary, presenter.summary)
+        XCTAssertEqual(resultsView.answers, presenter.presentableAnswers)
     }
     
     // MARK:- Helpers
