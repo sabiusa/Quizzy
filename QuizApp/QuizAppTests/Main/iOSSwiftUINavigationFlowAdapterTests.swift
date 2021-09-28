@@ -22,19 +22,22 @@ class iOSSwiftUINavigationFlowAdapter {
     private let options: [Question: Answer]
     private let userAnswers: Answers
     private let correctAnswers: Answers
+    private let playAgain: () -> Void
     
     init(
         navigator: UINavigationController,
         questions: [Question],
         options: [Question: Answer],
         userAnswers: Answers,
-        correctAnswers: Answers
+        correctAnswers: Answers,
+        playAgain: @escaping () -> Void
     ) {
         self.navigator = navigator
         self.questions = questions
         self.options = options
         self.userAnswers = userAnswers
         self.correctAnswers = correctAnswers
+        self.playAgain = playAgain
     }
     
     func answer(
@@ -87,7 +90,7 @@ class iOSSwiftUINavigationFlowAdapter {
             title: presenter.title,
             summary: presenter.summary,
             answers: presenter.presentableAnswers,
-            playAgain: {}
+            playAgain: playAgain
         )
         let host = UIHostingController(rootView: resultsView)
         navigator.setViewControllers([host], animated: true)
@@ -170,6 +173,20 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(resultsView.answers, presenter.presentableAnswers)
     }
     
+    func test_resultsViewController_createsControllerWithPlayAgainCallback() {
+        var playAgainCount = 0
+        let resultsView = makeResults(playAgain: {
+            playAgainCount += 1
+        })
+        XCTAssertEqual(playAgainCount, 0)
+        
+        resultsView.playAgain()
+        XCTAssertEqual(playAgainCount, 1)
+        
+        resultsView.playAgain()
+        XCTAssertEqual(playAgainCount, 2)
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
@@ -194,6 +211,7 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
     }
     
     private func makeSUT(
+        playAgain: @escaping () -> Void = {}
     ) ->(iOSSwiftUINavigationFlowAdapter, NonAnimatedNavigationController) {
         let navigator = NonAnimatedNavigationController()
         let sut = iOSSwiftUINavigationFlowAdapter(
@@ -201,7 +219,8 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
             questions: questions,
             options: options,
             userAnswers: correctAnswers,
-            correctAnswers: correctAnswers
+            correctAnswers: correctAnswers,
+            playAgain: playAgain
         )
         return (sut, navigator)
     }
@@ -224,8 +243,10 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         return host.rootView
     }
     
-    private func makeResults() -> ResultsView {
-        let (sut, navigator) = makeSUT()
+    private func makeResults(
+        playAgain: @escaping () -> Void = {}
+    ) -> ResultsView {
+        let (sut, navigator) = makeSUT(playAgain: playAgain)
         sut.didCompleteQuiz(with: correctAnswers)
         let host = navigator.topViewController as! UIHostingController<ResultsView>
         return host.rootView
