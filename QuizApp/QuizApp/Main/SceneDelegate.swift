@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = newWindow
         window?.makeKeyAndVisible()
         
-        startNewUIKitQuiz()
+        startNewSwiftUIQuiz()
     }
     
     private func startNewUIKitQuiz() {
@@ -37,8 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             options: options,
             correctAnswers: correctAnswers
         )
-        
-        let router = NavigationControllerRouter(navigationController, factory: factory)
+        let router = NavigationControllerRouter(
+            navigationController,
+            factory: factory
+        )
         
         quiz = Quiz.start(
             questions: questions,
@@ -46,20 +48,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
     }
     
-    private func startNewSwiftUIRouterQuiz() {
+    private func startNewSwiftUIQuiz() {
         let (questions, options, correctAnswers) = Questionnare.getQuizData()
         
-        let factory = iOSSwiftUIViewControllerFactory(
+        let flow = iOSSwiftUINavigationFlowAdapter(
+            navigator: navigationController,
+            questions: questions,
             options: options,
             correctAnswers: correctAnswers,
-            playAgain: startNewSwiftUIRouterQuiz
+            playAgain: startNewSwiftUIQuiz
         )
-        
-        let router = NavigationControllerRouter(navigationController, factory: factory)
         
         quiz = Quiz.start(
             questions: questions,
-            delegate: router
+            delegate: flow
         )
     }
     

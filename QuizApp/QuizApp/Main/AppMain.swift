@@ -13,7 +13,7 @@ class QuizAppStore {
 }
 
 @available(iOS 14, *)
-@main
+//@main
 struct QuizApp: App {
     
     let appStore = QuizAppStore()
