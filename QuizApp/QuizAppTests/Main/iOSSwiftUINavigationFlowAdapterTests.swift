@@ -20,7 +20,6 @@ class iOSSwiftUINavigationFlowAdapter {
     private let navigator: UINavigationController
     private let questions: [Question]
     private let options: [Question: Answer]
-    private let userAnswers: Answers
     private let correctAnswers: Answers
     private let playAgain: () -> Void
     
@@ -28,14 +27,12 @@ class iOSSwiftUINavigationFlowAdapter {
         navigator: UINavigationController,
         questions: [Question],
         options: [Question: Answer],
-        userAnswers: Answers,
         correctAnswers: Answers,
         playAgain: @escaping () -> Void
     ) {
         self.navigator = navigator
         self.questions = questions
         self.options = options
-        self.userAnswers = userAnswers
         self.correctAnswers = correctAnswers
         self.playAgain = playAgain
     }
@@ -81,7 +78,7 @@ class iOSSwiftUINavigationFlowAdapter {
     
     func didCompleteQuiz(with answers: Answers) {
         let presenter = ResultsPresenter(
-            userAnswers: userAnswers,
+            userAnswers: answers,
             correctAnswers: correctAnswers,
             scorer: BasicScore.score
         )
@@ -218,7 +215,6 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
             navigator: navigator,
             questions: questions,
             options: options,
-            userAnswers: correctAnswers,
             correctAnswers: correctAnswers,
             playAgain: playAgain
         )
