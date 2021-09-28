@@ -184,6 +184,19 @@ class iOSSwiftUINavigationFlowAdapterTests: XCTestCase {
         XCTAssertEqual(playAgainCount, 2)
     }
     
+    func test_answerForQuestion_replacesNavigationStack() {
+        let (sut, navigator) = makeSUT()
+        XCTAssertEqual(navigator.viewControllers.count, 0)
+        
+        sut.answer(for: singleAnswerQuestion, completion: { _ in })
+        XCTAssertEqual(navigator.viewControllers.count, 1)
+        XCTAssertTrue(navigator.topViewController is UIHostingController<SingleAnswerQuestionView>)
+        
+        sut.answer(for: multipleAnswerQuestion, completion: { _ in })
+        XCTAssertEqual(navigator.viewControllers.count, 1)
+        XCTAssertTrue(navigator.topViewController is UIHostingController<MultipleAnswerQuestionView>)
+    }
+    
     // MARK:- Helpers
     
     private var singleAnswerQuestion: Question<String> { .singleAnswer("Q1") }
