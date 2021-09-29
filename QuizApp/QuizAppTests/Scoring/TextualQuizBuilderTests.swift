@@ -6,27 +6,36 @@
 //
 
 import XCTest
+import QuizCore
 
 struct TextualQuiz {
+    
+    let questions: [Question<String>]
     
 }
 
 struct TextualQuizBuilder {
     
-    func build() -> TextualQuiz? {
-        return nil
+    private let questions: [Question<String>]
+    
+    init(singleAnswerQuestion: String) {
+        questions = [.singleAnswer(singleAnswerQuestion)]
+    }
+    
+    func build() -> TextualQuiz {
+        return TextualQuiz(questions: questions)
     }
     
 }
 
 class TextualQuizBuilderTests: XCTestCase {
     
-    func test_empty() {
-        let sut = TextualQuizBuilder()
+    func test_initWithSingleAnswerQuestion() {
+        let sut = TextualQuizBuilder(singleAnswerQuestion: "Q1")
         
         let quiz = sut.build()
         
-        XCTAssertNil(quiz)
+        XCTAssertEqual(quiz.questions, [.singleAnswer("Q1")])
     }
     
 }
