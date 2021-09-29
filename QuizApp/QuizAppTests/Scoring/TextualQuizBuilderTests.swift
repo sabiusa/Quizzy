@@ -161,6 +161,27 @@ class TextualQuizBuilderTests: XCTestCase {
         ])
     }
     
+    func test_addSingleAnswerQuestion_duplicateOptions_throws() throws {
+        var sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        XCTAssertThrowsError(
+            try sut.add(
+                singleAnswerQuestion: "Q2",
+                options: NonEmptyOptions(head: "O4", tail: ["O4", "O6"]),
+                answer: "O4"
+            )
+        ) { error in
+            XCTAssertEqual(
+                error as? TextualQuizBuilder.AddingError,
+                TextualQuizBuilder.AddingError.duplicateOptions(["O4", "O4", "O6"])
+            )
+        }
+    }
+    
     // MARK:- Helpers
     
     private func assertEqual(
