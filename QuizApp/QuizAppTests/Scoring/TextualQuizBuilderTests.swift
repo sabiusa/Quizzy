@@ -32,6 +32,7 @@ struct TextualQuizBuilder {
     
     enum AddingError: Error, Equatable {
         case duplicateOptions([String])
+        case missingAnswerInOptions(answer: [String], options: [String])
     }
     
     init(
@@ -40,6 +41,9 @@ struct TextualQuizBuilder {
         answer: String
     ) throws {
         let allOptions = options.all
+        
+        guard allOptions.contains(answer)
+        else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
         
         guard Set(allOptions).count == allOptions.count
         else { throw AddingError.duplicateOptions(allOptions) }
@@ -87,6 +91,24 @@ class TextualQuizBuilderTests: XCTestCase {
             XCTAssertEqual(
                 error as? TextualQuizBuilder.AddingError,
                 TextualQuizBuilder.AddingError.duplicateOptions(["O1", "O1", "O3"])
+            )
+        }
+    }
+    
+    func test_initWithSingleAnswerQuestion_missingAnswerInOptions_throws() throws {
+        XCTAssertThrowsError(
+            try TextualQuizBuilder(
+                singleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+                answer: "O4"
+            )
+        ) { error in
+            XCTAssertEqual(
+                error as? TextualQuizBuilder.AddingError,
+                TextualQuizBuilder.AddingError.missingAnswerInOptions(
+                    answer: ["O4"],
+                    options: ["O1", "O2", "O3"]
+                )
             )
         }
     }
