@@ -26,9 +26,9 @@ struct NonEmptyOptions {
 
 struct TextualQuizBuilder {
     
-    private let questions: [Question<String>]
-    private let options: [Question<String>: [String]]
-    private let correctAnswers: [(Question<String>, [String])]
+    private var questions: [Question<String>]
+    private var options: [Question<String>: [String]]
+    private var correctAnswers: [(Question<String>, [String])]
     
     enum AddingError: Error, Equatable {
         case duplicateOptions([String])
@@ -52,6 +52,25 @@ struct TextualQuizBuilder {
         self.questions = [question]
         self.options = [question: allOptions]
         self.correctAnswers = [(question, [answer])]
+    }
+    
+    mutating func add(
+        singleAnswerQuestion: String,
+        options: NonEmptyOptions,
+        answer: String
+    ) throws {
+        let allOptions = options.all
+        
+        guard allOptions.contains(answer)
+        else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
+        
+        guard Set(allOptions).count == allOptions.count
+        else { throw AddingError.duplicateOptions(allOptions) }
+        
+        let question = Question.singleAnswer(singleAnswerQuestion)
+        self.questions.append(question)
+        self.options[question] = allOptions
+        self.correctAnswers.append((question, [answer]))
     }
     
     func build() -> TextualQuiz {
@@ -111,6 +130,35 @@ class TextualQuizBuilderTests: XCTestCase {
                 )
             )
         }
+    }
+    
+    func test_addSingleAnswerQuestion() throws {
+        var sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        try sut.add(
+            singleAnswerQuestion: "Q2",
+            options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+            answer: "O4"
+        )
+        
+        let quiz = sut.build()
+        
+        XCTAssertEqual(quiz.questions, [
+            .singleAnswer("Q1"),
+            .singleAnswer("Q2")
+        ])
+        XCTAssertEqual(quiz.options, [
+            .singleAnswer("Q1"): ["O1", "O2", "O3"],
+            .singleAnswer("Q2"): ["O4", "O5", "O6"]
+        ])
+        assertEqual(quiz.correctAnswers, [
+            (.singleAnswer("Q1"), ["O1"]),
+            (.singleAnswer("Q2"), ["O4"]),
+        ])
     }
     
     // MARK:- Helpers
