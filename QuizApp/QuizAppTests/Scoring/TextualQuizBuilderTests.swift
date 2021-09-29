@@ -33,6 +33,7 @@ struct TextualQuizBuilder {
     enum AddingError: Error, Equatable {
         case duplicateOptions([String])
         case missingAnswerInOptions(answer: [String], options: [String])
+        case duplicateQuestion(Question<String>)
     }
     
     init(
@@ -60,6 +61,10 @@ struct TextualQuizBuilder {
         answer: String
     ) throws {
         let allOptions = options.all
+        let question = Question.singleAnswer(singleAnswerQuestion)
+        
+        guard !questions.contains(question)
+        else { throw AddingError.duplicateQuestion(question) }
         
         guard allOptions.contains(answer)
         else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
@@ -67,7 +72,6 @@ struct TextualQuizBuilder {
         guard Set(allOptions).count == allOptions.count
         else { throw AddingError.duplicateOptions(allOptions) }
         
-        let question = Question.singleAnswer(singleAnswerQuestion)
         self.questions.append(question)
         self.options[question] = allOptions
         self.correctAnswers.append((question, [answer]))
@@ -201,6 +205,29 @@ class TextualQuizBuilderTests: XCTestCase {
                 TextualQuizBuilder.AddingError.missingAnswerInOptions(
                     answer: ["O7"],
                     options: ["O4", "O5", "O6"]
+                )
+            )
+        }
+    }
+    
+    func test_addSingleAnswerQuestion_duplicateQuestion_throws() throws {
+        var sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        XCTAssertThrowsError(
+            try sut.add(
+                singleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
+                answer: "O1"
+            )
+        ) { error in
+            XCTAssertEqual(
+                error as? TextualQuizBuilder.AddingError,
+                TextualQuizBuilder.AddingError.duplicateQuestion(
+                    .singleAnswer("Q1")
                 )
             )
         }
