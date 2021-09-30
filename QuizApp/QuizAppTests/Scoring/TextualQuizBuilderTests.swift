@@ -292,6 +292,26 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
+    func test_addingSingleAnswerQuestion_missingAnswerInOptions_throws() throws {
+        let sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        assert(
+            try sut.adding(
+                singleAnswerQuestion: "Q2",
+                options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+                answer: "O7"
+            ),
+            throws: .missingAnswerInOptions(
+                answer: ["O7"],
+                options: ["O4", "O5", "O6"]
+            )
+        )
+    }
+    
     // MARK:- Helpers
     
     private func assertEqual(
