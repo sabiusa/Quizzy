@@ -34,6 +34,7 @@ struct TextualQuizBuilder {
         case duplicateOptions([String])
         case missingAnswerInOptions(answer: [String], options: [String])
         case duplicateQuestion(Question<String>)
+        case duplicateAnswers([String])
     }
     
     private init(
@@ -66,6 +67,9 @@ struct TextualQuizBuilder {
         let question = Question.multipleAnswer(multipleAnswerQuestion)
         let allOptions = options.all
         let allAnswers = answers.all
+        
+        guard Set(allAnswers).count == allAnswers.count
+        else { throw AddingError.duplicateAnswers(allAnswers) }
         
         guard Set(allOptions).count == allOptions.count
         else { throw AddingError.duplicateOptions(allOptions) }
@@ -351,6 +355,17 @@ class TextualQuizBuilderTests: XCTestCase {
                 answers: NonEmptyOptions(head: "O1", tail: ["O3"])
             ),
             throws: .duplicateOptions(["O1", "O1", "O3"])
+        )
+    }
+    
+    func test_initWithMultipleAnswerQuestion_duplicateAnswers_throws() throws {
+        assert(
+            try TextualQuizBuilder(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+                answers: NonEmptyOptions(head: "O1", tail: ["O1"])
+            ),
+            throws: .duplicateAnswers(["O1", "O1"])
         )
     }
     
