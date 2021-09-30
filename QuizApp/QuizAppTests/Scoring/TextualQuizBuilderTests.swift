@@ -36,6 +36,16 @@ struct TextualQuizBuilder {
         case duplicateQuestion(Question<String>)
     }
     
+    private init(
+        questions: [Question<String>],
+        options: [Question<String> : [String]],
+        correctAnswers: [(Question<String>, [String])]
+    ) {
+        self.questions = questions
+        self.options = options
+        self.correctAnswers = correctAnswers
+    }
+    
     init(
         singleAnswerQuestion: String,
         options: NonEmptyOptions,
@@ -75,6 +85,33 @@ struct TextualQuizBuilder {
         self.questions.append(question)
         self.options[question] = allOptions
         self.correctAnswers.append((question, [answer]))
+    }
+    
+    func adding(
+        singleAnswerQuestion: String,
+        options: NonEmptyOptions,
+        answer: String
+    ) throws -> TextualQuizBuilder {
+        let allOptions = options.all
+        let question = Question.singleAnswer(singleAnswerQuestion)
+        
+        guard !questions.contains(question)
+        else { throw AddingError.duplicateQuestion(question) }
+        
+        guard allOptions.contains(answer)
+        else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
+        
+        guard Set(allOptions).count == allOptions.count
+        else { throw AddingError.duplicateOptions(allOptions) }
+        
+        var newOptions = self.options
+        newOptions[question] = allOptions
+        
+        return TextualQuizBuilder(
+            questions: questions + [question],
+            options: newOptions,
+            correctAnswers: correctAnswers + [(question, [answer])]
+        )
     }
     
     func build() -> TextualQuiz {
@@ -209,6 +246,33 @@ class TextualQuizBuilderTests: XCTestCase {
             ),
             throws: .duplicateQuestion(.singleAnswer("Q1"))
         )
+    }
+    
+    func test_addingSingleAnswerQuestion() throws {
+        let sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        ).adding(
+            singleAnswerQuestion: "Q2",
+            options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+            answer: "O4"
+        )
+        
+        let quiz = sut.build()
+        
+        XCTAssertEqual(quiz.questions, [
+            .singleAnswer("Q1"),
+            .singleAnswer("Q2")
+        ])
+        XCTAssertEqual(quiz.options, [
+            .singleAnswer("Q1"): ["O1", "O2", "O3"],
+            .singleAnswer("Q2"): ["O4", "O5", "O6"]
+        ])
+        assertEqual(quiz.correctAnswers, [
+            (.singleAnswer("Q1"), ["O1"]),
+            (.singleAnswer("Q2"), ["O4"]),
+        ])
     }
     
     // MARK:- Helpers
