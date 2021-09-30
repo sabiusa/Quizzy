@@ -64,6 +64,18 @@ struct TextualQuizBuilder {
         options: NonEmptyOptions,
         answers: NonEmptyOptions
     ) throws {
+        try add(
+            multipleAnswerQuestion: multipleAnswerQuestion,
+            options: options,
+            answers: answers
+        )
+    }
+    
+    mutating func add(
+        multipleAnswerQuestion: String,
+        options: NonEmptyOptions,
+        answers: NonEmptyOptions
+    ) throws {
         let question = Question.multipleAnswer(multipleAnswerQuestion)
         let allOptions = options.all
         let allAnswers = answers.all
@@ -77,9 +89,12 @@ struct TextualQuizBuilder {
         guard Set(allOptions).count == allOptions.count
         else { throw AddingError.duplicateOptions(allOptions) }
         
-        self.questions = [question]
-        self.options = [question: allOptions]
-        self.correctAnswers = [(question, allAnswers)]
+        var newOptions = self.options
+        newOptions[question] = allOptions
+        
+        self.questions = questions + [question]
+        self.options = newOptions
+        self.correctAnswers = correctAnswers + [(question, allAnswers)]
     }
     
     mutating func add(
@@ -384,6 +399,35 @@ class TextualQuizBuilderTests: XCTestCase {
                 options: ["O1", "O2", "O3"]
             )
         )
+    }
+    
+    func test_addMultipleAnswerQuestion() throws {
+        var sut = try TextualQuizBuilder(
+            multipleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+        )
+        
+        try sut.add(
+            multipleAnswerQuestion: "Q2",
+            options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+            answers: NonEmptyOptions(head: "O4", tail: ["O5"])
+        )
+        
+        let quiz = sut.build()
+        
+        XCTAssertEqual(quiz.questions, [
+            .multipleAnswer("Q1"),
+            .multipleAnswer("Q2")
+        ])
+        XCTAssertEqual(quiz.options, [
+            .multipleAnswer("Q1"): ["O1", "O2", "O3"],
+            .multipleAnswer("Q2"): ["O4", "O5", "O6"]
+        ])
+        assertEqual(quiz.correctAnswers, [
+            (.multipleAnswer("Q1"), ["O1", "O3"]),
+            (.multipleAnswer("Q2"), ["O4", "O5"]),
+        ])
     }
     
     // MARK:- Helpers
