@@ -62,10 +62,13 @@ struct TextualQuizBuilder {
         multipleAnswerQuestion: String,
         options: NonEmptyOptions,
         answers: NonEmptyOptions
-    ) {
+    ) throws {
         let question = Question.multipleAnswer(multipleAnswerQuestion)
         let allOptions = options.all
         let allAnswers = answers.all
+        
+        guard Set(allOptions).count == allOptions.count
+        else { throw AddingError.duplicateOptions(allOptions) }
         
         self.questions = [question]
         self.options = [question: allOptions]
@@ -326,8 +329,8 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
-    func test_initWithMultipleAnswerQuestion() {
-        let sut = TextualQuizBuilder(
+    func test_initWithMultipleAnswerQuestion() throws {
+        let sut = try TextualQuizBuilder(
             multipleAnswerQuestion: "Q1",
             options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
             answers: NonEmptyOptions(head: "O1", tail: ["O3"])
@@ -338,6 +341,17 @@ class TextualQuizBuilderTests: XCTestCase {
         XCTAssertEqual(quiz.questions, [.multipleAnswer("Q1")])
         XCTAssertEqual(quiz.options, [.multipleAnswer("Q1"): ["O1", "O2", "O3"]])
         assertEqual(quiz.correctAnswers, [(.multipleAnswer("Q1"), ["O1", "O3"])])
+    }
+    
+    func test_initWithMultipleAnswerQuestion_duplicateOptions_throws() throws {
+        assert(
+            try TextualQuizBuilder(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O1", "O3"]),
+                answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+            ),
+            throws: .duplicateOptions(["O1", "O1", "O3"])
+        )
     }
     
     // MARK:- Helpers
