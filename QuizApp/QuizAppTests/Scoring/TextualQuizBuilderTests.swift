@@ -68,6 +68,9 @@ struct TextualQuizBuilder {
         let allOptions = options.all
         let allAnswers = answers.all
         
+        guard Set(allAnswers).isSubset(of: Set(allOptions))
+        else { throw AddingError.missingAnswerInOptions(answer: allAnswers, options: allOptions) }
+        
         guard Set(allAnswers).count == allAnswers.count
         else { throw AddingError.duplicateAnswers(allAnswers) }
         
@@ -366,6 +369,20 @@ class TextualQuizBuilderTests: XCTestCase {
                 answers: NonEmptyOptions(head: "O1", tail: ["O1"])
             ),
             throws: .duplicateAnswers(["O1", "O1"])
+        )
+    }
+    
+    func test_initWithMultipleAnswerQuestion_missingAnswersInOptions_throws() throws {
+        assert(
+            try TextualQuizBuilder(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+                answers: NonEmptyOptions(head: "O1", tail: ["O4"])
+            ),
+            throws: .missingAnswerInOptions(
+                answer: ["O1", "O4"],
+                options: ["O1", "O2", "O3"]
+            )
         )
     }
     
