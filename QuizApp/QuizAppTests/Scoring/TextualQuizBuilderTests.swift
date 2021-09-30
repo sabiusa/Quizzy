@@ -58,6 +58,20 @@ struct TextualQuizBuilder {
         )
     }
     
+    init(
+        multipleAnswerQuestion: String,
+        options: NonEmptyOptions,
+        answers: NonEmptyOptions
+    ) {
+        let question = Question.multipleAnswer(multipleAnswerQuestion)
+        let allOptions = options.all
+        let allAnswers = answers.all
+        
+        self.questions = [question]
+        self.options = [question: allOptions]
+        self.correctAnswers = [(question, allAnswers)]
+    }
+    
     mutating func add(
         singleAnswerQuestion: String,
         options: NonEmptyOptions,
@@ -310,6 +324,20 @@ class TextualQuizBuilderTests: XCTestCase {
             ),
             throws: .duplicateQuestion(.singleAnswer("Q1"))
         )
+    }
+    
+    func test_initWithMultipleAnswerQuestion() {
+        let sut = TextualQuizBuilder(
+            multipleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+        )
+        
+        let quiz = sut.build()
+        
+        XCTAssertEqual(quiz.questions, [.multipleAnswer("Q1")])
+        XCTAssertEqual(quiz.options, [.multipleAnswer("Q1"): ["O1", "O2", "O3"]])
+        assertEqual(quiz.correctAnswers, [(.multipleAnswer("Q1"), ["O1", "O3"])])
     }
     
     // MARK:- Helpers
