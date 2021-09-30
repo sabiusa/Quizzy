@@ -26,9 +26,9 @@ struct NonEmptyOptions {
 
 struct TextualQuizBuilder {
     
-    private var questions: [Question<String>]
-    private var options: [Question<String>: [String]]
-    private var correctAnswers: [(Question<String>, [String])]
+    private var questions: [Question<String>] = []
+    private var options: [Question<String>: [String]] = [:]
+    private var correctAnswers: [(Question<String>, [String])] = []
     
     enum AddingError: Error, Equatable {
         case duplicateOptions([String])
@@ -51,18 +51,11 @@ struct TextualQuizBuilder {
         options: NonEmptyOptions,
         answer: String
     ) throws {
-        let allOptions = options.all
-        
-        guard allOptions.contains(answer)
-        else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
-        
-        guard Set(allOptions).count == allOptions.count
-        else { throw AddingError.duplicateOptions(allOptions) }
-        
-        let question = Question.singleAnswer(singleAnswerQuestion)
-        self.questions = [question]
-        self.options = [question: allOptions]
-        self.correctAnswers = [(question, [answer])]
+        try add(
+            singleAnswerQuestion: singleAnswerQuestion,
+            options: options,
+            answer: answer
+        )
     }
     
     mutating func add(
@@ -70,21 +63,11 @@ struct TextualQuizBuilder {
         options: NonEmptyOptions,
         answer: String
     ) throws {
-        let allOptions = options.all
-        let question = Question.singleAnswer(singleAnswerQuestion)
-        
-        guard !questions.contains(question)
-        else { throw AddingError.duplicateQuestion(question) }
-        
-        guard allOptions.contains(answer)
-        else { throw AddingError.missingAnswerInOptions(answer: [answer], options: allOptions) }
-        
-        guard Set(allOptions).count == allOptions.count
-        else { throw AddingError.duplicateOptions(allOptions) }
-        
-        self.questions.append(question)
-        self.options[question] = allOptions
-        self.correctAnswers.append((question, [answer]))
+        self = try adding(
+            singleAnswerQuestion: singleAnswerQuestion,
+            options: options,
+            answer: answer
+        )
     }
     
     func adding(
