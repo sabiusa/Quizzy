@@ -312,6 +312,23 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
+    func test_addingSingleAnswerQuestion_duplicateQuestion_throws() throws {
+        let sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        assert(
+            try sut.adding(
+                singleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
+                answer: "O1"
+            ),
+            throws: .duplicateQuestion(.singleAnswer("Q1"))
+        )
+    }
+    
     // MARK:- Helpers
     
     private func assertEqual(
