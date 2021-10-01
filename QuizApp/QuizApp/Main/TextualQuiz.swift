@@ -25,29 +25,35 @@ let demoQuiz = try!
     )
     .build()
 
-struct TextualQuiz {
+public struct TextualQuiz {
     
-    let questions: [Question<String>]
-    let options: [Question<String>: [String]]
-    let correctAnswers: [(Question<String>, [String])]
+    public let questions: [Question<String>]
+    public let options: [Question<String>: [String]]
+    public let correctAnswers: [(Question<String>, [String])]
+    
 }
 
-struct NonEmptyOptions {
+public struct NonEmptyOptions {
+    
     let head: String
     let tail: [String]
     
-    var all: [String] {
-        return [head] + tail
+    var all: [String] { [head] + tail }
+    
+    public init(head: String, tail: [String]) {
+        self.head = head
+        self.tail = tail
     }
+    
 }
 
-struct TextualQuizBuilder {
+public struct TextualQuizBuilder {
     
     private var questions: [Question<String>] = []
     private var options: [Question<String>: [String]] = [:]
     private var correctAnswers: [(Question<String>, [String])] = []
     
-    enum AddingError: Error, Equatable {
+    public enum AddingError: Error, Equatable {
         case duplicateQuestion(Question<String>)
         case duplicateOptions([String])
         case duplicateAnswers([String])
@@ -64,7 +70,7 @@ struct TextualQuizBuilder {
         self.correctAnswers = correctAnswers
     }
     
-    init(
+    public init(
         singleAnswerQuestion: String,
         options: NonEmptyOptions,
         answer: String
@@ -76,7 +82,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    init(
+    public init(
         multipleAnswerQuestion: String,
         options: NonEmptyOptions,
         answers: NonEmptyOptions
@@ -88,7 +94,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    mutating func add(
+    public mutating func add(
         multipleAnswerQuestion: String,
         options: NonEmptyOptions,
         answers: NonEmptyOptions
@@ -100,7 +106,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    func adding(
+    public func adding(
         multipleAnswerQuestion: String,
         options: NonEmptyOptions,
         answers: NonEmptyOptions
@@ -131,7 +137,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    mutating func add(
+    public mutating func add(
         singleAnswerQuestion: String,
         options: NonEmptyOptions,
         answer: String
@@ -143,7 +149,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    func adding(
+    public func adding(
         singleAnswerQuestion: String,
         options: NonEmptyOptions,
         answer: String
@@ -170,7 +176,7 @@ struct TextualQuizBuilder {
         )
     }
     
-    func build() -> TextualQuiz {
+    public func build() -> TextualQuiz {
         return TextualQuiz(
             questions: questions,
             options: options,

@@ -7,8 +7,7 @@
 
 import XCTest
 import QuizCore
-
-@testable import QuizApp
+import QuizApp
 
 class TextualQuizBuilderTests: XCTestCase {
     
