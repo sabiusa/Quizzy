@@ -80,6 +80,23 @@ class TextualQuizBuilderTests: XCTestCase {
         ])
     }
     
+    func test_addSingleAnswerQuestion_duplicateQuestion_throws() throws {
+        var sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        assert(
+            try sut.add(
+                singleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
+                answer: "O1"
+            ),
+            throws: .duplicateQuestion(.singleAnswer("Q1"))
+        )
+    }
+    
     func test_addSingleAnswerQuestion_duplicateOptions_throws() throws {
         var sut = try TextualQuizBuilder(
             singleAnswerQuestion: "Q1",
@@ -117,23 +134,6 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
-    func test_addSingleAnswerQuestion_duplicateQuestion_throws() throws {
-        var sut = try TextualQuizBuilder(
-            singleAnswerQuestion: "Q1",
-            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
-            answer: "O1"
-        )
-        
-        assert(
-            try sut.add(
-                singleAnswerQuestion: "Q1",
-                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
-                answer: "O1"
-            ),
-            throws: .duplicateQuestion(.singleAnswer("Q1"))
-        )
-    }
-    
     func test_addingSingleAnswerQuestion() throws {
         let sut = try TextualQuizBuilder(
             singleAnswerQuestion: "Q1",
@@ -159,6 +159,23 @@ class TextualQuizBuilderTests: XCTestCase {
             (.singleAnswer("Q1"), ["O1"]),
             (.singleAnswer("Q2"), ["O4"]),
         ])
+    }
+    
+    func test_addingSingleAnswerQuestion_duplicateQuestion_throws() throws {
+        let sut = try TextualQuizBuilder(
+            singleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answer: "O1"
+        )
+        
+        assert(
+            try sut.adding(
+                singleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
+                answer: "O1"
+            ),
+            throws: .duplicateQuestion(.singleAnswer("Q1"))
+        )
     }
     
     func test_addingSingleAnswerQuestion_duplicateOptions_throws() throws {
@@ -195,23 +212,6 @@ class TextualQuizBuilderTests: XCTestCase {
                 answer: ["O7"],
                 options: ["O4", "O5", "O6"]
             )
-        )
-    }
-    
-    func test_addingSingleAnswerQuestion_duplicateQuestion_throws() throws {
-        let sut = try TextualQuizBuilder(
-            singleAnswerQuestion: "Q1",
-            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
-            answer: "O1"
-        )
-        
-        assert(
-            try sut.adding(
-                singleAnswerQuestion: "Q1",
-                options: NonEmptyOptions(head: "O1", tail: ["O3", "O6"]),
-                answer: "O1"
-            ),
-            throws: .duplicateQuestion(.singleAnswer("Q1"))
         )
     }
     
@@ -294,6 +294,23 @@ class TextualQuizBuilderTests: XCTestCase {
         ])
     }
     
+    func test_addMultipleAnswerQuestion_duplicateQuestions_throws() throws {
+        var sut = try TextualQuizBuilder(
+            multipleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+        )
+        
+        assert(
+            try sut.add(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+                answers: NonEmptyOptions(head: "O4", tail: ["O5"])
+            ),
+            throws: .duplicateQuestion(.multipleAnswer("Q1"))
+        )
+    }
+    
     func test_addMultipleAnswerQuestion_duplicateOptions_throws() throws {
         var sut = try TextualQuizBuilder(
             multipleAnswerQuestion: "Q1",
@@ -348,23 +365,6 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
-    func test_addMultipleAnswerQuestion_duplicateQuestions_throws() throws {
-        var sut = try TextualQuizBuilder(
-            multipleAnswerQuestion: "Q1",
-            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
-            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
-        )
-        
-        assert(
-            try sut.add(
-                multipleAnswerQuestion: "Q1",
-                options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
-                answers: NonEmptyOptions(head: "O4", tail: ["O5"])
-            ),
-            throws: .duplicateQuestion(.multipleAnswer("Q1"))
-        )
-    }
-    
     func test_addingMultipleAnswerQuestion() throws {
         let sut = try TextualQuizBuilder(
             multipleAnswerQuestion: "Q1",
@@ -390,6 +390,23 @@ class TextualQuizBuilderTests: XCTestCase {
             (.multipleAnswer("Q1"), ["O1", "O3"]),
             (.multipleAnswer("Q2"), ["O4", "O5"]),
         ])
+    }
+    
+    func test_addingMultipleAnswerQuestion_duplicateQuestions_throws() throws {
+        let sut = try TextualQuizBuilder(
+            multipleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+        )
+        
+        assert(
+            try sut.adding(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+                answers: NonEmptyOptions(head: "O4", tail: ["O5"])
+            ),
+            throws: .duplicateQuestion(.multipleAnswer("Q1"))
+        )
     }
     
     func test_addingMultipleAnswerQuestion_duplicateOptions_throws() throws {
