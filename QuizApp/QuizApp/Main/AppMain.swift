@@ -29,7 +29,9 @@ struct QuizApp: App {
     }
 
     private func startNewQuiz() {
-        let (questions, options, correctAnswers) = Questionnare.getQuizData()
+        let questions = demoQuiz.questions
+        let options = demoQuiz.options
+        let correctAnswers = demoQuiz.correctAnswers
         
         let adapter = iOSSwiftUINavigationStoreAdapter(
             navigation: navigationStore,

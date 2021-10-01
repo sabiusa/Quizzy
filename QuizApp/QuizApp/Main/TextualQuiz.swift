@@ -7,6 +7,24 @@
 
 import QuizCore
 
+let demoQuiz = try!
+    TextualQuizBuilder(
+        singleAnswerQuestion: "What is 2x2?",
+        options: NonEmptyOptions(head: "2", tail: ["4", "6"]),
+        answer: "4"
+    )
+    .adding(
+        multipleAnswerQuestion: "How to get 8",
+        options: NonEmptyOptions(head: "3 + 5", tail: ["2 + 7", "5 + 5", "0 + 8"]),
+        answers: NonEmptyOptions(head: "3 + 5", tail: ["0 + 8"])
+    )
+    .adding(
+        singleAnswerQuestion: "What is the capital of Georgia",
+        options: NonEmptyOptions(head: "Tbilisi", tail: ["Batumi"]),
+        answer: "Tbilisi"
+    )
+    .build()
+
 struct TextualQuiz {
     
     let questions: [Question<String>]
