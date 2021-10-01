@@ -48,10 +48,10 @@ struct TextualQuizBuilder {
     private var correctAnswers: [(Question<String>, [String])] = []
     
     enum AddingError: Error, Equatable {
-        case duplicateOptions([String])
-        case missingAnswerInOptions(answer: [String], options: [String])
         case duplicateQuestion(Question<String>)
+        case duplicateOptions([String])
         case duplicateAnswers([String])
+        case missingAnswerInOptions(answer: [String], options: [String])
     }
     
     private init(
@@ -112,11 +112,14 @@ struct TextualQuizBuilder {
         guard Set(allAnswers).isSubset(of: Set(allOptions))
         else { throw AddingError.missingAnswerInOptions(answer: allAnswers, options: allOptions) }
         
-        guard Set(allAnswers).count == allAnswers.count
-        else { throw AddingError.duplicateAnswers(allAnswers) }
+        guard !questions.contains(question)
+        else { throw AddingError.duplicateQuestion(question) }
         
         guard Set(allOptions).count == allOptions.count
         else { throw AddingError.duplicateOptions(allOptions) }
+        
+        guard Set(allAnswers).count == allAnswers.count
+        else { throw AddingError.duplicateAnswers(allAnswers) }
         
         var newOptions = self.options
         newOptions[question] = allOptions

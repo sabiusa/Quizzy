@@ -348,6 +348,23 @@ class TextualQuizBuilderTests: XCTestCase {
         )
     }
     
+    func test_addMultipleAnswerQuestion_duplicateQuestions_throws() throws {
+        var sut = try TextualQuizBuilder(
+            multipleAnswerQuestion: "Q1",
+            options: NonEmptyOptions(head: "O1", tail: ["O2", "O3"]),
+            answers: NonEmptyOptions(head: "O1", tail: ["O3"])
+        )
+        
+        assert(
+            try sut.add(
+                multipleAnswerQuestion: "Q1",
+                options: NonEmptyOptions(head: "O4", tail: ["O5", "O6"]),
+                answers: NonEmptyOptions(head: "O4", tail: ["O5"])
+            ),
+            throws: .duplicateQuestion(.multipleAnswer("Q1"))
+        )
+    }
+    
     func test_addingMultipleAnswerQuestion() throws {
         let sut = try TextualQuizBuilder(
             multipleAnswerQuestion: "Q1",
