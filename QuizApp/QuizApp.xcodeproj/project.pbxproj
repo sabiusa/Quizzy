@@ -45,6 +45,7 @@
 		774AC55A2701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC5592701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift */; };
 		774AC55C270338EC00D5788C /* iOSSwiftUINavigationFlowAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC55B270338EB00D5788C /* iOSSwiftUINavigationFlowAdapter.swift */; };
 		774AC5602703A4F100D5788C /* TextualQuizBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC55F2703A4F100D5788C /* TextualQuizBuilderTests.swift */; };
+		774AC5642706DDCB00D5788C /* TextualQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AC5632706DDCB00D5788C /* TextualQuiz.swift */; };
 		779D29EC26F2F6F10077EF53 /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */; };
 		779D29EE26F2F77E0077EF53 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */; };
 		779D29F026F2F8070077EF53 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779D29EF26F2F8070077EF53 /* ResultsViewController.xib */; };
@@ -137,6 +138,7 @@
 		774AC5592701C0BB00D5788C /* iOSSwiftUINavigationFlowAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationFlowAdapterTests.swift; sourceTree = "<group>"; };
 		774AC55B270338EB00D5788C /* iOSSwiftUINavigationFlowAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUINavigationFlowAdapter.swift; sourceTree = "<group>"; };
 		774AC55F2703A4F100D5788C /* TextualQuizBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextualQuizBuilderTests.swift; sourceTree = "<group>"; };
+		774AC5632706DDCB00D5788C /* TextualQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextualQuiz.swift; sourceTree = "<group>"; };
 		779D29EB26F2F6F00077EF53 /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		779D29ED26F2F77D0077EF53 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		779D29EF26F2F8070077EF53 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				774AC53526FD865D00D5788C /* AppMain.swift */,
 				3EA2DAA926F21169008EB32F /* AppDelegate.swift */,
 				3EA2DAAB26F21169008EB32F /* SceneDelegate.swift */,
+				774AC5632706DDCB00D5788C /* TextualQuiz.swift */,
 				779D2A0626F490590077EF53 /* iOSUIKitViewControllerFactory.swift */,
 				77FD747A26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift */,
 				77FD747F26FBA21E0092FFC0 /* iOSSwiftUINavigationStoreAdapter.swift */,
@@ -681,6 +684,7 @@
 				77FD747B26FAD9490092FFC0 /* iOSSwiftUIViewControllerFactory.swift in Sources */,
 				779D2A0326F48C150077EF53 /* ViewControllerFactory.swift in Sources */,
 				77FD747526FA5F930092FFC0 /* HeaderView.swift in Sources */,
+				774AC5642706DDCB00D5788C /* TextualQuiz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
