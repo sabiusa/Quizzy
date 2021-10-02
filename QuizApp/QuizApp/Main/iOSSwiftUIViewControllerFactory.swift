@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UIKit
-import QuizCore
+import TextualQuizDomain
 
 final class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
     

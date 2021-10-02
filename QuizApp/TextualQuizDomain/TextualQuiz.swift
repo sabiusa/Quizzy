@@ -5,9 +5,7 @@
 //  Created by Saba Khutsishvili on 01.10.21.
 //
 
-import QuizCore
-
-let demoQuiz = try!
+public let demoQuiz = try!
     TextualQuizBuilder(
         singleAnswerQuestion: "What is 2x2?",
         options: NonEmptyOptions(head: "2", tail: ["4", "6"]),

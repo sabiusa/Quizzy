@@ -6,8 +6,7 @@
 //
 
 import XCTest
-import QuizCore
-import QuizApp
+import TextualQuizDomain
 
 class TextualQuizBuilderTests: XCTestCase {
     

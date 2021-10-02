@@ -7,7 +7,7 @@
 
 import SwiftUI
 import XCTest
-import QuizCore
+import TextualQuizDomain
 
 @testable import QuizApp
 

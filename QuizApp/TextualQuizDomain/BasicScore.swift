@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class BasicScore<T: Equatable> {
+public final class BasicScore<T: Equatable> {
     
-    static func score(
+    public static func score(
         for userAnswers: [T],
         comparedTo correctAnswers: [T]
     ) -> Int {

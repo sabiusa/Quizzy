@@ -5,7 +5,7 @@
 //  Created by Saba Khutsishvili on 19.09.21.
 //
 
-import QuizCore
+import TextualQuizDomain
 
 struct QuestionPresenter {
     

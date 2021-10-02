@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import QuizApp
+@testable import TextualQuizDomain
 
 class ScoreTests: XCTestCase {
     

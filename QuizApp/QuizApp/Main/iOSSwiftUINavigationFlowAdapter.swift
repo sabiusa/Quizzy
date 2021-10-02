@@ -7,10 +7,11 @@
 
 import SwiftUI
 import QuizCore
+import TextualQuizDomain
 
 class iOSSwiftUINavigationFlowAdapter: QuizDelegate {
     
-    typealias Question = QuizCore.Question<String>
+    typealias Question = TextualQuizDomain.Question<String>
     typealias Answer = [String]
     typealias Answers = [(question: Question, answer: Answer)]
     

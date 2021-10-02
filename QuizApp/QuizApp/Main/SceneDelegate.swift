@@ -7,6 +7,7 @@
 
 import UIKit
 import QuizCore
+import TextualQuizDomain
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

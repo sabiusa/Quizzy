@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import QuizCore
+import TextualQuizDomain
 
 protocol ViewControllerFactory {
     

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import QuizCore
+import TextualQuizDomain
 
 class QuizAppStore {
     var quiz: Quiz?
